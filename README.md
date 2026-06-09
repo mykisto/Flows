@@ -11,7 +11,7 @@ Flows consolidates a retail investor's holdings from many platforms — REIT/fun
 | Path | What's there |
 | --- | --- |
 | [`app/`](app/) | The Next.js app — the product itself |
-| [`research/`](research/) | User research — [`research.md`](research/research.md), [`competitor-analysis.md`](research/competitor-analysis.md) (desk scan), [`competitor-teardown.md`](research/competitor-teardown.md) (hands-on, logged-in teardown) + [`screens/`](research/screens/) (competitor captures; interviews & usability test to come) |
+| [`research/`](research/) | User research — [`research.md`](research/research.md), [`competitor-analysis.md`](research/competitor-analysis.md) (desk scan), [`competitor-teardown.md`](research/competitor-teardown.md) (hands-on, logged-in teardown), [`flexibility-deep-dive.md`](research/flexibility-deep-dive.md) (flexibility-without-effort study, non-finance exemplars) + [`screens/`](research/screens/) (competitor captures; interviews & usability test to come) |
 | [`wireframes/`](wireframes/) | Low-fi flows & layouts |
 | [`concept/`](concept/) | Visual direction & concept exploration |
 | [`tokens/`](tokens/) | Design tokens |
