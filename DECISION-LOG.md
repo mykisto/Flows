@@ -169,7 +169,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 ## 13 - Local-first storage, no account
 - Date: 2026-06-09
 - Stage: Brief
-- Status: Active
+- Status: Revisited in #28
 - Decision: Keep all data local-first in the browser (IndexedDB) with no account in v1; nothing leaves the device except public price lookups and the daily FX fetch. Cross-device sync is deferred.
 - Why: Distrust is part of why people avoid these apps, so "your balances never leave your device" is the strongest trust story I can offer - and it's the least backend to build solo. Sync is a real need, but not a v1 one.
 - Alternatives considered: Accounts + cloud database (rejected for v1 - more to build and a bigger trust ask for a new app holding someone's whole financial picture); a seeded demo with no real storage (rejected - participants couldn't enter their own data, weakening the comparison against their spreadsheet).
@@ -309,7 +309,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 ## 27 - Auto-sync treated as a "red flag" reinforces local-first as a trust feature
 - Date: 2026-06-09
 - Stage: Research
-- Status: Active
+- Status: Revisited in #28
 - Decision: Treat the evidence that serious investors openly call real-time auto-sync a "red flag" (Bogleheads) and that the leading free cloud aggregator (Mint) shut down as independent validation of local-first, no-account storage (#13) - reframing it as a deliberate trust advantage, not just a solo-build simplification.
 - Why: I adopted local-first partly to minimise backend for a solo build, but the research shows the privacy posture is also a positive trust signal to the exact distrustful users who avoid these apps - they see cloud linking as a liability, and Mint's death underlines how fragile the free-cloud-aggregator model is. So local-first does double duty (less to build and a stronger trust story), which strengthens my confidence in keeping accounts/sync out of v1.
 - Alternatives considered: Reading local-first purely as a v1 shortcut to be replaced by cloud sync later (rejected for now - the research reframes it as a trust advantage worth keeping central, not a temporary measure).
