@@ -243,3 +243,13 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 - Decision: Auto-fetch a daily FX rate for conversion into the display currency, instead of manual/fixed conversion. Revises the "manual/fixed conversion, live FX deferred" clause of #08 and the "live FX" deferral in #10.
 - Why: Once crypto and stock prices are live (#15), pairing a fresh price with a stale hand-entered rate produces an incoherent converted total - and most of my audience is cross-currency (UAH/USD). A once-a-day rate is cheap, reuses the same fetch machinery, and keeps the freshness story honest. Live-tick FX is still unnecessary.
 - Alternatives considered: Manual/fixed FX as in the original brief (rejected - fresh prices with a stale rate undercut the point of going live); live-tick FX (rejected - needless precision and cost for daily-checked portfolios).
+
+------------------------------------------------------
+
+## 21 - Spreadsheet classified as SOFT, not HARD, competitor
+- Date: 2026-06-09
+- Stage: Research
+- Status: Active
+- Decision: In the competitor analysis, the spreadsheet (Excel / Google Sheets and community tracking templates) is classified as a SOFT competitor - same JTBD, different product - while being singled out as the primary incumbent to study most deeply within that group.
+- Why: Competitor groups are defined by product category, not strategic importance. A spreadsheet is a general-purpose tool people bend to the job, not a dedicated tracker, so by definition it's SOFT (same job, different product). It's still the most important competitor to understand, because it's what our users actually default to - but importance and category are separate axes, and conflating them would distort the framework. "Why do people still choose a spreadsheet over dedicated apps?" remains the central research question regardless of which group it sits in.
+- Alternatives considered: Placing the spreadsheet in HARD because it's the main thing to beat (rejected - HARD means same product/same audience, and a spreadsheet is neither; classifying by importance rather than product category breaks the analysis and would make the competitor grouping inconsistent and hard to defend later).
