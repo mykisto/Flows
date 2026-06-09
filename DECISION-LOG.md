@@ -313,3 +313,13 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 - Decision: Treat the evidence that serious investors openly call real-time auto-sync a "red flag" (Bogleheads) and that the leading free cloud aggregator (Mint) shut down as independent validation of local-first, no-account storage (#13) - reframing it as a deliberate trust advantage, not just a solo-build simplification.
 - Why: I adopted local-first partly to minimise backend for a solo build, but the research shows the privacy posture is also a positive trust signal to the exact distrustful users who avoid these apps - they see cloud linking as a liability, and Mint's death underlines how fragile the free-cloud-aggregator model is. So local-first does double duty (less to build and a stronger trust story), which strengthens my confidence in keeping accounts/sync out of v1.
 - Alternatives considered: Reading local-first purely as a v1 shortcut to be replaced by cloud sync later (rejected for now - the research reframes it as a trust advantage worth keeping central, not a temporary measure).
+
+------------------------------------------------------
+
+## 28 - Make-or-break dimension: flexibility-without-effort, not trust
+- Date: 2026-06-09
+- Stage: Research
+- Status: Active
+- Decision: Chose "flexibility without effort" as the single make-or-break dimension to go deep on - the ability to replicate 100% of any real portfolio (any asset, any field, no exceptions) while spending far less effort than a spreadsheet. Transparency/control is kept as one supporting criterion within it, not the lead.
+- Why: Excel's real moat is coverage, not distrust. People stay on spreadsheets because they can manually model anything; every dedicated tracker eventually hits something it can't represent, and the moment it can't represent the user's actual portfolio, it's abandoned for the spreadsheet that can. So expressive ceiling is the dealbreaker, while trust is "only" a barrier. The product's central challenge is the contradiction this creates: total coverage AND lower effort than a spreadsheet - refusing the usual flexible-but-complex vs simple-but-limited tradeoff. Studying this dimension (with non-finance exemplars like Notion/Airtable) surfaces the mechanisms that actually attack the Excel-fallback problem.
+- Alternatives considered: Trust-vs-spreadsheet as the lead dimension (rejected as a barrier rather than the dealbreaker - real, so retained as a sub-criterion, but not the crux); a blended "why Excel wins" dimension covering both trust and flexibility (rejected - the deep-dive method works precisely by forcing depth on one axis, and "everything that matters" produces a shallower pass).
