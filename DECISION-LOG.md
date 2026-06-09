@@ -283,3 +283,33 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 - Decision: Anchor positioning on cross-platform consolidation plus blended forward income, and treat single-silo polish as table stakes rather than a differentiator.
 - Why: Firsthand, two reference points the beachhead already uses are strong but bounded - Inzhur's own app shows a polished income view (dividends, OVDP coupons, yield, settings) for Inzhur assets only, and FIREkit (the community's recommended Excel replacement) is a flexible multi-asset tracker whose only forward view is a decades-out FIRE projection, not a near-term blended payout calendar. Neither blends income across silos. Flows can't win by out-polishing one silo; the unmet job is the layer above all of them. Builds on #02/#04.
 - Alternatives considered: Compete on silo polish or analytics depth (rejected - Inzhur/FIREkit already strong there, not the gap); broaden to a generic net-worth tracker (rejected - reintroduces the everything-app trap #04 guards against).
+
+------------------------------------------------------
+
+## 25 - No competitor can auto-sync Ukrainian institutions, so manual + CSV is competitive, not a compromise
+- Date: 2026-06-09
+- Stage: Research
+- Status: Active
+- Decision: Treat the finding that no tracker can auto-sync Ukrainian institutions (Inzhur, OVDP, UA banks/brokers) as confirming the manual-entry + first-class-CSV bet (#07/#19/#10) and the deferral of account auto-sync (#10/#15) - for our beachhead, every dedicated app is "manual anyway."
+- Why: Western trackers' stickiness comes from Plaid/Yodlee-style linking that doesn't cover UA institutions; firsthand, getquin/Parqet/Sharesight all collapse to manual entry for our assets. That erases their one structural advantage over the spreadsheet for our audience, so I'm giving up nothing by deferring auto-sync - manual + CSV is genuinely on par here, not a budget compromise. Pre-empts the obvious "but competitors auto-sync, shouldn't we?" challenge.
+- Alternatives considered: Pursuing account auto-sync to match competitors (rejected - the aggregation graph doesn't include UA institutions, so it's high effort that still wouldn't reach the beachhead's assets); treating "everyone has auto-sync" as a reason to deprioritise manual/CSV (rejected - for our users that edge is illusory).
+
+------------------------------------------------------
+
+## 26 - Name the wedge as blended cross-asset income + coverage, not "income" in general
+- Date: 2026-06-09
+- Stage: Research
+- Status: Active
+- Decision: Sharpen the income positioning (#05/#18/#23): the differentiator is specifically the blend of cross-asset passive income - dividends + bond coupons + rent + deposit interest + REIT/fund payouts - together with coverage of the beachhead's actual assets, not "income tracking" in the abstract.
+- Why: The research showed "income tracking" already exists, but in the market it almost always means dividends from listed equities (getquin/Parqet/Sharesight/Snowball), and Western PFM "cash flow" means budgeting. Claiming "income-focused" as our edge would be undefendable - plenty of apps say that. The true, defensible claim is the blend across asset types plus the UA-asset coverage no one else has. A messaging/scoping refinement, not a change to the income-leads direction.
+- Alternatives considered: Positioning broadly on "income-focused tracking" (rejected - not differentiated; competitors already forecast listed dividends); leading on the payout-calendar mechanic alone (rejected - the mechanic matters, but the defensible wedge is the blend + coverage it operates on).
+
+------------------------------------------------------
+
+## 27 - Auto-sync treated as a "red flag" reinforces local-first as a trust feature
+- Date: 2026-06-09
+- Stage: Research
+- Status: Active
+- Decision: Treat the evidence that serious investors openly call real-time auto-sync a "red flag" (Bogleheads) and that the leading free cloud aggregator (Mint) shut down as independent validation of local-first, no-account storage (#13) - reframing it as a deliberate trust advantage, not just a solo-build simplification.
+- Why: I adopted local-first partly to minimise backend for a solo build, but the research shows the privacy posture is also a positive trust signal to the exact distrustful users who avoid these apps - they see cloud linking as a liability, and Mint's death underlines how fragile the free-cloud-aggregator model is. So local-first does double duty (less to build and a stronger trust story), which strengthens my confidence in keeping accounts/sync out of v1.
+- Alternatives considered: Reading local-first purely as a v1 shortcut to be replaced by cloud sync later (rejected for now - the research reframes it as a trust advantage worth keeping central, not a temporary measure).
