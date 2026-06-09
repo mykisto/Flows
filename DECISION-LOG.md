@@ -253,3 +253,33 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 - Decision: In the competitor analysis, the spreadsheet (Excel / Google Sheets and community tracking templates) is classified as a SOFT competitor - same JTBD, different product - while being singled out as the primary incumbent to study most deeply within that group.
 - Why: Competitor groups are defined by product category, not strategic importance. A spreadsheet is a general-purpose tool people bend to the job, not a dedicated tracker, so by definition it's SOFT (same job, different product). It's still the most important competitor to understand, because it's what our users actually default to - but importance and category are separate axes, and conflating them would distort the framework. "Why do people still choose a spreadsheet over dedicated apps?" remains the central research question regardless of which group it sits in.
 - Alternatives considered: Placing the spreadsheet in HARD because it's the main thing to beat (rejected - HARD means same product/same audience, and a spreadsheet is neither; classifying by importance rather than product category breaks the analysis and would make the competitor grouping inconsistent and hard to defend later).
+
+------------------------------------------------------
+
+## 22 - Keep CSV import local and template-free; don't chase getquin's AI file import
+- Date: 2026-06-09
+- Stage: Research
+- Status: Active
+- Decision: After seeing getquin's import firsthand - an LLM that ingests any CSV/XLSX/PDF/screenshot - deliberately keep Flows' import to the #19 approach (auto-detect headers + quick remap), done on-device with no LLM and no upload, rather than matching that AI bar.
+- Why: Local-first (#13) is the trust wedge. Routing someone's holdings file through a cloud LLM to parse it directly contradicts "your data never leaves the device," so getquin's cleverness is a feature I can't copy without giving up the thing that differentiates us. Auto-detect + remap still does the Excel-bridge job (#07) without the privacy cost.
+- Alternatives considered: Match getquin (AI parses any file, incl. broker PDFs and screenshots) - rejected: needs server-side parsing and uploading financial data, breaking the local-first promise; a fixed template - already rejected in #19.
+
+------------------------------------------------------
+
+## 23 - Lead on the forward blended-income view as a free, local-first differentiator
+- Date: 2026-06-09
+- Stage: Research
+- Status: Active
+- Decision: Position the hero - the forward, blended, cross-asset passive-income view - explicitly as free and on-device, because the teardown found this exact capability is paywalled wherever it exists.
+- Why: Firsthand, Sharesight gates both its Future Income report and multi-currency valuation behind "Upgrade", and Parqet gates its upcoming-distributions calendar; the strongest consolidators (Kubera, FIREkit) have no blended forward income at all. So our wedge isn't "income" in the abstract - it's that the forward blended view is simultaneously underbuilt and, where it exists for listed dividends, locked behind a subscription. Offering it free turns a market paywall into our differentiator and reinforces the local-first story. Sharpens #05/#18.
+- Alternatives considered: Treat income parity as "good enough" (rejected - competitors charge for it, so free+blended is the sharper wedge); lead on consolidation/net worth (rejected - that's Kubera/FIREkit's turf and not the underserved need).
+
+------------------------------------------------------
+
+## 24 - Differentiate on cross-silo consolidation + blended income; treat single-silo polish as table stakes
+- Date: 2026-06-09
+- Stage: Research
+- Status: Active
+- Decision: Anchor positioning on cross-platform consolidation plus blended forward income, and treat single-silo polish as table stakes rather than a differentiator.
+- Why: Firsthand, two reference points the beachhead already uses are strong but bounded - Inzhur's own app shows a polished income view (dividends, OVDP coupons, yield, settings) for Inzhur assets only, and FIREkit (the community's recommended Excel replacement) is a flexible multi-asset tracker whose only forward view is a decades-out FIRE projection, not a near-term blended payout calendar. Neither blends income across silos. Flows can't win by out-polishing one silo; the unmet job is the layer above all of them. Builds on #02/#04.
+- Alternatives considered: Compete on silo polish or analytics depth (rejected - Inzhur/FIREkit already strong there, not the gap); broaden to a generic net-worth tracker (rejected - reintroduces the everything-app trap #04 guards against).
