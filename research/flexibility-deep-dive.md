@@ -1,6 +1,6 @@
 # Flows — Deep Dive: Flexibility *Without* Effort
 
-A focused study of the one make-or-break dimension for Flows: **can a user replicate their *entire* real portfolio — every asset, no exceptions — while spending far *less* effort than a spreadsheet?** This is the crux of the whole product (see [`DECISION-LOG.md`](../DECISION-LOG.md) #28).
+A focused study of the one make-or-break dimension for Flows: **can a user replicate their *entire* real portfolio — every asset, no exceptions — while spending far *less* effort than a spreadsheet?** This is the crux of the whole product.
 
 ## The dimension, stated sharply
 
@@ -99,7 +99,7 @@ When a holding *doesn't* fit a type — an unusual instrument, an extra attribut
 - **Beats the spreadsheet:** it matches the *one* thing Excel does that trackers usually can't — "I can always just add a column" — while keeping everything else automated.
 
 ### 🔭 3. Auto-population so entry costs less than a spreadsheet *(Todoist Quick Add + Attio sync + Apple Health auto-ingest)*
-Push as much data-entry and upkeep as possible onto the system, not the user: the already-planned **CSV auto-detect + remap** import (the bridge *from* Excel), **price + history auto-fetch** for crypto/stocks, **daily FX**, **income auto-projection**, and **auto-roll of past-due payouts to realized** (decisions #6, #8, #9). Direction to push further ⚠️: a Todoist-style **single-line quick-add** for a new holding, and Attio-style enrichment of the symbol (name/logo/currency) once entered.
+Push as much data-entry and upkeep as possible onto the system, not the user: the already-planned **CSV auto-detect + remap** import (the bridge *from* Excel), **price + history auto-fetch** for crypto/stocks, **daily FX**, **income auto-projection**, and **auto-roll of past-due payouts to realized**. Direction to push further ⚠️: a Todoist-style **single-line quick-add** for a new holding, and Attio-style enrichment of the symbol (name/logo/currency) once entered.
 - **Full-portfolio coverage:** auto-fetched price/FX/income means even a large, multi-currency portfolio stays current without manual recalculation — the thing that makes big spreadsheets rot.
 - **Beats the spreadsheet:** this *is* the "without effort" half. A spreadsheet makes you do every total, every rate-on-coupon-date, every FX conversion by hand; Flows does the upkeep for you, so the ongoing labor — not just the setup — drops below Excel's.
 
@@ -113,17 +113,6 @@ Apple Health earns its frictionless, zero-config magic *precisely by refusing cu
 **For Flows it would backfire, and on the exact axis that defines the product.** A finite, closed asset catalog with no custom fields is *the wall* that sends users back to Excel. Real portfolios always contain the one weird thing a closed catalog can't hold — a private loan to a friend, a co-op share, a collectible, a foreign instrument with no symbol, an off-list pension. **The moment Flows can't represent *your* portfolio, it's worthless to you** — and unlike Apple, Flows controls *none* of the upstream data producers, so it can never assume the world fits its schema.
 
 So Flows must **invert** Apple Health's bargain: borrow the *typed-defaults-with-auto-aggregation* engine (Mechanism 1), but pair it with an *open* escape hatch (Mechanism 2). Keep the guidance; reject the closed catalog.
-
----
-
-## 6. Flag for the decision log
-
-These findings sharpen — and in one case extend — current product decisions. Per the [decision-log protocol](../DECISION-LOG.md), I'm **not** editing the log; flagging for your review:
-
-1. **Custom fields per holding are a first-class MVP escape hatch — not deferred "flexibility."** The brief models assets as a "flexible generic asset with type-specific fields," but doesn't explicitly commit to *user-added* custom fields. This deep dive concludes the open escape hatch (Mechanism 2) is **the** mechanism that converts ~90% coverage into the 100%-replication that keeps users off Excel. Worth an entry making user-addable custom fields/notes an explicit, non-deferred v1 requirement, tied to #28. *(If you'd rather keep custom fields lightweight — free-form note only, no structured custom fields — that's the decision to record.)*
-2. **The product principle is "typed stub + open escape hatch + auto-population," and progressive disclosure is the reconciler.** This is the concrete shape of decision #28's "flexibility without effort." Might warrant an entry naming the three-mechanism fusion (§4) as the design spine, so the case study traces back to it.
-
-Say the word and I'll draft both as append-only entries in your voice for your confirmation.
 
 ---
 

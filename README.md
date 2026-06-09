@@ -2,7 +2,7 @@
 
 Flows consolidates a retail investor's holdings from many platforms — REIT/fund certificates, government bonds, stocks/ETFs, crypto, real estate, bank deposits — into one responsive, mobile-first web app, centered on **total position and passive income** rather than net worth. The goal is to beat the spreadsheet: *"Excel's flexibility without Excel's labor."*
 
-**Live:** https://flows-nu.vercel.app/ · **Brief & decisions:** [CLAUDE.md](CLAUDE.md)
+**Live:** https://flows-nu.vercel.app/ · **Brief:** [CLAUDE.md](CLAUDE.md)
 
 > 🚧 Early-stage. The product is being built directly in this Next.js app; the design case-study artifacts live alongside it (index below).
 
@@ -18,7 +18,7 @@ Flows consolidates a retail investor's holdings from many platforms — REIT/fun
 | [`components/`](components/) | Component inventory & specs |
 | [`design-system/`](design-system/) | Assembled design system |
 | [`handoff/`](handoff/) | Design → build handoff notes |
-| [`CLAUDE.md`](CLAUDE.md) | Project brief & decision log (source of truth) |
+| [`CLAUDE.md`](CLAUDE.md) | Project brief (source of truth) |
 | [`AGENTS.md`](AGENTS.md) | Build guardrails (Next.js 16 specifics) |
 
 ## Tech stack

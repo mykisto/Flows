@@ -94,7 +94,7 @@ The job — *"understand everything I own and the income it throws off, across s
 - **Brand-new and decision-relevant:** the Inzhur app went **publicly available June 2, 2026** (≈7 days before this writing), **15,000+ installs in 48h**, with REIT/real-estate funds **+ OVDP + energy**, auto-reinvest, **"30+ portfolio indicators,"** and a 10-UAH minimum. ✅
 - **Consolidation:** Excellent — *for Inzhur-held assets only.* It is a **single-platform silo**: it does not (and won't) show your Binance crypto, Freedom24 stocks, a rented flat, or a Privat24 deposit.
 - **Income:** Strong for its own instruments (OVDP coupons, fund distributions, auto-reinvest), and tax-advantaged OVDP messaging. But it's *Inzhur income*, not your blended whole.
-- **What to study:** This is the **quality bar our beachhead now anchors on** for the home silo — 30+ indicators, clean native entry/exit. **Implication: Flows can't win by out-polishing one silo; it wins by being the layer *above* all silos — cross-platform total + blended income.** *(Flagged for the decision log below.)*
+- **What to study:** This is the **quality bar our beachhead now anchors on** for the home silo — 30+ indicators, clean native entry/exit. **Implication: Flows can't win by out-polishing one silo; it wins by being the layer *above* all silos — cross-platform total + blended income.**
 
 ### 2.3 — Brokerage & crypto-exchange dashboards (per-silo views) 🇺🇦
 
@@ -163,17 +163,6 @@ Benchmarks for quality, **not** realistically usable by the beachhead (US/Canada
 7. **The bar at home just rose (this week).** Inzhur's **native app (June 2, 2026, 30+ indicators)** means our beachhead now has a polished single-silo view. Flows must win on **cross-platform consolidation + blended income**, not on out-prettying one issuer's app — single-silo polish is now table stakes.
 
 8. **Craft benchmarks to emulate, one per challenge:** **Sharesight's Future Income report** (paid vs projected income in one timeline) · **Monarch's** forward cash-flow projection UX · **Copilot's** calm data-viz density · **Flighty's** forward-looking timeline. Common thread = *dense data, calm presentation* — our core design problem.
-
----
-
-## Flags for the decision log (your call — I won't edit `DECISION-LOG.md`)
-
-Per your protocol (propose in your voice, confirm, append-only), here are candidates. Say the word and I'll draft entries in your voice for you to approve:
-
-- **A — New (positioning):** *Inzhur shipped a native app (June 2, 2026) with 30+ portfolio indicators + OVDP — the beachhead's home silo now has a strong in-app view.* → Sharpen Flows' positioning to **cross-platform consolidation + blended income as the differentiator**; single-silo polish is table stakes, not the wedge. **Most worth logging** — it's new, dated, and shifts emphasis.
-- **B — Validation:** *For the beachhead, no competitor can auto-sync Ukrainian institutions, so dedicated apps are "manual anyway."* → Reinforces decisions **#1/#8** (build-in-code, manual + CSV-first). Optional to log as a validating data point.
-- **C — Refinement:** *Market "income" = listed dividends; blended cross-asset passive income is genuinely underserved.* → Supports **#7** (income leads) but argues for messaging precision: our edge is the **blend + coverage**, not income tracking generally.
-- **D — Validation:** *Investors openly treat auto-sync as a red flag (Bogleheads); Mint's cloud model died.* → Independent support for **#2** (local-first, no account).
 
 ---
 

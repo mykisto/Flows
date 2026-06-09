@@ -103,15 +103,6 @@ Firsthand-verified cells marked ✅📷; paywalled features 🔒; secondary/mark
 
 ---
 
-## Flags for the decision log (your call — I won't edit `DECISION-LOG.md`)
-
-- **Strongest — import bar moved (firsthand correction).** getquin ships a working **LLM-based import** accepting any CSV/XLSX/PDF/image — *not* the broken CSV the desk research assumed. Revisit decision **#8** (CSV auto-detect+remap): consider whether our bridge-from-Excel should aim at getquin's "drop any file, AI parses it" bar (incl. broker PDFs/screenshots), or deliberately stay simpler/local (no LLM, privacy-first) and say so.
-- **New — forward income is the market's paywall; make ours a free, local-first lead.** Firsthand: Sharesight gates Future Income + multi-currency; Parqet gates the upcoming-distributions calendar. Supports **#7** (income leads) and suggests positioning: *the forward blended payout view others charge for, free and on-device.*
-- **Validation — Kubera multi-currency is the FX bar.** Native + converted shown together (USD 250k → ₴11.15M) is exactly our brief's currency model; adopt that display pattern. Relates to the FX decision (**#9**).
-- **Reinforces flag A (Inzhur).** Firsthand confirms Inzhur's single-silo income view is strong (dividends + OVDP coupons + settings) — table-stakes polish; Flows wins above the silo.
-
----
-
 ## Sources
 
 Firsthand sessions (9 Jun 2026): app.parqet.com · app.getquin.com · portfolio.sharesight.com · app.kubera.com (user's accounts) · inzhur.reit/dashboard (user's account, name-only redacted) · **firekit.space/demo** (public demo, no login). Plus the marketing/teardown URLs from `competitor-analysis.md` (getquin, Parqet, Sharesight, Snowball, Kubera, Monarch, Copilot, Empower, Inzhur, Bogleheads, GOOGLEFINANCE limits) and `firekit.space`. *Portfolio Performance dropped from this set in favour of FIREkit; it still appears in `competitor-analysis.md` as a local-first power-tool reference. Re-verify pricing/tiers and UA accessibility before any case-study claim.*
