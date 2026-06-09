@@ -1,14 +1,32 @@
 # Flows
 
-A web application built with [Next.js 16](https://nextjs.org) (App Router) and TypeScript, styled with Tailwind CSS. Continuously deployed to [Vercel](https://vercel.com) — every push to `main` ships to production automatically, and other branches get their own preview deployments.
+Flows consolidates a retail investor's holdings from many platforms — REIT/fund certificates, government bonds, stocks/ETFs, crypto, real estate, bank deposits — into one responsive, mobile-first web app, centered on **total position and passive income** rather than net worth. The goal is to beat the spreadsheet: *"Excel's flexibility without Excel's labor."*
 
-> 🚧 Early-stage project — currently the default starter UI. This description will grow to explain what Flows actually does as the app takes shape.
+**Live:** https://flows-nu.vercel.app/ · **Brief & decisions:** [CLAUDE.md](CLAUDE.md)
+
+> 🚧 Early-stage. The product is being built directly in this Next.js app; the design case-study artifacts live alongside it (index below).
+
+## Repository index
+
+| Path | What's there |
+| --- | --- |
+| [`app/`](app/) | The Next.js app — the product itself |
+| [`research/`](research/) | User research — [`research.md`](research/research.md) + [`screens/`](research/screens/) (interviews, Excel/competitor teardown, usability test) |
+| [`wireframes/`](wireframes/) | Low-fi flows & layouts |
+| [`concept/`](concept/) | Visual direction & concept exploration |
+| [`tokens/`](tokens/) | Design tokens |
+| [`components/`](components/) | Component inventory & specs |
+| [`design-system/`](design-system/) | Assembled design system |
+| [`handoff/`](handoff/) | Design → build handoff notes |
+| [`CLAUDE.md`](CLAUDE.md) | Project brief & decision log (source of truth) |
+| [`AGENTS.md`](AGENTS.md) | Build guardrails (Next.js 16 specifics) |
 
 ## Tech stack
 
 - **Framework:** Next.js 16 (App Router) + React 19
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4
+- **Storage:** Local-first (browser IndexedDB) — no account in v1
 - **Hosting / CI:** Vercel (auto-deploy from GitHub)
 
 ## Getting started
