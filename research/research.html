@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flows (research)</title>
+<style>
+  /* Visual language ported from linear.app — lifted near-black canvas, Inter
+     (system fallback to SF Pro), light body / medium headings with tight negative
+     tracking, cool-grey muted text, signature indigo accent, green/red/violet/blue
+     semantics. Inter is not bundled (keeps the file self-contained); Linear's own
+     fallback stack resolves to SF Pro, which carries the feel closely. */
+  :root{
+    --bg:#08090a;
+    --surface:#0f1011;
+    --surface-2:#17181b;
+    --line:rgba(255,255,255,.08);
+    --line-2:rgba(255,255,255,.13);
+    --ink:#f7f8f8;
+    --ink-2:#d0d6e0;
+    --muted:#8a8f98;          /* Linear muted grey */
+    --faint:#62666d;          /* Linear dim grey */
+    --accent:#e5591d;         /* brand orange */
+    --accent-2:#f0703a;
+    --accent-deep:#b8470f;
+    --accent-soft:rgba(229,89,29,.14);
+    --pos:#4cb782;            /* Linear green — verified / chosen */
+    --neg:#eb5757;            /* Linear red — misfit */
+    --warn:#e3b341;           /* gold — inferred / unverified / [?] */
+    --warn-bg:rgba(227,179,65,.08);
+    --lock:#a78bfa;           /* paywalled — violet */
+    --ua:#4ea7fc;             /* beachhead note — blue */
+    --cite:#8a8f98;
+    --measure:70ch;
+    --sans:"Inter Variable","SF Pro Display",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    --sheen:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0) 46%);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  /* inline-SVG icons (replacing emoji) — inherit palette via currentColor */
+  .ico{width:1.05em;height:1.05em;display:inline-block;vertical-align:-.16em;fill:none;
+    stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .ico + .ico{margin-left:2px}
+  .ico-check{color:var(--pos)}
+  .ico-cam{color:var(--muted)}
+  .ico-warn{color:var(--warn)}
+  .ico-lock{color:var(--lock)}
+  .ico-star{color:var(--accent)}
+  .ico-flag{color:var(--ua)}
+  .ico-scroll{color:var(--accent)}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 600px at 80% -12%, rgba(229,89,29,.08), transparent 60%),
+      var(--bg);
+    color:var(--ink-2);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    font-weight:400;
+    letter-spacing:-.011em;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---- left sidebar nav (dock) — sticks to centered content ---- */
+  .page{display:flex;align-items:flex-start;max-width:1080px;margin:0 auto;padding:0 24px}
+  .side{
+    position:sticky;top:24px;align-self:flex-start;flex:none;width:228px;z-index:50;
+    margin-top:72px;padding:0 8px;
+  }
+  .side-inner{display:flex;flex-direction:column;gap:15px}
+  .side .brand{font-weight:600;color:var(--ink);font-size:.95rem;letter-spacing:-.01em;line-height:1.3}
+  .side .brand small{display:block;color:var(--faint);font-weight:500;font-size:.8rem;letter-spacing:0;margin-top:3px}
+  .side-nav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .side-nav li{margin:0}
+  .side-nav a{
+    display:flex;align-items:center;gap:11px;color:var(--muted);text-decoration:none;
+    font-size:.88rem;font-weight:500;padding:6px 10px;border-radius:8px;
+    border:1px solid transparent;transition:.15s;
+  }
+  .side-nav a:hover{color:var(--ink);background:var(--surface);border-color:transparent}
+  .side-nav a.active{color:var(--ink);background:var(--surface);border-color:var(--line)}
+  .side-nav .n{
+    display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:20px;flex:none;padding:0 5px;
+    border-radius:6px;border:1px solid var(--line-2);font-family:var(--mono);font-size:.7rem;letter-spacing:0;color:var(--muted);
+  }
+  .side-nav a.active .n{color:var(--accent)}
+
+  /* ---- layout ---- */
+  .wrap{flex:1;min-width:0;padding:0 0 120px 40px}
+  header.doc{padding:72px 0 30px;border-bottom:1px solid var(--line)}
+  h1{
+    font-size:32px;line-height:1.15;margin:0 0 .5em;
+    color:var(--ink);font-weight:510;letter-spacing:-.02em;
+  }
+  .lede{max-width:var(--measure);color:var(--ink-2);font-size:1.02rem}
+  .source-line{color:var(--faint);font-size:.85rem;margin-top:12px}
+
+  section{padding:60px 0 8px;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  .sec-tag{
+    display:inline-block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:12px;
+  }
+  h2{font-size:32px;margin:0 0 .5em;color:var(--ink);font-weight:510;letter-spacing:-.02em;line-height:1.15}
+  h3{font-size:1.1rem;margin:2em 0 .5em;color:var(--ink);font-weight:560;letter-spacing:-.014em}
+  h4{font-size:.96rem;margin:1.4em 0 .35em;color:var(--accent);font-weight:560}
+  p,li{max-width:var(--measure)}
+  p{margin:.7em 0}
+  strong{color:var(--ink);font-weight:590}
+  em{color:var(--ink-2)}
+  ul,ol{padding-left:1.25em}
+  li{margin:.45em 0}
+  ol.spaced li{margin:.95em 0}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(229,89,29,.32)}
+  a:hover{border-bottom-color:var(--accent)}
+
+  /* ---- legend ---- */
+  .legend{
+    max-width:var(--measure);
+    margin:24px 0 4px;padding:16px 18px;
+    background:var(--sheen),var(--surface);border:1px solid var(--line);border-radius:12px;
+    display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.83rem;
+  }
+  .legend b{display:block;width:100%;color:var(--muted);font-weight:600;font-size:.72rem;
+    letter-spacing:.16em;text-transform:uppercase;margin-bottom:2px}
+  .legend span{color:var(--muted)}
+  .legend span i{font-style:normal;color:var(--ink);margin-right:5px}
+
+  /* ---- inline tokens ---- */
+  .tok-unknown{
+    color:var(--warn);font-weight:600;
+    background:var(--warn-bg);border:1px dashed rgba(227,179,65,.45);
+    padding:0 5px;border-radius:5px;font-size:.92em;white-space:nowrap;
+  }
+  code{
+    font-family:var(--mono);
+    font-size:.85em;background:#000;border:1px solid var(--line);
+    padding:1px 6px;border-radius:5px;color:#cfd6dd;
+  }
+  .cite{
+    font-size:.82em;font-family:var(--mono);
+    color:var(--cite);border-bottom:1px dotted rgba(154,163,171,.4);
+    padding:0 1px;font-weight:500;
+  }
+  .cite::before{content:"↗";font-size:.85em;color:var(--accent);margin-right:3px;opacity:.85}
+
+  /* ---- intro source list ---- */
+  ul.sources{list-style:none;padding:0;max-width:var(--measure)}
+  ul.sources li{margin:.4em 0;padding-left:1.1em;position:relative}
+  ul.sources li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:700}
+
+  /* ---- table ---- */
+  .table-scroll{
+    overflow-x:auto;margin:18px 0 6px;
+    border:1px solid var(--line);border-radius:12px;background:var(--surface);
+    -webkit-overflow-scrolling:touch;
+  }
+  table{border-collapse:collapse;width:100%;min-width:880px;font-size:.84rem;font-variant-numeric:tabular-nums}
+  caption{caption-side:top;text-align:left;color:var(--muted);font-size:.85rem;
+    padding:14px 16px 4px;max-width:var(--measure);line-height:1.5}
+  th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  thead th{
+    position:sticky;top:0;background:var(--surface);color:var(--ink);
+    font-weight:600;font-size:.78rem;letter-spacing:0;border-bottom:1px solid var(--line-2);
+  }
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:rgba(255,255,255,.018)}
+  td:first-child,th:first-child{position:sticky;left:0;background:var(--surface);min-width:120px}
+  thead th:first-child{background:var(--surface);z-index:2}
+  td:first-child{font-weight:600;color:var(--ink)}
+  .scroll-hint{color:var(--faint);font-size:.76rem;margin:2px 2px 0}
+
+  /* ---- transposed comparison matrix (one column per app) ---- */
+  table.matrix{table-layout:fixed;width:2120px;min-width:2120px}
+  table.matrix th,table.matrix td{width:320px;font-size:.82rem;overflow-wrap:break-word}
+  table.matrix thead th:first-child,table.matrix tbody th[scope="row"]{width:200px}
+  table.matrix thead th{vertical-align:top}
+  table.matrix tbody th[scope="row"]{font-weight:600;color:var(--ink);font-size:.82rem;background:var(--surface)}
+  table.matrix .wedge{display:block;color:var(--muted);font-weight:500;font-size:.92em}
+  .app{display:flex;flex-direction:column;gap:1px;align-items:flex-start}
+  .app-name{font-weight:600;color:var(--ink);font-size:.82rem;line-height:1.25;white-space:nowrap}
+  .app-sub{color:var(--muted);font-size:.72rem;font-weight:500}
+
+  /* ---- figures / screenshots ---- */
+  .figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:22px 0 6px}
+  figure{margin:0;background:var(--sheen),var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  figure img{display:block;width:100%;height:230px;object-fit:cover;object-position:top center;background:#000;border-bottom:1px solid var(--line)}
+  figure.tall img{height:350px}
+  figcaption{padding:12px 15px;font-size:.8rem;color:var(--muted);line-height:1.5}
+  figcaption .fname{font-family:var(--mono);font-size:.92em;color:#cfd6dd}
+  .cap-flag{display:inline-block;margin-top:8px;margin-right:6px;font-size:.73rem;color:var(--muted);
+    background:#000;border:1px solid var(--line);border-radius:20px;padding:2px 10px;font-weight:510}
+  .cap-flag.lock{color:var(--lock);border-color:rgba(167,139,250,.34)}
+  .cap-flag.first{color:var(--pos);border-color:rgba(76,183,130,.34)}
+  .cap-flag.ua{color:var(--ua);border-color:rgba(78,167,252,.34)}
+
+  /* ---- callouts ---- */
+  .callout{
+    max-width:var(--measure);margin:24px 0;padding:17px 19px;border-radius:12px;
+    border:1px solid var(--line);background:var(--sheen),var(--surface);
+  }
+  .callout.warn{background:var(--warn-bg);border-color:rgba(227,179,65,.3)}
+  .callout.neg{background:rgba(235,87,87,.09);border-color:rgba(235,87,87,.3)}
+  .callout .k{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--warn);font-weight:650;margin-bottom:7px}
+  .callout.note .k{color:var(--accent)}
+  .callout.neg .k{color:var(--neg)}
+
+  /* pattern verdict chips */
+  .verdict{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+    padding:3px 9px;border-radius:7px;margin-right:9px;vertical-align:middle}
+  .v-yes{background:rgba(76,183,130,.16);color:var(--pos);border:1px solid rgba(76,183,130,.34)}
+  .v-maybe{background:var(--warn-bg);color:var(--warn);border:1px solid rgba(227,179,65,.36)}
+  .v-no{background:rgba(235,87,87,.14);color:var(--neg);border:1px solid rgba(235,87,87,.34)}
+
+  /* hypothesis blocks */
+  .hyp{max-width:var(--measure);margin:14px 0;padding:15px 17px;background:var(--sheen),var(--surface);
+    border:1px solid var(--line);border-radius:12px;font-variant-numeric:tabular-nums}
+  .hyp .hid{color:var(--accent);font-weight:700;margin-right:6px;font-family:var(--mono);font-size:.92em;letter-spacing:0}
+  .num{font-family:var(--mono);font-size:.92em;letter-spacing:0;font-variant-numeric:tabular-nums}
+  .kw{color:var(--accent);font-weight:700;letter-spacing:.04em}
+  .kw.because{color:var(--warn)}
+
+  @media (max-width:960px){
+    /* sidebar collapses to a sticky top bar */
+    .page{display:block;max-width:none;padding:0}
+    .side{position:sticky;top:0;width:auto;height:auto;margin-top:0;align-self:stretch;overflow:visible;
+      border-bottom:1px solid var(--line);padding:9px 16px;
+      background:rgba(8,9,10,.82);backdrop-filter:saturate(140%) blur(12px)}
+    .side-inner{flex-direction:row;align-items:center;gap:10px}
+    .side .brand{font-size:.9rem;white-space:nowrap;flex:none}
+    .side .brand small{display:inline;margin:0 0 0 7px}
+    .side-nav{flex-direction:row;gap:3px;flex-wrap:nowrap;overflow-x:auto;margin-left:auto}
+    .side-nav a{padding:5px 9px;font-size:.8rem;white-space:nowrap}
+    .side-nav .n{display:none}
+    .wrap{max-width:none;padding:0 22px 110px}
+  }
+  @media (max-width:640px){
+    body{font-size:16px}
+    .wrap{padding:0 16px 90px}
+    .side-inner{flex-wrap:wrap}
+    .side .brand{width:100%;margin-bottom:2px}
+    .side-nav{margin-left:0}
+    header.doc{padding:40px 0 24px}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path d="M3 9a2 2 0 0 1 2-2h2.2l1.3-1.8h6.6L16.8 7H19a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.2"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 4L21 19H3z"/><path d="M12 10v4.2"/><path d="M12 16.8h.01"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.6l2.6 5.3 5.8.85-4.2 4.1 1 5.85-5.2-2.75-5.2 2.75 1-5.85L3.6 9.75l5.8-.85z"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V4"/><path d="M6 5h11l-2 3 2 3H6"/></symbol>
+  <symbol id="i-scroll" viewBox="0 0 24 24"><path d="M8 9l-3 3 3 3"/><path d="M16 9l3 3-3 3"/><path d="M5.5 12h13"/></symbol>
+</svg>
+
+<div class="page">
+<nav class="side" aria-label="Section navigation">
+  <div class="side-inner">
+    <span class="brand">Flows <small>research</small></span>
+    <ul class="side-nav">
+      <li><a href="#overview"><span class="n">00</span> Overview</a></li>
+      <li><a href="#competitors"><span class="n">01</span> Competitors</a></li>
+      <li><a href="#benchmark"><span class="n">02</span> Benchmark</a></li>
+      <li><a href="#patterns"><span class="n">03</span> Patterns</a></li>
+      <li><a href="#decisions"><span class="n">04</span> Decisions</a></li>
+      <li><a href="#conclusions"><span class="n">05</span> Conclusions</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="doc" id="overview">
+    <span class="sec-tag"><span class="num">00</span> Overview</span>
+    <h1>Flows <span style="color:var(--faint);font-weight:500">| research</span></h1>
+    <p class="lede">The research-stage hub. <strong>This is assembly, not new research</strong> — it synthesizes four source documents into one place that feeds the Define stage and the case study. Each is the authority for its area; follow the links for full evidence:</p>
+
+    <ul class="sources">
+      <li><a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> — the three-group competitor map (desk research, <span class="num">June 2026</span>)</li>
+      <li><a class="cite" href="competitor-teardown.md">competitor-teardown.md</a> — firsthand, logged-in axis comparison + <a class="cite" href="screens/">screens/</a></li>
+      <li><a class="cite" href="flexibility-deep-dive.md">flexibility-deep-dive.md</a> — the flexibility-without-effort benchmark (non-finance exemplars)</li>
+      <li><a class="cite" href="portfolio-view-patterns.md">portfolio-view-patterns.md</a> — the consolidated-view pattern choice</li>
+    </ul>
+
+    <p class="lede"><strong>Goal.</strong> Validate the success hypothesis: investors who consolidate multi-source holdings into one income-focused view will prefer it to their spreadsheet — completing <em>“understand my total position and this month’s income”</em> faster, and rating clarity higher.</p>
+
+    <div class="legend">
+      <b>Legend</b>
+      <span><i><svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg></i>verified (desk source or firsthand)</span>
+      <span><i><svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></i>verified firsthand in the teardown (capture named)</span>
+      <span><i><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg></i>inferred / unverified</span>
+      <span><i><svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg></i>paywalled feature</span>
+      <span><i><svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg></i>beachhead-accessibility note</span>
+      <span><i class="tok-unknown" style="background:none;border:none;padding:0">[?]</i>unknown — not invented</span>
+    </div>
+
+    <p class="lede" style="margin-top:18px"><strong>Conflicts are noted, not silently resolved.</strong> Where firsthand teardown corrected earlier desk research, both are shown.</p>
+    <p class="source-line">Presentation only — mirrors <code>research/research.md</code> exactly; nothing added, inferred, or invented.</p>
+  </header>
+
+  <!-- ============ 1. COMPETITORS ============ -->
+  <section id="competitors">
+    <span class="sec-tag"><span class="num">01</span> Competitors</span>
+    <h2>The gap the market leaves</h2>
+
+    <h3>Comparison matrix (our axes)</h3>
+    <p>Condensed from the firsthand <a class="cite" href="competitor-teardown.md">teardown</a>; <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> = verified in-product, <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg> = paid, <svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg> = inferred. The seven columns are the decision-relevant set (the desk doc’s fuller list of 15+ lives in <a class="cite" href="competitor-analysis.md">competitor-analysis.md</a>).</p>
+
+    <div class="scroll-hint"><svg class="ico ico-scroll" aria-hidden="true"><use href="#i-scroll"/></svg> scroll the table horizontally on small screens</div>
+    <div class="table-scroll">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Asset coverage &amp; one-view consolidation</th>
+            <th>Income &amp; forward cash flow <span class="wedge">(our wedge)</span></th>
+            <th>Data-in</th>
+            <th>Multi-currency</th>
+            <th>Mobile</th>
+            <th>Trust / architecture</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span class="app"><span class="app-name">Parqet <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span></span></th>
+            <td>Manual: securities incl. bonds, cash, crypto, metals, real estate, collectibles</td>
+            <td>Dividend dashboard + <span class="num">12-mo</span> forecast (free); <strong>detailed “upcoming distributions” calendar is paid</strong> <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> — listed-dividend-centric</td>
+            <td><strong>Import-first</strong> onboarding; file import = “PDF statement or CSV” only, broker-template based (not generic remap, not xlsx) <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Display currency settable (seen as UAH); EUR prices + ECB FX <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> <em>(corrects desk “primarily EUR <svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg>”)</em></td>
+            <td>iOS/Android + web</td>
+            <td>DE-hosted, “never finances itself through your data”</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="app"><span class="app-name">getquin <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span></span></th>
+            <td>Broad manual: Security/Crypto/Bond/Cash/Real Estate/NFT/Commodities/P2P <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Dividend calendar + forecast (marketing) — listed only; couldn’t populate firsthand <span class="tok-unknown">[?]</span></td>
+            <td><strong>Working AI import</strong> — drag-drop any CSV/XLSX/PDF/DOC/JPEG/PNG, LLM-parsed <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>. <strong>Corrects desk research</strong>, which had called CSV “marketing-only”</td>
+            <td>Display currency UAH <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>iOS/Android + web</td>
+            <td>Cloud + account + social feed</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="app"><span class="app-name">Sharesight <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span><span class="app-sub">Free</span></span></th>
+            <td><span class="num">700k+</span> instruments + bonds/metals; Income + Currency-gain first-class columns <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td><strong>Future Income report</strong> (to 3 yrs) — <strong>gated, “Upgrade to see”</strong> <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; Income Calendar present</td>
+            <td>Broker sync + email-in + manual + CSV; tax-oriented, heavier</td>
+            <td>Base currency UAH works free; <strong>Multi-currency valuation report is paid</strong> <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Web-first; app exists <svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg></td>
+            <td>Established, tax-grade; cloud + account</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="app"><span class="app-name">Kubera <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span></span></th>
+            <td>Best-in-class breadth: banks, crypto, real estate, vehicles, metals + AI Appraiser; “just like a spreadsheet” <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td><strong>Anti-benchmark: pure balance sheet, no income column or forecast</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Spreadsheet-like table; manual value updates saved as snapshot history <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td><strong>Best-in-class:</strong> enter any currency → stores native (<span class="num">USD 250,000</span>) + shows converted (<span class="num">₴11,150,227</span>) together <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Web, responsive</td>
+            <td>Paid (~<span class="num">$249/yr</span>), no data funnel</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="app"><span class="app-name">Inzhur <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span></span></th>
+            <td>Excellent <strong>for Inzhur assets only</strong> (REIT, Energy, OVDP) — a single-platform silo <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Shows income for its own instruments: all-time dividends (month/quarter/year), OVDP coupons/yield/maturity — mostly realized <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>In-platform only; <span class="num">10-UAH</span> min</td>
+            <td>Native ₴/$ toggle <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Native iOS/Android + web</td>
+            <td>Trusted issuer; holds your money</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="app"><span class="app-name">FIREkit <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span><span class="app-sub">public demo</span></span></th>
+            <td>Broad &amp; flexible: stocks, bonds, crypto, treasury, cash, deposits, real estate, even a car, with tags/goals <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Tracks <strong>realized</strong> dividends/deposits/profit + TWR; <strong>no forward payout calendar</strong> — only forward view is a decades-out FIRE net-worth projection <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Manual entry; instant public demo, no login <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; CSV import <span class="tok-unknown">[?]</span></td>
+            <td>Multi-currency + currency-distribution chart <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Responsive web</td>
+            <td>Public no-login demo = low-friction; but cloud + account</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="app"><span class="app-name">Excel / Sheets <svg class="ico ico-star" aria-hidden="true"><use href="#i-star"/></svg></span></span></th>
+            <td>Unbeatable flexibility — any asset/field/schedule <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg></td>
+            <td><strong>No auto forward payout calendar</strong>; <code>GOOGLEFINANCE</code> pulls prices but no dividend data <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg></td>
+            <td>100% manual; every total by hand</td>
+            <td>Manual/brittle; no “rate on coupon date” <svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg></td>
+            <td>Weak on mobile <svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg></td>
+            <td>Maximal — file is yours, offline, no account <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout note">
+      <span class="k">Set-composition note (conflict / scope)</span>
+      The desk doc’s Group 1 used <strong>Portfolio Performance</strong> as the local-first power-tool; the firsthand teardown <strong>replaced it with FIREkit</strong> (the Inzhur community’s recommended Excel replacement) as more beachhead-relevant. FIREkit is <strong>cloud + account</strong>, so it does <em>not</em> fill the local-first slot — Wealthfolio / self-hosted Ghostfolio do (<a class="cite" href="competitor-teardown.md">teardown</a>).
+    </div>
+
+    <h3>3 shared patterns across the market</h3>
+    <ol class="spaced">
+      <li><strong>“Income” means listed dividends.</strong> getquin/Parqet/Sharesight/Snowball all forecast equity/fund dividends; Western PFM “cash flow” is <em>budgeting</em> (bills vs paychecks, e.g. Empower/Monarch). <strong>Nobody blends dividends + bond coupons + rent + deposit interest + REIT/fund payouts into one forward monthly number</strong> (<a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> synthesis #1).</li>
+      <li><strong>Cloud + account + bank-linking is the default architecture</strong>, and where a forward-income view exists it’s <strong>paywalled</strong> (Sharesight Future Income <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> <code>sharesight-future-income-gated.png</code>; Parqet upcoming-distributions <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> <code>parqet-dividend-dashboard.png</code>).</li>
+      <li><strong>Auto-sync is the apps’ main edge over Excel — and it relies on Plaid/Yodlee, which doesn’t reach UA institutions</strong> <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg>, so for our beachhead every app collapses to manual entry (<a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> §2.4; inferred from how aggregation works, not tested).</li>
+    </ol>
+
+    <div class="figs">
+      <figure>
+        <img src="screens/getquin-dashboard.png" alt="getquin main consolidation dashboard — All your assets in one place">
+        <figcaption>
+          <span class="fname">getquin-dashboard.png</span> — getquin’s main consolidation view, “All your assets in one place” — captured logged-in (empty state).
+          <span class="cap-flag first">firsthand <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screens/firekit-demo-forecast.png" alt="FIREkit decades-out FIRE net-worth projection">
+        <figcaption>
+          <span class="fname">firekit-demo-forecast.png</span> — FIREkit’s only forward view: a decades-out FIRE net-worth projection — not a near-term payout calendar.
+          <span class="cap-flag first">firsthand <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span> <span class="cap-flag">public demo</span>
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="screens/parqet-dividend-dashboard.png" alt="Parqet dividend dashboard with a paid gate on upcoming distributions">
+        <figcaption>
+          <span class="fname">parqet-dividend-dashboard.png</span> — Parqet’s dividend dashboard: free forward forecast + monthly chart, with the detailed “upcoming distributions” calendar gated to paid.
+          <span class="cap-flag first">firsthand <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span> <span class="cap-flag lock">paywalled <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg></span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>3 key differences (where they diverge from each other)</h3>
+    <ol class="spaced">
+      <li><strong>Asset breadth:</strong> Kubera/getquin/FIREkit model alternatives (real estate, collectibles, vehicles); Snowball and listed-only trackers are narrower <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>.</li>
+      <li><strong>Income vs net worth:</strong> Parqet/Sharesight/Snowball are income-forward (forecast + calendar); <strong>Kubera and Empower are pure balance sheets with essentially no passive-income story</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> (<code>kubera-manual-asset-fx.png</code>).</li>
+      <li><strong>Trust architecture:</strong> mainstream is cloud + account; only niche power-tools (Portfolio Performance, Wealthfolio, self-hosted Ghostfolio) are local-first <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>. Privacy framing also splits (Parqet “never finances itself through your data” vs getquin’s social/cloud model).</li>
+    </ol>
+
+    <div class="figs">
+      <figure class="tall">
+        <img src="screens/kubera-manual-asset-fx.png" alt="Kubera manual asset showing native USD value converted to UAH, with no income column">
+        <figcaption>
+          <span class="fname">kubera-manual-asset-fx.png</span> — Kubera’s best-in-class FX: <span class="num">USD 250,000</span> stored native, shown converted as <span class="num">₴11,150,227</span> together — and no income column at all (the balance-sheet anti-benchmark).
+          <span class="cap-flag first">firsthand <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span>
+        </figcaption>
+      </figure>
+      <figure class="tall">
+        <img src="screens/inzhur-dashboard.png" alt="Inzhur in-app dashboard: net worth, all-time dividend income, REIT/Energy and OVDP holdings">
+        <figcaption>
+          <span class="fname">inzhur-dashboard.png</span> — Inzhur, the beachhead’s home silo: net worth + all-time dividend income (month/quarter/year toggle), Inzhur REIT/Energy + OVDP coupons/yield/maturity — excellent for Inzhur assets only, a single-platform silo.
+          <span class="cap-flag first">firsthand <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span> <span class="cap-flag ua">beachhead <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg></span> <span class="cap-flag">name redacted</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <h3>Where income / cash-flow is underserved</h3>
+    <p>The <strong>forward, blended, cross-asset payout calendar</strong> — Flows’ hero — is the clearest gap: absent in the strongest consolidators (Kubera, FIREkit have no forward payout view <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>), <strong>paywalled</strong> where it exists for listed dividends (Sharesight, Parqet <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>), and never extended to coupons / rent / deposit interest / Inzhur payouts as first-class income. Even per-silo, <strong>Freedom24 shows realized dividends but explicitly cannot show upcoming ones</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg> (<a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> §2.3).</p>
+
+    <h3>Recurring reasons people fall back to a spreadsheet</h3>
+    <ul>
+      <li><strong>Coverage/flexibility</strong> — their actual assets (Inzhur certificate, OVDP, UA deposit) or a custom field don’t fit the app’s catalog <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg> (Excel synthesis, <a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> §2.1).</li>
+      <li><strong>Trust/ownership</strong> — they don’t want a cloud account holding their full picture; investors call real-time auto-sync a <strong>“red flag”</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg> (Bogleheads thread).</li>
+      <li><strong>No real advantage</strong> — auto-sync doesn’t reach UA institutions, so the app is “manual anyway” <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg>.</li>
+      <li><strong>Right-sized effort</strong> — passive investors update <strong>1–2× a year</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>, so always-on sync solves a non-problem.</li>
+      <li><strong>Cost / familiarity / the satisfaction of building your own</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 2. BENCHMARK ============ -->
+  <section id="benchmark">
+    <span class="sec-tag"><span class="num">02</span> Benchmark</span>
+    <h2>Flexibility without effort</h2>
+
+    <p>The make-or-break dimension: replicate <strong>100%</strong> of any real portfolio while spending <strong>far less effort</strong> than a spreadsheet. Studied against five non-finance exemplars (Airtable, Notion, Todoist, Apple Health, Attio); full scoring in <a class="cite" href="flexibility-deep-dive.md">flexibility-deep-dive.md</a>. Key finding: <em>no exemplar maxes both halves</em> — coverage leaders (Notion/Airtable) make you design the structure; effort leaders (Apple Health/Attio) cap what you can represent. <strong>Flows must fuse them.</strong></p>
+
+    <h3>Top 3 mechanisms to bring into the MVP</h3>
+    <ol class="spaced">
+      <li><strong>Typed asset entry with built-in defaults</strong> <em>(Apple Health + Airtable + Attio)</em> — each asset type ships a pre-structured form that knows its own fields, units, and schedule (a bond stub has coupon + maturity; a dividend stock has a frequency). <strong>How it lets you replicate the portfolio:</strong> types cover the common ~90% instantly and correctly. <strong>How it beats the spreadsheet:</strong> the structuring <em>and the math</em> are done for you, so the field already knows it’s a coupon date and Flows can project income off it — in Excel you’d build that schema by hand per asset.</li>
+      <li><strong>A custom-field / free-form escape hatch under every holding</strong> <em>(Notion page-per-row + Airtable custom fields)</em> — add a custom field or note in place when a type doesn’t fit. <strong>How it lets you replicate the portfolio:</strong> this is the <strong>100%-replication guarantee</strong> — types cover the 90%, the escape hatch covers the weird 10% (a private loan, co-op share, off-list instrument), so the user <strong>never hits a wall and bounces to Excel</strong>.</li>
+      <li><strong>Auto-population so entry costs less than a spreadsheet</strong> <em>(Todoist Quick Add + Attio email sync + Apple Health auto-ingest)</em> — CSV auto-detect + remap, price/history + daily FX auto-fetch, income auto-projection + auto-roll to realized. <strong>How it beats the spreadsheet:</strong> this is the “without effort” half — Flows does the <em>ongoing</em> upkeep Excel makes you do by hand.</li>
+    </ol>
+
+    <h3>One mechanism that works for its exemplar but NOT for Flows</h3>
+    <div class="callout neg">
+      <span class="k">Don’t borrow</span>
+      <strong>Apple Health’s closed, no-escape-hatch catalog.</strong> Health earns its zero-config magic <em>by refusing custom types</em> — Apple defines every type/unit/aggregation. That works only because Apple controls every upstream data producer and health metrics are enumerable. <strong>For Flows it backfires:</strong> a finite, closed asset catalog with no custom fields <em>is the wall</em> that sends users back to Excel, and Flows controls none of its upstream sources. Borrow Health’s typed-defaults engine; <strong>reject the closed catalog</strong> — keep the escape hatch open (<a class="cite" href="flexibility-deep-dive.md">flexibility-deep-dive.md</a> §5).
+    </div>
+  </section>
+
+  <!-- ============ 3. PATTERNS ============ -->
+  <section id="patterns">
+    <span class="sec-tag"><span class="num">03</span> Patterns</span>
+    <h2>Choosing the consolidated view</h2>
+
+    <p>Five structurally distinct patterns for the consolidated view were evaluated in <a class="cite" href="portfolio-view-patterns.md">portfolio-view-patterns.md</a>. The choice:</p>
+
+    <h3><span class="verdict v-yes">Chosen</span>Summary-first, income-led hero + expandable breakdown</h3>
+    <p>A vertical priority cascade: hero carries <strong>this month’s income (realized + projected)</strong> alongside total position, then a by-type breakdown, with the payout calendar embedded as a module. Three reasons tied to our context:</p>
+    <ol class="spaced">
+      <li><strong>It’s the only structure where “income leads” is enforced by the layout</strong>, not hoped for — the most-important figure is physically first/biggest, operationalizing the income-first lead instead of drifting to the net-worth-first default every dashboard falls into.</li>
+      <li><strong>It’s the most mobile-native</strong> — one prioritized column reflows phone→desktop with no horizontal-scroll compromise (unlike a ledger), matching the mobile-first bet.</li>
+      <li><strong>It does the structuring FOR the spreadsheet refugee</strong> — a clean summary view is the opposite of a dense sheet, delivering the immediate “understood my position + income faster than Excel” the success hypothesis tests (the face of the flexibility-without-effort spine).</li>
+    </ol>
+
+    <h3><span class="verdict v-maybe">Second-best</span>Timeline / payout calendar</h3>
+    <p>Under <strong>condition X:</strong> <em>if validation shows the dominant reason users open Flows is forward cash-flow (“how much income, and when”) rather than current position.</em> CLAUDE.md still ranks total position as view-priority #1, so today the calendar is the emotional core <em>embedded inside</em> the summary frame, not the frame itself.</p>
+
+    <h3><span class="verdict v-no">Does NOT fit</span>Visualization-led (treemap / allocation canvas)</h3>
+    <p>Structurally a net-worth/allocation device with <strong>no native place for forward income</strong>; demands per-slice precision our manually-valued assets lack (false precision → trust damage); mobile-hostile; and it’s FIREkit’s allocation-analytics turf we avoid. Elegant, and wrong for this job.</p>
+  </section>
+
+  <!-- ============ 4. DECISIONS ============ -->
+  <section id="decisions">
+    <span class="sec-tag"><span class="num">04</span> Decisions</span>
+    <h2>The make-or-break calls</h2>
+
+    <p>The make-or-break calls already made — the conclusions below build on these:</p>
+    <ul>
+      <li><strong>Flexibility-without-effort is the make-or-break dimension</strong> (not trust): Excel’s real moat is <em>coverage</em>, not distrust; trust is “only” a barrier.</li>
+      <li><strong>Income-first lead:</strong> this-month’s income (realized + projected) is the hero metric, not net worth; P&amp;L lives in holding detail.</li>
+      <li><strong>Beachhead audience:</strong> design for Inzhur-style multi-asset investors on spreadsheets; broad market is later expansion.</li>
+      <li><strong>CSV-import wedge:</strong> first-class CSV import (auto-detect + remap) is the bridge <em>from</em> Excel that removes switching cost.</li>
+      <li><strong>v1 scope guard:</strong> manual entry + CSV + the consolidated income view are in; integrations/auto-sync, AI, transactions are deferred.</li>
+      <li><em>(supporting)</em> cross-platform consolidation · local-first, no account · win on cross-silo blended income, not single-silo polish · custom-field escape hatch · typed-stub + escape-hatch + auto-population spine · summary-first income-led consolidated view.</li>
+    </ul>
+  </section>
+
+  <!-- ============ 5. CONCLUSIONS ============ -->
+  <section id="conclusions">
+    <span class="sec-tag"><span class="num">05</span> Conclusions</span>
+    <h2>Gaps &amp; hypotheses</h2>
+
+    <h3>Gaps this research exposes</h3>
+    <ol class="spaced">
+      <li><strong>The forward, blended, cross-asset payout calendar is missing or paywalled</strong> — the single clearest opening (Sharesight/Parqet gate it <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; Kubera/FIREkit lack it <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>).</li>
+      <li><strong>No app covers the beachhead’s actual assets</strong> (Inzhur certificates, OVDP, UA deposits) as anything but manual; auto-sync doesn’t reach UA institutions <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg>.</li>
+      <li><strong>The cross-silo consolidation layer doesn’t exist</strong> — Inzhur app, mono invest, Privat24, Freedom24, crypto exchanges are each silos; the total + blended income across them is the unmet job (<a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> §2.3).</li>
+      <li><strong>Local-first + no-account is rare</strong> (only power-tools); the mainstream cloud-aggregator model is fragile (Mint shut down) <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>.</li>
+      <li><strong>Trackers are either flexible-but-complex</strong> (Portfolio Performance: powerful, desktop-only, steep) <strong>or simple-but-limited</strong> — nobody delivers flexibility <em>without</em> effort.</li>
+    </ol>
+
+    <h3>Hypotheses (IF / THEN / BECAUSE — each traced to a finding)</h3>
+
+    <div class="hyp">
+      <span class="hid">H1.</span> <span class="kw">IF</span> Flows leads with a <em>free, on-device</em> forward blended-income view, <span class="kw">THEN</span> beachhead investors prefer it to their spreadsheet for “this month’s income,” <span class="kw because">BECAUSE</span> that exact view is paywalled where it exists (Sharesight Future Income <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> <code>sharesight-future-income-gated.png</code>; Parqet upcoming distributions <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> <code>parqet-dividend-dashboard.png</code>) and absent in the strongest consolidators (Kubera <svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> <code>kubera-manual-asset-fx.png</code>).
+    </div>
+    <div class="hyp">
+      <span class="hid">H2.</span> <span class="kw">IF</span> Flows offers typed asset stubs <strong>+</strong> a user custom-field escape hatch, <span class="kw">THEN</span> users can replicate 100% of their portfolio without bouncing back to Excel, <span class="kw because">BECAUSE</span> the deep-dive found the open escape hatch is the mechanism converting ~90% coverage to 100% (<a class="cite" href="flexibility-deep-dive.md">flexibility-deep-dive.md</a> §5), and Excel’s verified moat is coverage/flexibility (<a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> §2.1, Bogleheads).
+    </div>
+    <div class="hyp">
+      <span class="hid">H3.</span> <span class="kw">IF</span> Flows ships manual-first + first-class CSV import, <span class="kw">THEN</span> deferring auto-sync costs nothing vs competitors for the beachhead, <span class="kw because">BECAUSE</span> no tracker’s auto-sync reaches UA institutions, so every app collapses to manual for our users <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg> (<a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> §2.4). <em>(Note: this BECAUSE is inferred from how aggregation works, not directly tested.)</em>
+    </div>
+    <div class="hyp">
+      <span class="hid">H4.</span> <span class="kw">IF</span> Flows is local-first, no-account, <span class="kw">THEN</span> it answers the trust objection that pushes users to spreadsheets, <span class="kw because">BECAUSE</span> investors openly call auto-sync a “red flag” (Bogleheads) and the leading free cloud aggregator (Mint) died (<a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> §2.1/§2.4).
+    </div>
+    <div class="hyp">
+      <span class="hid">H5.</span> <span class="kw">IF</span> the consolidated view is a summary-first income-led hero (not net-worth/treemap), <span class="kw">THEN</span> Flows wins the “understand total + income faster than my sheet” task on mobile, <span class="kw because">BECAUSE</span> the layout enforces income-lead and is mobile-native, while every dashboard competitor defaults net-worth-first (<a class="cite" href="portfolio-view-patterns.md">portfolio-view-patterns.md</a>).
+    </div>
+
+    <div class="callout warn">
+      <span class="k"><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg> Load-bearing assumption — carried forward to user testing</span>
+      <strong>Everything above rests on one belief: that the beachhead actually stays on spreadsheets primarily for coverage/flexibility</strong> — i.e. that our make-or-break premise (“coverage is the dealbreaker; trust is only a barrier”) is true <em>for these specific users</em>. Today that rests on the Bogleheads thread and self-observation of the Inzhur community, <strong>not on direct evidence from the beachhead</strong> <span class="tok-unknown">[?]</span>. <strong>There are no interviews in the research stage</strong> — so Define proceeds on this as a <em>stated, unvalidated bet</em>, not a confirmed fact, and we carry it forward explicitly. <strong>It gets tested at the user-testing stage</strong>, via the comparative usability test against the participant’s own Excel workflow: the preference split, plus a debrief on <em>why</em> they would or wouldn’t drop the spreadsheet, is what confirms or overturns it. If that testing shows the real reason is something else — habit, cost, blanket distrust of any app, or simply not caring about a blended view — then the make-or-break dimension flips and H1–H5 weaken.
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script>
+  // Minimal scrollspy for the sticky nav — no dependencies.
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.remove('active'); });
+          if (map[e.target.id]) map[e.target.id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+    sections.forEach(function (s) { if (s) obs.observe(s); });
+  })();
+</script>
+
+</body>
+</html>

@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated: research case-study served at "/" (synced from /research by next.config.ts)
+/public/research.html
+/public/screens/
+/public/competitor-analysis.md
+/public/competitor-teardown.md
+/public/flexibility-deep-dive.md
+/public/portfolio-view-patterns.md
