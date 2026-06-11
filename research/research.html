@@ -65,14 +65,14 @@
     font-variant-numeric:tabular-nums;
   }
 
-  /* ---- left sidebar nav (dock) — sticks to centered content ---- */
+  /* ---- left sidebar nav (dock) — pinned to the viewport, no scroll drift ---- */
   .page{display:flex;align-items:flex-start;max-width:1080px;margin:0 auto;padding:0 24px}
   .side{
-    position:static;align-self:flex-start;flex:none;width:228px;
+    position:sticky;top:72px;align-self:flex-start;flex:none;width:228px;
     margin-top:72px;padding:0 8px;
   }
   .side-inner{display:flex;flex-direction:column;gap:15px}
-  .side .brand{font-weight:600;color:var(--ink);font-size:.95rem;letter-spacing:-.01em;line-height:1.3}
+  .side .brand{font-weight:600;color:var(--ink);font-size:.95rem;letter-spacing:-.01em;line-height:1.3;padding-left:10px}
   .side .brand small{display:block;color:var(--faint);font-weight:500;font-size:.8rem;letter-spacing:0;margin-top:3px}
   .side-nav{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
   .side-nav li{margin:0}
@@ -103,8 +103,9 @@
   section:last-of-type{border-bottom:none}
   .sec-tag{
     display:inline-block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--accent);font-weight:600;margin-bottom:12px;
+    color:var(--accent);font-weight:560;margin-bottom:12px;
   }
+  .sec-tag .num{font-weight:400}
   h2{font-size:32px;margin:0 0 .5em;color:var(--ink);font-weight:510;letter-spacing:-.02em;line-height:1.15}
   h3{font-size:1.1rem;margin:2em 0 .5em;color:var(--ink);font-weight:560;letter-spacing:-.014em}
   h4{font-size:.96rem;margin:1.4em 0 .35em;color:var(--accent);font-weight:560}
@@ -175,9 +176,9 @@
   .scroll-hint{color:var(--faint);font-size:.76rem;margin:2px 2px 0}
 
   /* ---- transposed comparison matrix (one column per app) ---- */
-  table.matrix{table-layout:fixed;width:1960px;min-width:1960px}
+  table.matrix{table-layout:fixed;width:1920px;min-width:1920px}
   table.matrix th,table.matrix td{width:320px;font-size:.82rem;overflow-wrap:break-word}
-  table.matrix thead th:first-child,table.matrix tbody th[scope="row"]{width:200px}
+  table.matrix thead th:first-child,table.matrix tbody th[scope="row"]{width:160px}
   table.matrix th:nth-child(6),table.matrix td:nth-child(6){width:160px}
   table.matrix thead th{vertical-align:top}
   table.matrix tbody th[scope="row"]{font-weight:600;color:var(--ink);font-size:.82rem;background:var(--surface)}
@@ -202,12 +203,13 @@
   /* ---- callouts ---- */
   .callout{
     max-width:var(--measure);margin:24px 0;padding:17px 19px;border-radius:12px;
-    border:1px solid var(--line);background:var(--sheen),var(--surface);
+    border:1px solid var(--line);background:var(--sheen),var(--surface);font-size:14px;
   }
   .callout.warn{background:var(--warn-bg);border-color:rgba(227,179,65,.3)}
   .callout.neg{background:rgba(235,87,87,.09);border-color:rgba(235,87,87,.3)}
   .callout .k{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--warn);font-weight:650;margin-bottom:7px}
+    color:var(--warn);font-weight:560;margin-bottom:7px}
+  .callout strong{font-weight:560}
   .callout.note .k{color:var(--accent)}
   .callout.neg .k{color:var(--neg)}
 
@@ -219,7 +221,8 @@
   .v-no{background:rgba(235,87,87,.14);color:var(--neg);border:1px solid rgba(235,87,87,.34)}
 
   /* hypothesis blocks */
-  .hyp{max-width:var(--measure);margin:14px 0;padding:15px 17px;background:var(--sheen),var(--surface);
+  .hyps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;align-items:start}
+  .hyp{padding:15px 17px;background:var(--sheen),var(--surface);
     border:1px solid var(--line);border-radius:12px;font-variant-numeric:tabular-nums;font-size:14px;color:var(--ink)}
   .hyp em{color:var(--muted)}
   .hyp .hid{color:var(--accent);font-weight:560;margin-right:6px;font-family:var(--mono);font-size:.92em;letter-spacing:0}
@@ -234,7 +237,7 @@
       border-bottom:1px solid var(--line);padding:9px 16px;
       background:rgba(8,9,10,.82);backdrop-filter:saturate(140%) blur(12px)}
     .side-inner{flex-direction:row;align-items:center;gap:10px}
-    .side .brand{font-size:.9rem;white-space:nowrap;flex:none}
+    .side .brand{font-size:.9rem;white-space:nowrap;flex:none;padding-left:0}
     .side .brand small{display:inline;margin:0 0 0 7px}
     .side-nav{flex-direction:row;gap:3px;flex-wrap:nowrap;overflow-x:auto;margin-left:auto}
     .side-nav a{padding:5px 9px;font-size:.8rem;white-space:nowrap}
@@ -248,6 +251,7 @@
     .side .brand{width:100%;margin-bottom:2px}
     .side-nav{margin-left:0}
     header.doc{padding:40px 0 24px}
+    .hyps{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -268,7 +272,7 @@
   <div class="side-inner">
     <span class="brand">Flows <small>research</small></span>
     <ul class="side-nav">
-      <li><a href="#overview"><span class="n">00</span> Overview</a></li>
+      <li><a href="#overview" class="active"><span class="n">00</span> Overview</a></li>
       <li><a href="#competitors"><span class="n">01</span> Competitors</a></li>
       <li><a href="#benchmark"><span class="n">02</span> Benchmark</a></li>
       <li><a href="#patterns"><span class="n">03</span> Patterns</a></li>
@@ -543,6 +547,7 @@
 
     <h3>Hypotheses (IF / THEN / BECAUSE — each traced to a finding)</h3>
 
+    <div class="hyps">
     <div class="hyp">
       <span class="hid">H1.</span> <span class="kw">IF</span> Flows leads with a <em>free, on-device</em> forward blended-income view, <span class="kw">THEN</span> beachhead investors prefer it to their spreadsheet for “this month’s income,” <span class="kw because">BECAUSE</span> that exact view is paywalled where it exists (Sharesight Future Income <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; Parqet upcoming distributions <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>) and absent in the strongest consolidators (Kubera <svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>).
     </div>
@@ -558,6 +563,7 @@
     <div class="hyp">
       <span class="hid">H5.</span> <span class="kw">IF</span> the consolidated view is a summary-first income-led hero (not net-worth/treemap), <span class="kw">THEN</span> Flows wins the “understand total + income faster than my sheet” task on mobile, <span class="kw because">BECAUSE</span> the layout enforces income-lead and is mobile-native, while every dashboard competitor defaults net-worth-first.
     </div>
+    </div>
 
     <div class="callout warn">
       <span class="k"><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg> Load-bearing assumption — carried forward to user testing</span>
@@ -569,23 +575,31 @@
 </div>
 
 <script>
-  // Minimal scrollspy for the sticky nav — no dependencies.
+  // Minimal scrollspy for the pinned nav — no dependencies.
   (function () {
     var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
     var map = {};
     links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
     var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
 
+    function activate(id) {
+      links.forEach(function (l) { l.classList.remove('active'); });
+      if (map[id]) map[id].classList.add('active');
+    }
+
     var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          links.forEach(function (l) { l.classList.remove('active'); });
-          if (map[e.target.id]) map[e.target.id].classList.add('active');
-        }
-      });
+      // At the very top the Overview header sits above the detection band, so the
+      // next section would otherwise win — pin Overview explicitly instead.
+      if (window.scrollY < 8) { activate('overview'); return; }
+      entries.forEach(function (e) { if (e.isIntersecting) activate(e.target.id); });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
 
     sections.forEach(function (s) { if (s) obs.observe(s); });
+
+    // Re-pin Overview when the user scrolls back to the top.
+    window.addEventListener('scroll', function () {
+      if (window.scrollY < 8) activate('overview');
+    }, { passive: true });
   })();
 </script>
 
