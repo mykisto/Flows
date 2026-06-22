@@ -1,0 +1,291 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e6]:
+      - generic [ref=e8]:
+        - generic [ref=e10]:
+          - heading "Flows — як ви стежите за своїм портфелем" [level=1] [ref=e12]
+          - generic [ref=e13]: Коротке опитування (~3–5 хв) про те, як ви насправді стежите за своїми інвестиціями. Правильних відповідей немає — цікавить лише ваш реальний досвід. Відповіді конфіденційні.
+        - generic [ref=e15]:
+          - generic [ref=e17]:
+            - link "Увійдіть в обліковий запис Google" [ref=e18] [cursor=pointer]:
+              - /url: https://accounts.google.com/AccountChooser?continue=https://docs.google.com/forms/d/e/1FAIpQLScNyrSh5LaMFU9YvQ-oD1bodxYjvnrf0LbLyo-qrbXj5DhECQ/viewform&service=wise
+            - text: ", щоб зберегти надані відповіді."
+            - button "Докладніше" [ref=e19] [cursor=pointer]
+          - generic [ref=e21]: Зірочка (*) указує, що запитання обов’язкове
+      - list [ref=e22]:
+        - listitem [ref=e23]:
+          - generic [ref=e25]:
+            - heading "Які типи активів зараз у вашому портфелі? Обов’язкове запитання" [level=3] [ref=e28]:
+              - generic [ref=e29]: Які типи активів зараз у вашому портфелі?
+              - generic "Обов’язкове запитання" [ref=e30]: "*"
+            - list "Які типи активів зараз у вашому портфелі? Обов’язкове запитання" [ref=e32]:
+              - listitem [ref=e33]:
+                - generic [ref=e35]:
+                  - checkbox "REIT / сертифікати фондів (Inzhur)" [disabled] [ref=e36]
+                  - generic [ref=e41]: REIT / сертифікати фондів (Inzhur)
+              - listitem [ref=e42]:
+                - generic [ref=e44]:
+                  - checkbox "ОВДП (державні облігації)" [disabled] [ref=e45]
+                  - generic [ref=e50]: ОВДП (державні облігації)
+              - listitem [ref=e51]:
+                - generic [ref=e53]:
+                  - checkbox "Акції / ETF" [disabled] [ref=e54]
+                  - generic [ref=e59]: Акції / ETF
+              - listitem [ref=e60]:
+                - generic [ref=e62]:
+                  - checkbox "Криптовалюта" [disabled] [ref=e63]
+                  - generic [ref=e68]: Криптовалюта
+              - listitem [ref=e69]:
+                - generic [ref=e71]:
+                  - checkbox "Нерухомість" [disabled] [ref=e72]
+                  - generic [ref=e77]: Нерухомість
+              - listitem [ref=e78]:
+                - generic [ref=e80]:
+                  - checkbox "Банківські депозити" [disabled] [ref=e81]
+                  - generic [ref=e86]: Банківські депозити
+              - listitem [ref=e87]:
+                - generic [ref=e88]:
+                  - generic [ref=e90]:
+                    - checkbox "Інше:" [disabled] [ref=e91]
+                    - generic [ref=e96]: "Інше:"
+                  - textbox "Інша відповідь" [disabled] [ref=e101]
+        - listitem [ref=e103]:
+          - generic [ref=e105]:
+            - heading "На скількох різних платформах або застосунках зараз лежать ваші інвестиції? Обов’язкове запитання" [level=3] [ref=e108]:
+              - generic [ref=e109]: На скількох різних платформах або застосунках зараз лежать ваші інвестиції?
+              - generic "Обов’язкове запитання" [ref=e110]: "*"
+            - radiogroup "На скількох різних платформах або застосунках зараз лежать ваші інвестиції? Обов’язкове запитання" [ref=e113]:
+              - generic [ref=e114]:
+                - generic [ref=e117]:
+                  - generic [ref=e118]:
+                    - radio "1" [disabled]
+                  - generic [ref=e121]: "1"
+                - generic [ref=e124]:
+                  - generic [ref=e125]:
+                    - radio "2" [disabled]
+                  - generic [ref=e128]: "2"
+                - generic [ref=e131]:
+                  - generic [ref=e132]:
+                    - radio "3" [disabled]
+                  - generic [ref=e135]: "3"
+                - generic [ref=e138]:
+                  - generic [ref=e139]:
+                    - radio "4" [disabled]
+                  - generic [ref=e142]: "4"
+                - generic [ref=e145]:
+                  - generic [ref=e146]:
+                    - radio "5 і більше" [disabled]
+                  - generic [ref=e149]: 5 і більше
+        - listitem [ref=e150]:
+          - generic [ref=e152]:
+            - heading "Яка приблизно частка всього портфеля — у найбільшій одній платформі? Обов’язкове запитання" [level=3] [ref=e155]:
+              - generic [ref=e156]: Яка приблизно частка всього портфеля — у найбільшій одній платформі?
+              - generic "Обов’язкове запитання" [ref=e157]: "*"
+            - radiogroup "Яка приблизно частка всього портфеля — у найбільшій одній платформі? Обов’язкове запитання" [ref=e160]:
+              - generic [ref=e161]:
+                - generic [ref=e164]:
+                  - generic [ref=e165]:
+                    - radio "до 25%" [disabled]
+                  - generic [ref=e168]: до 25%
+                - generic [ref=e171]:
+                  - generic [ref=e172]:
+                    - radio "25–50%" [disabled]
+                  - generic [ref=e175]: 25–50%
+                - generic [ref=e178]:
+                  - generic [ref=e179]:
+                    - radio "50–75%" [disabled]
+                  - generic [ref=e182]: 50–75%
+                - generic [ref=e185]:
+                  - generic [ref=e186]:
+                    - radio "понад 75%" [disabled]
+                  - generic [ref=e189]: понад 75%
+        - listitem [ref=e190]:
+          - generic [ref=e192]:
+            - heading "Де ви зараз зводите всі свої інвестиції разом? Обов’язкове запитання" [level=3] [ref=e195]:
+              - generic [ref=e196]: Де ви зараз зводите всі свої інвестиції разом?
+              - generic "Обов’язкове запитання" [ref=e197]: "*"
+            - radiogroup "Де ви зараз зводите всі свої інвестиції разом? Обов’язкове запитання" [ref=e200]:
+              - generic [ref=e201]:
+                - generic [ref=e204]:
+                  - generic [ref=e205]:
+                    - radio "Excel" [disabled]
+                  - generic [ref=e208]: Excel
+                - generic [ref=e211]:
+                  - generic [ref=e212]:
+                    - radio "Google Sheets" [disabled]
+                  - generic [ref=e215]: Google Sheets
+                - generic [ref=e218]:
+                  - generic [ref=e219]:
+                    - radio "У застосунку фонду (Inzhur)" [disabled]
+                  - generic [ref=e222]: У застосунку фонду (Inzhur)
+                - generic [ref=e225]:
+                  - generic [ref=e226]:
+                    - radio "У застосунку брокера" [disabled]
+                  - generic [ref=e229]: У застосунку брокера
+                - generic [ref=e232]:
+                  - generic [ref=e233]:
+                    - radio "У кількох місцях окремо, разом не зводжу" [disabled]
+                  - generic [ref=e236]: У кількох місцях окремо, разом не зводжу
+                - generic [ref=e239]:
+                  - generic [ref=e240]:
+                    - radio "Ніде, тримаю в голові" [disabled]
+                  - generic [ref=e243]: Ніде, тримаю в голові
+        - listitem [ref=e244]:
+          - generic [ref=e246]:
+            - heading "На якому пристрої ви найчастіше переглядаєте свій портфель? Обов’язкове запитання" [level=3] [ref=e249]:
+              - generic [ref=e250]: На якому пристрої ви найчастіше переглядаєте свій портфель?
+              - generic "Обов’язкове запитання" [ref=e251]: "*"
+            - radiogroup "На якому пристрої ви найчастіше переглядаєте свій портфель? Обов’язкове запитання" [ref=e254]:
+              - generic [ref=e255]:
+                - generic [ref=e258]:
+                  - generic [ref=e259]:
+                    - radio "Телефон" [disabled]
+                  - generic [ref=e262]: Телефон
+                - generic [ref=e265]:
+                  - generic [ref=e266]:
+                    - radio "Ноутбук / комп'ютер" [disabled]
+                  - generic [ref=e269]: Ноутбук / комп'ютер
+                - generic [ref=e272]:
+                  - generic [ref=e273]:
+                    - radio "Планшет" [disabled]
+                  - generic [ref=e276]: Планшет
+                - generic [ref=e279]:
+                  - generic [ref=e280]:
+                    - radio "По-різному" [disabled]
+                  - generic [ref=e283]: По-різному
+        - listitem [ref=e284]:
+          - generic [ref=e286]:
+            - heading "Як часто ви оновлюєте або переглядаєте свій облік? Обов’язкове запитання" [level=3] [ref=e289]:
+              - generic [ref=e290]: Як часто ви оновлюєте або переглядаєте свій облік?
+              - generic "Обов’язкове запитання" [ref=e291]: "*"
+            - radiogroup "Як часто ви оновлюєте або переглядаєте свій облік? Обов’язкове запитання" [ref=e294]:
+              - generic [ref=e295]:
+                - generic [ref=e298]:
+                  - generic [ref=e299]:
+                    - radio "Щодня" [disabled]
+                  - generic [ref=e302]: Щодня
+                - generic [ref=e305]:
+                  - generic [ref=e306]:
+                    - radio "Щотижня" [disabled]
+                  - generic [ref=e309]: Щотижня
+                - generic [ref=e312]:
+                  - generic [ref=e313]:
+                    - radio "Раз на місяць" [disabled]
+                  - generic [ref=e316]: Раз на місяць
+                - generic [ref=e319]:
+                  - generic [ref=e320]:
+                    - radio "Раз на кілька місяців" [disabled]
+                  - generic [ref=e323]: Раз на кілька місяців
+                - generic [ref=e326]:
+                  - generic [ref=e327]:
+                    - radio "1–2 рази на рік" [disabled]
+                  - generic [ref=e330]: 1–2 рази на рік
+                - generic [ref=e333]:
+                  - generic [ref=e334]:
+                    - radio "Не веду регулярно" [disabled]
+                  - generic [ref=e337]: Не веду регулярно
+        - listitem [ref=e338]:
+          - generic [ref=e340]:
+            - heading "Чи стежите ви за доходом від інвестицій (дивіденди, купони, оренда, відсотки)? Обов’язкове запитання" [level=3] [ref=e343]:
+              - generic [ref=e344]: Чи стежите ви за доходом від інвестицій (дивіденди, купони, оренда, відсотки)?
+              - generic "Обов’язкове запитання" [ref=e345]: "*"
+            - radiogroup "Чи стежите ви за доходом від інвестицій (дивіденди, купони, оренда, відсотки)? Обов’язкове запитання" [ref=e348]:
+              - generic [ref=e349]:
+                - generic [ref=e352]:
+                  - generic [ref=e353]:
+                    - radio "Так — і вже отриманий, і майбутні виплати наперед" [disabled]
+                  - generic [ref=e356]: Так — і вже отриманий, і майбутні виплати наперед
+                - generic [ref=e359]:
+                  - generic [ref=e360]:
+                    - radio "Лише вже отриманий дохід" [disabled]
+                  - generic [ref=e363]: Лише вже отриманий дохід
+                - generic [ref=e366]:
+                  - generic [ref=e367]:
+                    - radio "Ні, окремо дохід не рахую" [disabled]
+                  - generic [ref=e370]: Ні, окремо дохід не рахую
+        - listitem [ref=e371]:
+          - generic [ref=e373]:
+            - heading "Чи відмовлялись ви колись від фінансового застосунку через те, що він вимагав акаунт або доступ до ваших даних? Обов’язкове запитання" [level=3] [ref=e376]:
+              - generic [ref=e377]: Чи відмовлялись ви колись від фінансового застосунку через те, що він вимагав акаунт або доступ до ваших даних?
+              - generic "Обов’язкове запитання" [ref=e378]: "*"
+            - radiogroup "Чи відмовлялись ви колись від фінансового застосунку через те, що він вимагав акаунт або доступ до ваших даних? Обов’язкове запитання" [ref=e381]:
+              - generic [ref=e382]:
+                - generic [ref=e385]:
+                  - generic [ref=e386]:
+                    - radio "Так, через це відмовлявся" [disabled]
+                  - generic [ref=e389]: Так, через це відмовлявся
+                - generic [ref=e392]:
+                  - generic [ref=e393]:
+                    - radio "Ні, мене це не зупиняло" [disabled]
+                  - generic [ref=e396]: Ні, мене це не зупиняло
+                - generic [ref=e399]:
+                  - generic [ref=e400]:
+                    - radio "Спокійно користуюсь застосунками банку / брокера — питання не виникало" [disabled]
+                  - generic [ref=e403]: Спокійно користуюсь застосунками банку / брокера — питання не виникало
+        - listitem [ref=e404]:
+          - generic [ref=e406]:
+            - heading "Що найбільше ускладнює вам стеження за портфелем зараз? (оберіть головне) Обов’язкове запитання" [level=3] [ref=e409]:
+              - generic [ref=e410]: Що найбільше ускладнює вам стеження за портфелем зараз? (оберіть головне)
+              - generic "Обов’язкове запитання" [ref=e411]: "*"
+            - radiogroup "Що найбільше ускладнює вам стеження за портфелем зараз? (оберіть головне) Обов’язкове запитання" [ref=e414]:
+              - generic [ref=e415]:
+                - generic [ref=e418]:
+                  - generic [ref=e419]:
+                    - radio "Доводиться все рахувати вручну" [disabled]
+                  - generic [ref=e422]: Доводиться все рахувати вручну
+                - generic [ref=e425]:
+                  - generic [ref=e426]:
+                    - radio "Активи розкидані, немає єдиної картини" [disabled]
+                  - generic [ref=e429]: Активи розкидані, немає єдиної картини
+                - generic [ref=e432]:
+                  - generic [ref=e433]:
+                    - radio "Не бачу майбутній дохід наперед" [disabled]
+                  - generic [ref=e436]: Не бачу майбутній дохід наперед
+                - generic [ref=e439]:
+                  - generic [ref=e440]:
+                    - radio "Дані застарівають, треба оновлювати руками" [disabled]
+                  - generic [ref=e443]: Дані застарівають, треба оновлювати руками
+                - generic [ref=e446]:
+                  - generic [ref=e447]:
+                    - radio "Не довіряю застосункам свої дані" [disabled]
+                  - generic [ref=e450]: Не довіряю застосункам свої дані
+                - generic [ref=e453]:
+                  - generic [ref=e454]:
+                    - radio "Мене все влаштовує" [disabled]
+                  - generic [ref=e457]: Мене все влаштовує
+        - listitem [ref=e458]:
+          - generic [ref=e460]:
+            - heading "Чого вам найбільше бракує в інструменті для обліку портфеля? Поділіться найболючішими проблемами або побажаннями." [level=3] [ref=e463]:
+              - generic [ref=e464]: Чого вам найбільше бракує в інструменті для обліку портфеля? Поділіться найболючішими проблемами або побажаннями.
+            - generic [ref=e467]:
+              - generic: Ваша відповідь
+              - textbox "Чого вам найбільше бракує в інструменті для обліку портфеля? Поділіться найболючішими проблемами або побажаннями." [disabled] [ref=e469]
+      - generic [ref=e471]:
+        - generic [ref=e472]:
+          - button "Надіслати" [ref=e474] [cursor=pointer]:
+            - generic [ref=e477]: Надіслати
+          - generic [ref=e478]:
+            - progressbar "Сторінка 1 з 1" [ref=e479]
+            - generic [ref=e481]: Сторінка 1 з 1
+          - button "Очистити форму" [ref=e483] [cursor=pointer]:
+            - generic [ref=e486]: Очистити форму
+        - generic [ref=e487]: Ніколи не вказуйте паролі в Google Формах.
+    - generic [ref=e488]:
+      - generic [ref=e489]:
+        - text: Компанія Google не створювала цей вміст і не підтримує його. -
+        - link "Умови використання" [ref=e490] [cursor=pointer]:
+          - /url: https://policies.google.com/terms
+        - text: "-"
+        - link "Політика конфіденційності" [ref=e491] [cursor=pointer]:
+          - /url: https://policies.google.com/privacy
+        - paragraph [ref=e492]:
+          - text: Ця форма здається підозрілою?
+          - link "Звіт" [ref=e493] [cursor=pointer]:
+            - /url: https://docs.google.com/forms/d/e/1FAIpQLScNyrSh5LaMFU9YvQ-oD1bodxYjvnrf0LbLyo-qrbXj5DhECQ/abuse
+      - link "Google Форми" [ref=e495] [cursor=pointer]:
+        - /url: //www.google.com/forms/about/?utm_source=product&utm_medium=forms_logo&utm_campaign=forms
+        - img "Google" [ref=e496]
+        - text: Форми
+  - generic [ref=e500]:
+    - button "довідка й відгуки" [ref=e501] [cursor=pointer]
+    - tooltip [ref=e504]: Довідка й відгуки
