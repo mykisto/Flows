@@ -232,7 +232,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 - Status: Active
 - Decision: Make CSV import auto-detect common column headers and offer a quick remap step to fix mismatches, rather than forcing a fixed template. Details the first-class CSV import committed in #07.
 - Why: The whole point is removing the switching cost from Excel. A fixed template that makes people reshape their spreadsheet reintroduces exactly the friction the import is meant to kill. Auto-detect with a remap fallback gets most of the value without full arbitrary-column-mapping complexity.
-- Alternatives considered: A fixed downloadable template (rejected - simplest to build, but pushes the reshaping work back onto the user); full hand-mapping of every column (rejected - the heaviest build for one person in 12 weeks).
+- Alternatives considered: A fixed downloadable template (rejected - simplest to build, but pushes the reshaping work back onto the user); full hand-mapping of every column (rejected - the heaviest build for one person).
 
 ------------------------------------------------------
 
