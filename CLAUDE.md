@@ -43,7 +43,7 @@ Both projected and realized, **leading forward-looking**. A payout calendar / pr
 3. Breakdown by asset type
 4. Upcoming payout calendar
 
-Assume ~5–30 holdings → a grouped, scannable list (no heavy search/filter on day one); confirm the real range in interviews.
+Assume ~5–30 holdings → a grouped, scannable list (no heavy search/filter on day one); confirm the real range in user testing.
 
 ## Performance / P&L
 Income leads everywhere. Unrealized gain/loss + total return live in **holding detail, not the dashboard hero** — keeps the income wedge sharp rather than becoming "just another portfolio tracker."
@@ -75,7 +75,7 @@ Comparative usability test against participants' own Excel workflow, recruited f
 **Deferred:** account integrations / auto-sync; AI features **beyond import**; buying/selling/transactions; accounts + cross-device sync; live-tick FX; live feeds for OVDP & Inzhur (manual now, modeled feed-ready); broader (non-beachhead) audience.
 
 ## Constraints
-Solo designer; ~12-week timeline; becomes a portfolio case study — keep the reasoning explicit throughout (see decision log).
+Solo designer; becomes a portfolio case study — keep the reasoning explicit throughout (see decision log).
 
 ## Decision log
 

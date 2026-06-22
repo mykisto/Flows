@@ -54,7 +54,7 @@ These are direct, same-job products. All are **realistically usable by a Ukraini
 - **Data-in:** 15 broker imports + Yodlee + manual/CSV.
 - **Loses to Excel when:** same pattern — listed-dividend-only, cloud/account, and no room for a UA fund certificate or a custom income schedule.
 
-**Portfolio Performance** — *Type:* **free, open-source desktop** app (Java; Win/Mac/Linux). The power-user's Excel replacement. *(Kin: **Ghostfolio** — self-hosted web ✅; **Wealthfolio** — local-first desktop, open-source ✅, the closest architectural twin to Flows' local-first model.)*
+**Portfolio Performance** — *Type:* **free, open-source desktop** app (Java; Win/Mac/Linux). The power-user's Excel replacement. *(Kin: **Ghostfolio** — self-hosted web ✅; **Wealthfolio** — local-first, open-source ✅, the closest architectural twin to Flows' local-first model — **now reviewed firsthand: desktop + iOS + self-hosted web, not desktop-only; see [`competitor-teardown.md`](competitor-teardown.md)**.)*
 - **Consolidation:** Extremely flexible — model essentially **any** asset manually, pull prices from many feeds, define your own asset allocation. This is what disciplined ex-spreadsheet investors graduate to.
 - **Income:** **This is the tell — it's performance-first (IRR / True-Time-Weighted Return), with no native forward payout calendar.** Even the most powerful free tracker treats income as a byproduct, not the hero. Direct opening for Flows.
 - **Data-in:** Manual + price feeds + CSV; **data lives in local XML files** — i.e., it *already* satisfies the local-first/data-ownership demand that pushes people away from cloud apps.
