@@ -52,10 +52,10 @@ Income leads everywhere. Unrealized gain/loss + total return live in **holding d
 Multi-currency entry, one user-chosen display currency. **FX rate auto-fetched daily** (keeps a fresh price from being paired with a stale rate; live-tick FX is unnecessary). Native currency is shown alongside the converted value. Treat currency clarity as a design theme, not a footnote (Inzhur values in UAH pegged to USD; users hold other currencies too).
 
 ## Data in (onboarding)
-Manual entry across asset types, plus **first-class CSV import** — the bridge FROM Excel that removes switching cost. Import accepts the user's existing sheet: **auto-detect common headers, with a quick remap step** to fix mismatches. Live account integrations / auto-sync are deferred.
+Manual entry across asset types, plus **first-class CSV import** — the bridge FROM Excel that removes switching cost. Import accepts the user's existing sheet: **auto-detect common headers, with a quick remap step** to fix mismatches. **Optional AI-assisted import** (an LLM that drafts mapped activities from a messy CSV/statement — later images/PDF — for the user to review) sits on top as a power path, built so **no Flows server ever sees the data**: BYOK to the user's own LLM key now, on-device later (see DECISION-LOG #32). Live account integrations / auto-sync are deferred.
 
 ## Storage & trust
-**Local-first, no account** — data lives in the browser (IndexedDB); nothing leaves the device except public price lookups and the daily FX fetch. Trust copy: "we fetch public prices, never your balances." Distrust is part of why people avoid these apps, so trust cues (data locality, "as of" freshness, honest empty states) are first-class. Cross-device sync deferred.
+**Local-first, no account** — data lives in the browser (IndexedDB); nothing leaves the device except public price lookups, the daily FX fetch, and — **only if the user opts in** — an AI-assisted import that runs on-device or via the user's own LLM key (**never through a Flows server**). Trust copy: "we fetch public prices, never your balances." Distrust is part of why people avoid these apps, so trust cues (data locality, "as of" freshness, honest empty states) are first-class. Cross-device sync deferred.
 
 ## Wedge against Excel
 Excel gives total flexibility but makes you do all the math and upkeep by hand. Flows matches enough flexibility (custom assets/fields) while automatically handling income projection, the payout calendar, live prices where available, and consolidated visualization. **"Excel's flexibility without Excel's labor."**
@@ -70,9 +70,9 @@ English UI for v1, built for localization from the start. Language picker with E
 Comparative usability test against participants' own Excel workflow, recruited from the Inzhur community. Measure task completion time, a clarity rating, and a preference split (optionally a SUS score). Maps directly to the success hypothesis.
 
 ## Scope
-**In (v1):** manual entry across asset types; first-class CSV import (auto-detect + remap); the consolidated holdings + cash-flow view (total position, blended income, breakdown by type, payout calendar); live price + history for crypto and listed stocks/ETFs; daily auto-fetched FX; local-first storage; EN UI + EN/UA language picker.
+**In (v1):** manual entry across asset types; first-class CSV import (auto-detect + remap); the consolidated holdings + cash-flow view (total position, blended income, breakdown by type, payout calendar); live price + history for crypto and listed stocks/ETFs; daily auto-fetched FX; local-first storage; **optional AI-assisted import (BYOK now, on-device later; no Flows server sees the data)**; EN UI + EN/UA language picker.
 
-**Deferred:** account integrations / auto-sync; AI features; buying/selling/transactions; accounts + cross-device sync; live-tick FX; live feeds for OVDP & Inzhur (manual now, modeled feed-ready); broader (non-beachhead) audience.
+**Deferred:** account integrations / auto-sync; AI features **beyond import**; buying/selling/transactions; accounts + cross-device sync; live-tick FX; live feeds for OVDP & Inzhur (manual now, modeled feed-ready); broader (non-beachhead) audience.
 
 ## Constraints
 Solo designer; ~12-week timeline; becomes a portfolio case study — keep the reasoning explicit throughout (see decision log).
@@ -90,5 +90,6 @@ The list below is a snapshot of key calls; the log holds the full set.
 5. **30-day change shown only where real data exists** (fetched or snapshot) — never fabricate a number; protects trust.
 6. **Realized income = auto-roll past-due payouts, flagged for one-tap confirm** — low labor with user control.
 7. **Income leads; P&L secondary** (holding detail) — keeps the income wedge sharp vs. a generic tracker.
-8. **CSV import = auto-detect + remap fallback** — a true bridge from Excel without full column-mapping complexity.
+8. **CSV import = auto-detect + remap fallback** — a true bridge from Excel without full column-mapping complexity (a bridge, not a differentiator — competitors match it).
 9. **FX auto-fetched daily** — keeps fresh prices from pairing with a stale rate; live-tick FX is unnecessary.
+10. **AI-assisted import adopted** — optional power path on top of CSV; BYOK to the user's own LLM now, on-device later, so no Flows server sees the data. Reverses the earlier "no AI import" call (DECISION-LOG #32).

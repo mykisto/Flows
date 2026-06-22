@@ -139,7 +139,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 ## 10 - v1 scope guard
 - Date: 2026-06-09
 - Stage: Brief
-- Status: Revisited in #15, #20
+- Status: Revisited in #15, #20, #32
 - Decision: In scope for the 0-to-1 build - manual entry across asset types, CSV import, and the consolidated holdings + cash-flow view. Deferred - live integrations/auto-sync, AI features, buying/selling/transactions, live FX.
 - Why: This is a 12-week course project; the consolidated view plus getting data in is enough to prove the concept and validate the hypothesis. Aggregation/integrations is the part that balloons, so it's explicitly fenced off. AI and visual polish are a deliberate post-course pass.
 - Alternatives considered: Including integrations or AI in v1 (rejected - scope explosion that would swamp the timeline and dilute the core problem).
@@ -169,7 +169,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 ## 13 - Local-first storage, no account
 - Date: 2026-06-09
 - Stage: Brief
-- Status: Revisited in #28
+- Status: Revisited in #28, #32
 - Decision: Keep all data local-first in the browser (IndexedDB) with no account in v1; nothing leaves the device except public price lookups and the daily FX fetch. Cross-device sync is deferred.
 - Why: Distrust is part of why people avoid these apps, so "your balances never leave your device" is the strongest trust story I can offer - and it's the least backend to build solo. Sync is a real need, but not a v1 one.
 - Alternatives considered: Accounts + cloud database (rejected for v1 - more to build and a bigger trust ask for a new app holding someone's whole financial picture); a seeded demo with no real storage (rejected - participants couldn't enter their own data, weakening the comparison against their spreadsheet).
@@ -259,7 +259,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 ## 22 - Keep CSV import local and template-free; don't chase getquin's AI file import
 - Date: 2026-06-09
 - Stage: Research
-- Status: Active
+- Status: Superseded by #32
 - Decision: After seeing getquin's import firsthand - an LLM that ingests any CSV/XLSX/PDF/screenshot - deliberately keep Flows' import to the #19 approach (auto-detect headers + quick remap), done on-device with no LLM and no upload, rather than matching that AI bar.
 - Why: Local-first (#13) is the trust wedge. Routing someone's holdings file through a cloud LLM to parse it directly contradicts "your data never leaves the device," so getquin's cleverness is a feature I can't copy without giving up the thing that differentiates us. Auto-detect + remap still does the Excel-bridge job (#07) without the privacy cost.
 - Alternatives considered: Match getquin (AI parses any file, incl. broker PDFs and screenshots) - rejected: needs server-side parsing and uploading financial data, breaking the local-first promise; a fixed template - already rejected in #19.
@@ -353,3 +353,13 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 - Decision: Structure the main "why I opened Flows" screen as a summary-first priority cascade - a hero carrying this month's income (realized + projected) alongside total position, then a by-type breakdown, with the payout calendar embedded as a key module rather than the frame. Picks the primary UX pattern for the consolidated view ([`research/portfolio-view-patterns.md`](research/portfolio-view-patterns.md)).
 - Why: Of five structurally distinct patterns, summary-first is the only one where "income leads" is enforced by the layout rather than hoped for - the most-important figure is physically first and biggest, so it operationalizes #05/#18 instead of drifting back to the net-worth-first default every dashboard falls into. It's also the most mobile-native (one prioritized column reflows phone-to-desktop with no horizontal-scroll compromise, per #03), and a clean summary view is the opposite of a dense sheet - it does the structuring FOR the spreadsheet refugee, which is the concrete face of the flexibility-without-effort spine (#30) and the immediate "understood my position + income faster than Excel" the success hypothesis tests. It holds CLAUDE.md's priority order (total position -> blended income -> breakdown -> calendar) in one scannable screen for the expected 5-30 holdings.
 - Alternatives considered: Timeline/payout-calendar as the primary frame (kept as second-best, not chosen now - it buries total position, which is still view-priority #1; it becomes right only if validation shows the dominant job is forward cash-flow over current position); a visualization-led treemap/allocation canvas (rejected - structurally a net-worth/allocation device with no native place for forward income, demands per-slice precision our manually-valued assets lack per #14/#16, is mobile-hostile, and is FIREkit's allocation-analytics turf we avoid per #24); a grouped spreadsheet-like ledger (rejected as the home screen - lowest switching cost but concedes the thesis by re-creating the spreadsheet #28/#30, and breaks on mobile across heterogeneous asset types); a hierarchical drill-down (rejected - hides everything except the current level, which fights the "see it all in one place" consolidation job, and is over-engineered for 5-30 holdings).
+
+------------------------------------------------------
+
+## 32 - Adopt AI-assisted import (no Flows server sees the data: BYOK now, on-device later), reversing #22
+- Date: 2026-06-22
+- Stage: Research
+- Status: Active
+- Decision: Bring AI-assisted import into scope - an LLM that turns a messy CSV/statement (and later images/PDF) into mapped activities I review - built so Flows never runs a server that sees the data: the file goes either to an on-device model (where the platform allows it) or, the practical path first, via BYOK straight from the browser to the user's own OpenAI/Anthropic key. Manual CSV auto-detect + remap (#07/#19) stays as the zero-setup default and the bridge from Excel; AI import is the optional power path on top. This reverses #22 and un-defers the import slice of #10.
+- Why: Two things changed since #22. (1) Its privacy premise is wrong. #22 assumed AI import means shipping my holdings to someone else's cloud, breaking local-first. Firsthand on Wealthfolio - the closest local-first twin - I saw AI import done privacy-compatibly: an on-device Ollama model (nothing leaves the device), BYOK to the user's own LLM account (bypasses the vendor's servers), and per-category data-access toggles. So a local-first product can ship AI import without surrendering the wedge. (2) The timeline constraint is gone - the course was cancelled, so #10's "12-week" deferral no longer binds. Meanwhile the import bar has moved: getquin and Wealthfolio both exceed plain CSV, so manual auto-detect + remap is now table-stakes (it stays as the bridge, not a differentiator). The privacy line is preserved by construction: BYOK sends the file from the browser to the user's own key and bill - no Flows server in the path - and on-device (in-browser WebGPU or the user's own Ollama) is a later, even-stronger option. Because Flows is a web app, BYOK is the immediately practical mechanism; true on-device is a follow-on.
+- Alternatives considered: Keep #22 as-is, manual-only (rejected - its premise is firsthand-disproven, and it leaves Flows behind the two competitors that already AI-ingest while being beatable on privacy); cloud AI through a Flows-run service, the typical SaaS pattern (rejected - that is the exact local-first violation #22 rightly feared; BYOK and on-device avoid it); defer again as "post-v1 AI" (rejected - nothing structural blocks it now that the timeline is gone and the architecture is proven, and import is the Excel bridge where the AI lift is most valuable).
