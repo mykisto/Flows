@@ -47,3 +47,6 @@ next-env.d.ts
 /public/competitor-teardown.md
 /public/flexibility-deep-dive.md
 /public/portfolio-view-patterns.md
+
+# Playwright MCP browser artifacts
+.playwright-mcp/
