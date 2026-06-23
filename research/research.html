@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Flows (research)</title>
 <style>
-  /* Visual language ported from linear.app — lifted near-black canvas, Inter
+  /* Visual language ported from linear.app - lifted near-black canvas, Inter
      (system fallback to SF Pro), light body / medium headings with tight negative
      tracking, cool-grey muted text, signature indigo accent, green/red/violet/blue
      semantics. Inter is not bundled (keeps the file self-contained); Linear's own
@@ -24,12 +24,12 @@
     --accent-2:#f0703a;
     --accent-deep:#b8470f;
     --accent-soft:rgba(229,89,29,.14);
-    --pos:#4cb782;            /* Linear green — verified / chosen */
-    --neg:#eb5757;            /* Linear red — misfit */
-    --warn:#e3b341;           /* gold — inferred / unverified / [?] */
+    --pos:#4cb782;            /* Linear green - verified / chosen */
+    --neg:#eb5757;            /* Linear red - misfit */
+    --warn:#e3b341;           /* gold - inferred / unverified / [?] */
     --warn-bg:rgba(227,179,65,.08);
-    --lock:#a78bfa;           /* paywalled — violet */
-    --ua:#4ea7fc;             /* beachhead note — blue */
+    --lock:#a78bfa;           /* paywalled - violet */
+    --ua:#4ea7fc;             /* beachhead note - blue */
     --cite:#8a8f98;
     --measure:70ch;
     --sans:"Inter Variable","SF Pro Display",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
@@ -38,7 +38,7 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  /* inline-SVG icons (replacing emoji) — inherit palette via currentColor */
+  /* inline-SVG icons (replacing emoji) - inherit palette via currentColor */
   .ico{width:1.05em;height:1.05em;display:inline-block;vertical-align:-.16em;fill:none;
     stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
   .ico + .ico{margin-left:2px}
@@ -65,7 +65,7 @@
     font-variant-numeric:tabular-nums;
   }
 
-  /* ---- left sidebar nav (dock) — pinned to the viewport, no scroll drift ---- */
+  /* ---- left sidebar nav (dock) - pinned to the viewport, no scroll drift ---- */
   .page{display:flex;align-items:flex-start;max-width:1080px;margin:0 auto;padding:0 24px}
   .side{
     position:sticky;top:72px;align-self:flex-start;flex:none;width:228px;
@@ -119,7 +119,7 @@
   a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(229,89,29,.32)}
   a:hover{border-bottom-color:var(--accent)}
 
-  /* ---- survey charts (inline, no JS/deps) — refine pass pending ---- */
+  /* ---- survey charts (inline, no JS/deps) - refine pass pending ---- */
   .charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:1.4em 0}
   .chart{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;background-image:var(--sheen)}
   .chart h4{margin:0 0 2px;color:var(--ink);font-size:.92rem}
@@ -313,16 +313,16 @@
   <header class="doc" id="overview">
     <span class="sec-tag"><span class="num">00</span> Overview</span>
     <h1>Flows <span style="color:var(--faint);font-weight:500">| research</span></h1>
-    <p class="lede">The research so far, in one place — the competitive landscape, the make-or-break design dimension, and the hypotheses they point to. The full evidence lives in four source threads:</p>
+    <p class="lede">The research so far, in one place - the competitive landscape, the make-or-break design dimension, and the hypotheses they point to. The full evidence lives in four source threads:</p>
 
     <ul class="sources">
-      <li><a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> — the three-group competitor map (desk research, <span class="num">June 2026</span>)</li>
-      <li><a class="cite" href="competitor-teardown.md">competitor-teardown.md</a> — firsthand, logged-in axis comparison + <a class="cite" href="screens/">screens/</a></li>
-      <li><a class="cite" href="flexibility-deep-dive.md">flexibility-deep-dive.md</a> — the flexibility-without-effort benchmark (non-finance exemplars)</li>
-      <li><a class="cite" href="portfolio-view-patterns.md">portfolio-view-patterns.md</a> — the consolidated-view pattern choice</li>
+      <li><a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> - the three-group competitor map (desk research, <span class="num">June 2026</span>)</li>
+      <li><a class="cite" href="competitor-teardown.md">competitor-teardown.md</a> - firsthand, logged-in axis comparison + <a class="cite" href="screens/">screens/</a></li>
+      <li><a class="cite" href="flexibility-deep-dive.md">flexibility-deep-dive.md</a> - the flexibility-without-effort benchmark (non-finance exemplars)</li>
+      <li><a class="cite" href="portfolio-view-patterns.md">portfolio-view-patterns.md</a> - the consolidated-view pattern choice</li>
     </ul>
 
-    <p class="lede"><strong>Goal.</strong> Validate the success hypothesis: investors who consolidate multi-source holdings into one income-focused view will prefer it to their spreadsheet — completing <em>“understand my total position and this month’s income”</em> faster, and rating clarity higher.</p>
+    <p class="lede"><strong>Goal.</strong> Validate the success hypothesis: investors who consolidate multi-source holdings into one income-focused view will prefer it to their spreadsheet - completing <em>“understand my total position and this month’s income”</em> faster, and rating clarity higher.</p>
 
     <div class="legend">
       <b>Legend</b>
@@ -331,7 +331,7 @@
       <span><i><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg></i>inferred / unverified</span>
       <span><i><svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg></i>paywalled feature</span>
       <span><i><svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg></i>beachhead-accessibility note</span>
-      <span><i class="tok-unknown" style="background:none;border:none;padding:0">[?]</i>unknown — not invented</span>
+      <span><i class="tok-unknown" style="background:none;border:none;padding:0">[?]</i>unknown - not invented</span>
     </div>
   </header>
 
@@ -361,7 +361,7 @@
           <tr>
             <th scope="row"><span class="app"><span class="app-name">Parqet <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span></span></th>
             <td>Manual: securities incl. bonds, cash, crypto, metals, real estate, collectibles</td>
-            <td>Dividend dashboard + <span class="num">12-mo</span> forecast (free); <strong>detailed “upcoming distributions” calendar is paid</strong> <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> — listed-dividend-centric</td>
+            <td>Dividend dashboard + <span class="num">12-mo</span> forecast (free); <strong>detailed “upcoming distributions” calendar is paid</strong> <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> - listed-dividend-centric</td>
             <td><strong>Import-first</strong> onboarding; file import = “PDF statement or CSV” only, broker-template based (not generic remap, not xlsx) <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td>Display currency settable (seen as UAH); EUR prices + ECB FX <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td>iOS/Android + web</td>
@@ -370,8 +370,8 @@
           <tr>
             <th scope="row"><span class="app"><span class="app-name">getquin <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span></span></th>
             <td>Broad manual: Security/Crypto/Bond/Cash/Real Estate/NFT/Commodities/P2P <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
-            <td>Dividend calendar + forecast (marketing) — listed only; couldn’t populate firsthand <span class="tok-unknown">[?]</span></td>
-            <td><strong>Working AI import</strong> — drag-drop any CSV/XLSX/PDF/DOC/JPEG/PNG, LLM-parsed <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Dividend calendar + forecast (marketing) - listed only; couldn’t populate firsthand <span class="tok-unknown">[?]</span></td>
+            <td><strong>Working AI import</strong> - drag-drop any CSV/XLSX/PDF/DOC/JPEG/PNG, LLM-parsed <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td>Display currency UAH <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td>iOS/Android + web</td>
             <td>Cloud + account + social feed</td>
@@ -379,7 +379,7 @@
           <tr>
             <th scope="row"><span class="app"><span class="app-name">Sharesight <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span><span class="app-sub">Free</span></span></th>
             <td><span class="num">700k+</span> instruments + bonds/metals; Income + Currency-gain first-class columns <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
-            <td><strong>Future Income report</strong> (to 3 yrs) — <strong>gated, “Upgrade to see”</strong> <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; Income Calendar present</td>
+            <td><strong>Future Income report</strong> (to 3 yrs) - <strong>gated, “Upgrade to see”</strong> <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; Income Calendar present</td>
             <td>Broker sync + email-in + manual + CSV; tax-oriented, heavier</td>
             <td>Base currency UAH works free; <strong>Multi-currency valuation report is paid</strong> <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td>Web-first; app exists <svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg></td>
@@ -396,8 +396,8 @@
           </tr>
           <tr>
             <th scope="row"><span class="app"><span class="app-name">Inzhur <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span></span></th>
-            <td>Excellent <strong>for Inzhur assets only</strong> (REIT, Energy, OVDP) — a single-platform silo <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
-            <td>Shows income for its own instruments: all-time dividends (month/quarter/year), OVDP coupons/yield/maturity — mostly realized <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Excellent <strong>for Inzhur assets only</strong> (REIT, Energy, OVDP) - a single-platform silo <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Shows income for its own instruments: all-time dividends (month/quarter/year), OVDP coupons/yield/maturity - mostly realized <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td>In-platform only; <span class="num">10-UAH</span> min</td>
             <td>Native ₴/$ toggle <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td>Native iOS/Android + web</td>
@@ -406,7 +406,7 @@
           <tr>
             <th scope="row"><span class="app"><span class="app-name">FIREkit <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span><span class="app-sub">public demo</span></span></th>
             <td>Broad &amp; flexible: stocks, bonds, crypto, treasury, cash, deposits, real estate, even a car, with tags/goals <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
-            <td>Tracks <strong>realized</strong> dividends/deposits/profit + TWR; <strong>no forward payout calendar</strong> — only forward view is a decades-out FIRE net-worth projection <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Tracks <strong>realized</strong> dividends/deposits/profit + TWR; <strong>no forward payout calendar</strong> - only forward view is a decades-out FIRE net-worth projection <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td>Manual entry; instant public demo, no login <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; CSV import <span class="tok-unknown">[?]</span></td>
             <td>Multi-currency + currency-distribution chart <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td>Responsive web</td>
@@ -414,21 +414,21 @@
           </tr>
           <tr>
             <th scope="row"><span class="app"><span class="app-name">Wealthfolio <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span><span class="app-sub">firsthand · desktop 3.5.2</span></span></th>
-            <td>Securities-broad + alternatives (real estate, collectibles, private equity, liabilities); now spans <strong>Investments / Net Worth / Spending (PFM)</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>. <strong>But the “Other Asset” form is value-only — no income schedule</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; beachhead test: <code>IR</code>/<code>IE</code> mis-mapped to US stocks, OVDP ISIN priced at UAH 0 <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
-            <td><strong>Realized dividends + interest only</strong>; Income page bars <strong>all past — no forward/projected, no payout calendar</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; hero is <strong>value + performance (TWR/IRR)</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
-            <td><strong>Manual CSV wizard</strong> (5-step, auto-detect + per-column remap + saveable templates, isin→symbol) <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> <strong>+ AI chat import</strong> (<code>import_csv</code> LLM tool, <strong>BYOK</strong> to the user’s own OpenAI/Anthropic — needs their credits) <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; self-contained SQLite backup + export <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td>Securities-broad + alternatives (real estate, collectibles, private equity, liabilities); now spans <strong>Investments / Net Worth / Spending (PFM)</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>. <strong>But the “Other Asset” form is value-only - no income schedule</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; beachhead test: <code>IR</code>/<code>IE</code> mis-mapped to US stocks, OVDP ISIN priced at UAH 0 <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td><strong>Realized dividends + interest only</strong>; Income page bars <strong>all past - no forward/projected, no payout calendar</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; hero is <strong>value + performance (TWR/IRR)</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
+            <td><strong>Manual CSV wizard</strong> (5-step, auto-detect + per-column remap + saveable templates, isin→symbol) <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg> <strong>+ AI chat import</strong> (<code>import_csv</code> LLM tool, <strong>BYOK</strong> to the user’s own OpenAI/Anthropic - needs their credits) <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; self-contained SQLite backup + export <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td>Multiple currencies + FX; mixed UAH/USD in one ledger <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></td>
             <td><strong>Desktop verified firsthand</strong>; iOS + self-hosted web exist (not driven)</td>
-            <td><strong>Strongest local-first: local SQLite, no account, no cloud by default</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; <strong>AI is local-first too — on-device Ollama option</strong> + BYOK + per-category data-access toggles <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; optional paid Connect = cloud by choice</td>
+            <td><strong>Strongest local-first: local SQLite, no account, no cloud by default</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; <strong>AI is local-first too - on-device Ollama option</strong> + BYOK + per-category data-access toggles <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; optional paid Connect = cloud by choice</td>
           </tr>
           <tr>
             <th scope="row"><span class="app"><span class="app-name">Excel / Sheets <svg class="ico ico-star" aria-hidden="true"><use href="#i-star"/></svg></span></span></th>
-            <td>Unbeatable flexibility — any asset/field/schedule <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg></td>
+            <td>Unbeatable flexibility - any asset/field/schedule <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg></td>
             <td><strong>No auto forward payout calendar</strong>; <code>GOOGLEFINANCE</code> pulls prices but no dividend data <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg></td>
             <td>100% manual; every total by hand</td>
             <td>Manual/brittle; no “rate on coupon date” <svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg></td>
             <td>Weak on mobile <svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg></td>
-            <td>Maximal — file is yours, offline, no account <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg></td>
+            <td>Maximal - file is yours, offline, no account <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg></td>
           </tr>
         </tbody>
       </table>
@@ -436,35 +436,35 @@
 
     <div class="callout note">
       <span class="k">On the local-first slot</span>
-      The local-first slot is filled not by FIREkit (the Inzhur community’s recommended Excel replacement, but <strong>cloud + account</strong>) but by <strong>Wealthfolio</strong> — reviewed <strong>firsthand on the desktop build 3.5.2</strong>, alongside self-hosted <strong>Ghostfolio</strong> (see the <a class="cite" href="competitor-teardown.md">teardown</a>). Its decisive lesson: <strong>its AI import is itself local-first</strong> (on-device Ollama <em>or</em> BYOK to the user’s own LLM), proving <strong>AI import doesn’t have to break local-first</strong> — the basis for Flows adopting AI-assisted import on exactly those terms (BYOK to the user’s own LLM now, on-device later).
+      FIREkit is the Inzhur community’s recommended Excel replacement, but it’s <strong>cloud + account</strong>, so it doesn’t fill the local-first slot. <strong>Wealthfolio</strong> does, reviewed firsthand on the desktop build 3.5.2, alongside self-hosted Ghostfolio (see the <a class="cite" href="competitor-teardown.md">teardown</a>). Its decisive lesson: its AI import is itself local-first (on-device Ollama <em>or</em> BYOK to the user’s own LLM), which proves AI import doesn’t have to break local-first. That’s why Flows adopts AI-assisted import on the same terms (BYOK now, on-device later).
     </div>
 
     <h3>3 shared patterns across the market</h3>
     <ol class="spaced">
       <li><strong>“Income” means listed dividends.</strong> getquin/Parqet/Sharesight/Snowball all forecast equity/fund dividends; Western PFM “cash flow” is <em>budgeting</em> (bills vs paychecks, e.g. Empower/Monarch). <strong>Nobody blends dividends + bond coupons + rent + deposit interest + REIT/fund payouts into one forward monthly number</strong>.</li>
       <li><strong>Cloud + account + bank-linking is the default architecture</strong>, and where a forward-income view exists it’s <strong>paywalled</strong> (Sharesight Future Income <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; Parqet upcoming-distributions <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>).</li>
-      <li><strong>Auto-sync is the apps’ main edge over Excel — and it relies on Plaid/Yodlee, which doesn’t reach UA institutions</strong> <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg>, so for our beachhead every app collapses to manual entry <em>(inferred from how aggregation works, not tested)</em>.</li>
+      <li><strong>Auto-sync is the apps’ main edge over Excel - and it relies on Plaid/Yodlee, which doesn’t reach UA institutions</strong> <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg>, so for our beachhead every app collapses to manual entry <em>(inferred from how aggregation works, not tested)</em>.</li>
     </ol>
 
     <div class="figs">
       <figure>
-        <img src="screens/getquin-dashboard.png" alt="getquin main consolidation dashboard — All your assets in one place">
+        <img src="screens/getquin-dashboard.png" alt="getquin main consolidation dashboard - All your assets in one place">
         <figcaption>
-          <span class="fname">getquin-dashboard.png</span> — getquin’s main consolidation view, “All your assets in one place” — captured logged-in (empty state).
+          <span class="fname">getquin-dashboard.png</span> - getquin’s main consolidation view, “All your assets in one place” - captured logged-in (empty state).
           <span class="cap-flag first">firsthand <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span>
         </figcaption>
       </figure>
       <figure>
         <img src="screens/firekit-demo-forecast.png" alt="FIREkit decades-out FIRE net-worth projection">
         <figcaption>
-          <span class="fname">firekit-demo-forecast.png</span> — FIREkit’s only forward view: a decades-out FIRE net-worth projection — not a near-term payout calendar.
+          <span class="fname">firekit-demo-forecast.png</span> - FIREkit’s only forward view: a decades-out FIRE net-worth projection - not a near-term payout calendar.
           <span class="cap-flag first">firsthand <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span> <span class="cap-flag">public demo</span>
         </figcaption>
       </figure>
       <figure>
         <img src="screens/parqet-dividend-dashboard.png" alt="Parqet dividend dashboard with a paid gate on upcoming distributions">
         <figcaption>
-          <span class="fname">parqet-dividend-dashboard.png</span> — Parqet’s dividend dashboard: free forward forecast + monthly chart, with the detailed “upcoming distributions” calendar gated to paid.
+          <span class="fname">parqet-dividend-dashboard.png</span> - Parqet’s dividend dashboard: free forward forecast + monthly chart, with the detailed “upcoming distributions” calendar gated to paid.
           <span class="cap-flag first">firsthand <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span> <span class="cap-flag lock">paywalled <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg></span>
         </figcaption>
       </figure>
@@ -481,28 +481,28 @@
       <figure class="tall">
         <img src="screens/kubera-manual-asset-fx.png" alt="Kubera manual asset showing native USD value converted to UAH, with no income column">
         <figcaption>
-          <span class="fname">kubera-manual-asset-fx.png</span> — Kubera’s best-in-class FX: <span class="num">USD 250,000</span> stored native, shown converted as <span class="num">₴11,150,227</span> together — and no income column at all (the balance-sheet anti-benchmark).
+          <span class="fname">kubera-manual-asset-fx.png</span> - Kubera’s best-in-class FX: <span class="num">USD 250,000</span> stored native, shown converted as <span class="num">₴11,150,227</span> together - and no income column at all (the balance-sheet anti-benchmark).
           <span class="cap-flag first">firsthand <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span>
         </figcaption>
       </figure>
       <figure class="tall">
         <img src="screens/inzhur-dashboard.png" alt="Inzhur in-app dashboard: net worth, all-time dividend income, REIT/Energy and OVDP holdings">
         <figcaption>
-          <span class="fname">inzhur-dashboard.png</span> — Inzhur, the beachhead’s home silo: net worth + all-time dividend income (month/quarter/year toggle), Inzhur REIT/Energy + OVDP coupons/yield/maturity — excellent for Inzhur assets only, a single-platform silo.
+          <span class="fname">inzhur-dashboard.png</span> - Inzhur, the beachhead’s home silo: net worth + all-time dividend income (month/quarter/year toggle), Inzhur REIT/Energy + OVDP coupons/yield/maturity - excellent for Inzhur assets only, a single-platform silo.
           <span class="cap-flag first">firsthand <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg></span> <span class="cap-flag ua">beachhead <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg></span> <span class="cap-flag">name redacted</span>
         </figcaption>
       </figure>
     </div>
 
     <h3>Where income / cash-flow is underserved</h3>
-    <p>The <strong>forward, blended, cross-asset payout calendar</strong> — Flows’ hero — is the clearest gap: absent in the strongest consolidators (Kubera, FIREkit have no forward payout view <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>), <strong>paywalled</strong> where it exists for listed dividends (Sharesight, Parqet <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>), and never extended to coupons / rent / deposit interest / Inzhur payouts as first-class income. Even per-silo, <strong>Freedom24 shows realized dividends but explicitly cannot show upcoming ones</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>.</p>
+    <p>The <strong>forward, blended, cross-asset payout calendar</strong>, one of Flows’ two leads, is the clearest gap: absent in the strongest consolidators (Kubera, FIREkit have no forward payout view <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>), <strong>paywalled</strong> where it exists for listed dividends (Sharesight, Parqet <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>), and never extended to coupons / rent / deposit interest / Inzhur payouts as first-class income. Even per-silo, <strong>Freedom24 shows realized dividends but explicitly cannot show upcoming ones</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>.</p>
 
     <h3>Recurring reasons people fall back to a spreadsheet</h3>
     <ul>
-      <li><strong>Coverage/flexibility</strong> — their actual assets (Inzhur certificate, OVDP, UA deposit) or a custom field don’t fit the app’s catalog <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>.</li>
-      <li><strong>Trust/ownership</strong> — they don’t want a cloud account holding their full picture; investors call real-time auto-sync a <strong>“red flag”</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg> (Bogleheads thread).</li>
-      <li><strong>No real advantage</strong> — auto-sync doesn’t reach UA institutions, so the app is “manual anyway” <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg>.</li>
-      <li><strong>Right-sized effort</strong> — passive investors update <strong>1–2× a year</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>, so always-on sync solves a non-problem.</li>
+      <li><strong>Coverage/flexibility</strong> - their actual assets (Inzhur certificate, OVDP, UA deposit) or a custom field don’t fit the app’s catalog <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>.</li>
+      <li><strong>Trust/ownership</strong> - they don’t want a cloud account holding their full picture; investors call real-time auto-sync a <strong>“red flag”</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg> (Bogleheads thread).</li>
+      <li><strong>No real advantage</strong> - auto-sync doesn’t reach UA institutions, so the app is “manual anyway” <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg>.</li>
+      <li><strong>Right-sized effort</strong> - passive investors update <strong>1–2× a year</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>, so always-on sync solves a non-problem.</li>
       <li><strong>Cost / familiarity / the satisfaction of building your own</strong> <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>.</li>
     </ul>
   </section>
@@ -512,19 +512,19 @@
     <span class="sec-tag"><span class="num">02</span> Benchmark</span>
     <h2>Flexibility without effort</h2>
 
-    <p>The make-or-break dimension: replicate <strong>100%</strong> of any real portfolio while spending <strong>far less effort</strong> than a spreadsheet. Studied against five non-finance exemplars (Airtable, Notion, Todoist, Apple Health, Attio). Key finding: <em>no exemplar maxes both halves</em> — coverage leaders (Notion/Airtable) make you design the structure; effort leaders (Apple Health/Attio) cap what you can represent. <strong>Flows must fuse them.</strong></p>
+    <p>The make-or-break dimension: replicate <strong>100%</strong> of any real portfolio while spending <strong>far less effort</strong> than a spreadsheet. Studied against five non-finance exemplars (Airtable, Notion, Todoist, Apple Health, Attio). Key finding: <em>no exemplar maxes both halves</em> - coverage leaders (Notion/Airtable) make you design the structure; effort leaders (Apple Health/Attio) cap what you can represent. Flows has to do both at once.</p>
 
     <h3>Top 3 mechanisms to bring into the MVP</h3>
     <ol class="spaced">
-      <li><strong>Typed asset entry with built-in defaults</strong> <em>(Apple Health + Airtable + Attio)</em> — each asset type ships a pre-structured form that knows its own fields, units, and schedule (a bond stub has coupon + maturity; a dividend stock has a frequency). <strong>How it lets you replicate the portfolio:</strong> types cover the common ~90% instantly and correctly. <strong>How it beats the spreadsheet:</strong> the structuring <em>and the math</em> are done for you, so the field already knows it’s a coupon date and Flows can project income off it — in Excel you’d build that schema by hand per asset.</li>
-      <li><strong>A custom-field / free-form escape hatch under every holding</strong> <em>(Notion page-per-row + Airtable custom fields)</em> — add a custom field or note in place when a type doesn’t fit. <strong>How it lets you replicate the portfolio:</strong> this is the <strong>100%-replication guarantee</strong> — types cover the 90%, the escape hatch covers the weird 10% (a private loan, co-op share, off-list instrument), so the user <strong>never hits a wall and bounces to Excel</strong>.</li>
-      <li><strong>Auto-population so entry costs less than a spreadsheet</strong> <em>(Todoist Quick Add + Attio email sync + Apple Health auto-ingest)</em> — CSV auto-detect + remap, price/history + daily FX auto-fetch, income auto-projection + auto-roll to realized. <strong>How it beats the spreadsheet:</strong> this is the “without effort” half — Flows does the <em>ongoing</em> upkeep Excel makes you do by hand.</li>
+      <li><strong>Typed asset entry with built-in defaults</strong> <em>(Apple Health + Airtable + Attio)</em> - each asset type ships a pre-structured form that knows its own fields, units, and schedule (a bond stub has coupon + maturity; a dividend stock has a frequency). <strong>How it lets you replicate the portfolio:</strong> types cover the common ~90% instantly and correctly. <strong>How it beats the spreadsheet:</strong> the structuring <em>and the math</em> are done for you, so the field already knows it’s a coupon date and Flows can project income off it - in Excel you’d build that schema by hand per asset.</li>
+      <li><strong>A custom-field / free-form escape hatch under every holding</strong> <em>(Notion page-per-row + Airtable custom fields)</em> - add a custom field or note in place when a type doesn’t fit. <strong>How it lets you replicate the portfolio:</strong> this is the <strong>100%-replication guarantee</strong> - types cover the 90%, the escape hatch covers the weird 10% (a private loan, co-op share, off-list instrument), so the user <strong>never hits a wall and bounces to Excel</strong>.</li>
+      <li><strong>Auto-population so entry costs less than a spreadsheet</strong> <em>(Todoist Quick Add + Attio email sync + Apple Health auto-ingest)</em> - CSV auto-detect + remap, price/history + daily FX auto-fetch, income auto-projection + auto-roll to realized. <strong>How it beats the spreadsheet:</strong> this is the “without effort” half - Flows does the <em>ongoing</em> upkeep Excel makes you do by hand.</li>
     </ol>
 
     <h3>One mechanism that works for its exemplar but NOT for Flows</h3>
     <div class="callout neg">
       <span class="k">Don’t borrow</span>
-      <strong>Apple Health’s closed, no-escape-hatch catalog.</strong> Health earns its zero-config magic <em>by refusing custom types</em> — Apple defines every type/unit/aggregation. That works only because Apple controls every upstream data producer and health metrics are enumerable. <strong>For Flows it backfires:</strong> a finite, closed asset catalog with no custom fields <em>is the wall</em> that sends users back to Excel, and Flows controls none of its upstream sources. Borrow Health’s typed-defaults engine; <strong>reject the closed catalog</strong> — keep the escape hatch open.
+      <strong>Apple Health’s closed, no-escape-hatch catalog.</strong> Health earns its zero-config magic <em>by refusing custom types</em> - Apple defines every type/unit/aggregation. That works only because Apple controls every upstream data producer and health metrics are enumerable. <strong>For Flows it backfires:</strong> a finite, closed asset catalog with no custom fields <em>is the wall</em> that sends users back to Excel, and Flows controls none of its upstream sources. Borrow Health’s typed-defaults engine; <strong>reject the closed catalog</strong> - keep the escape hatch open.
     </div>
   </section>
 
@@ -535,19 +535,19 @@
 
     <p>Five structurally distinct patterns for the consolidated view were considered. The choice:</p>
 
-    <h3><span class="verdict v-yes">Chosen</span>Summary-first, income-led hero + expandable breakdown</h3>
-    <p>A vertical priority cascade: hero carries <strong>this month’s income (realized + projected)</strong> alongside total position, then a by-type breakdown, with the payout calendar embedded as a module. Three reasons tied to our context:</p>
+    <h3><span class="verdict v-yes">Chosen</span>Summary-first hero (income + position, co-equal) + expandable breakdown</h3>
+    <p>A vertical cascade: the hero carries this month’s income (realized + projected) alongside total position, then a by-type breakdown, with the payout calendar embedded as a module. Three reasons tied to our context:</p>
     <ol class="spaced">
-      <li><strong>It’s the only structure where “income leads” is enforced by the layout</strong>, not hoped for — the most-important figure is physically first/biggest, operationalizing the income-first lead instead of drifting to the net-worth-first default every dashboard falls into.</li>
-      <li><strong>It’s the most mobile-native</strong> — one prioritized column reflows phone→desktop with no horizontal-scroll compromise (unlike a ledger), matching the mobile-first bet.</li>
-      <li><strong>It does the structuring FOR the spreadsheet refugee</strong> — a clean summary view is the opposite of a dense sheet, delivering the immediate “understood my position + income faster than Excel” the success hypothesis tests (the face of the flexibility-without-effort spine).</li>
+      <li><strong>It gives income co-equal billing with position by layout, not by hope</strong> - income sits up top at the same weight as total value, instead of drifting to the net-worth-first default every dashboard falls into.</li>
+      <li><strong>It’s the most mobile-native</strong> - one prioritized column reflows phone→desktop with no horizontal-scroll compromise (unlike a ledger), matching the mobile-first bet.</li>
+      <li><strong>It does the structuring FOR the spreadsheet refugee</strong> - a clean summary view is the opposite of a dense sheet, delivering the immediate “understood my position + income faster than Excel” the success hypothesis tests (the face of the flexibility-without-effort spine).</li>
     </ol>
 
     <h3><span class="verdict v-maybe">Second-best</span>Timeline / payout calendar</h3>
-    <p>Under <strong>condition X:</strong> <em>if validation shows the dominant reason users open Flows is forward cash-flow (“how much income, and when”) rather than current position.</em> CLAUDE.md still ranks total position as view-priority #1, so today the calendar is the emotional core <em>embedded inside</em> the summary frame, not the frame itself.</p>
+    <p>Under <strong>condition X:</strong> <em>if validation shows the dominant reason users open Flows is forward cash-flow (“how much income, and when”) rather than current position.</em> Today position and income are co-equal leads, so the calendar is the emotional core embedded inside the summary frame, not the frame itself.</p>
 
     <h3><span class="verdict v-no">Does NOT fit</span>Visualization-led (treemap / allocation canvas)</h3>
-    <p>Structurally a net-worth/allocation device with <strong>no native place for forward income</strong>; demands per-slice precision our manually-valued assets lack (false precision → trust damage); mobile-hostile; and it’s FIREkit’s allocation-analytics turf we avoid. Elegant, and wrong for this job.</p>
+    <p>Structurally a net-worth/allocation device with no native place for forward income; it demands per-slice precision our manually-valued assets lack (false precision risks trust); it’s mobile-hostile; and it’s FIREkit’s allocation-analytics turf we avoid.</p>
   </section>
 
   <!-- ============ 4. DECISIONS ============ -->
@@ -558,11 +558,11 @@
     <p>The make-or-break calls already made:</p>
     <ul>
       <li><strong>Flexibility-without-effort is the make-or-break dimension</strong> (not trust): Excel’s real moat is <em>coverage</em>, not distrust; trust is “only” a barrier.</li>
-      <li><strong>Income-first lead:</strong> this-month’s income (realized + projected) is the hero metric, not net worth; P&amp;L lives in holding detail.</li>
+      <li><strong>Income and position are co-equal leads:</strong> this-month’s income (realized + projected) shares the hero with total position, not net worth alone; P&amp;L lives in holding detail.</li>
       <li><strong>Beachhead audience:</strong> design for Inzhur-style multi-asset investors on spreadsheets; broad market is later expansion.</li>
-      <li><strong>CSV-import = a bridge, not a differentiator:</strong> first-class CSV import (auto-detect + remap) still removes Excel switching cost — but it’s <strong>no longer a wedge</strong>. Firsthand, Wealthfolio’s <em>manual</em> CSV wizard already matches our exact plan (auto-detect + per-column remap + saveable templates), and <em>both</em> getquin and Wealthfolio add AI file ingest on top. Keep CSV as the bridge from Excel; don’t lean on it for differentiation. <strong>AI-assisted import is now adopted</strong> as an optional power path on top: BYOK to the user’s own LLM now, on-device later — built so <em>no Flows server ever sees the data</em>.</li>
+      <li><strong>CSV-import = a bridge, not a differentiator:</strong> first-class CSV import (auto-detect + remap) still removes Excel switching cost - but it’s <strong>no longer a wedge</strong>. Firsthand, Wealthfolio’s <em>manual</em> CSV wizard already matches our exact plan (auto-detect + per-column remap + saveable templates), and <em>both</em> getquin and Wealthfolio add AI file ingest on top. Keep CSV as the bridge from Excel; don’t lean on it for differentiation. <strong>AI-assisted import is now adopted</strong> as an optional power path on top: BYOK to the user’s own LLM now, on-device later - built so <em>no Flows server ever sees the data</em>.</li>
       <li><strong>v1 scope guard:</strong> manual entry + CSV + the consolidated income view are in; integrations/auto-sync, AI, transactions are deferred.</li>
-      <li><em>(supporting)</em> cross-platform consolidation · local-first, no account · win on cross-silo blended income, not single-silo polish · custom-field escape hatch · typed-stub + escape-hatch + auto-population spine · summary-first income-led consolidated view.</li>
+      <li><em>(supporting)</em> cross-platform consolidation · local-first, no account · win on cross-silo blended income, not single-silo polish · custom-field escape hatch · typed-stub + escape-hatch + auto-population spine · summary-first consolidated view with income and position co-equal.</li>
     </ul>
   </section>
 
@@ -573,18 +573,18 @@
 
     <h3>Gaps this research exposes</h3>
     <ol class="spaced">
-      <li><strong>The forward, blended, cross-asset payout calendar is missing or paywalled</strong> — the single clearest opening (Sharesight/Parqet gate it <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; Kubera/FIREkit lack it <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>).</li>
+      <li><strong>The forward, blended, cross-asset payout calendar is missing or paywalled</strong> - the single clearest opening (Sharesight/Parqet gate it <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; Kubera/FIREkit lack it <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>).</li>
       <li><strong>No app covers the beachhead’s actual assets</strong> (Inzhur certificates, OVDP, UA deposits) as anything but manual; auto-sync doesn’t reach UA institutions <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg>.</li>
-      <li><strong>The cross-silo consolidation layer doesn’t exist</strong> — Inzhur app, mono invest, Privat24, Freedom24, crypto exchanges are each silos; the total + blended income across them is the unmet job.</li>
+      <li><strong>The cross-silo consolidation layer doesn’t exist</strong> - Inzhur app, mono invest, Privat24, Freedom24, crypto exchanges are each silos; the total + blended income across them is the unmet job.</li>
       <li><strong>Local-first + no-account is rare</strong> (only power-tools); the mainstream cloud-aggregator model is fragile (Mint shut down) <svg class="ico ico-check" aria-hidden="true"><use href="#i-check"/></svg>.</li>
-      <li><strong>Trackers are either flexible-but-complex</strong> (Portfolio Performance: powerful, desktop-only, steep) <strong>or simple-but-limited</strong> — nobody delivers flexibility <em>without</em> effort.</li>
+      <li><strong>Trackers are either flexible-but-complex</strong> (Portfolio Performance: powerful, desktop-only, steep) <strong>or simple-but-limited</strong> - nobody delivers flexibility <em>without</em> effort.</li>
     </ol>
 
-    <h3>Hypotheses (IF / THEN / BECAUSE — each traced to a finding)</h3>
+    <h3>Hypotheses (IF / THEN / BECAUSE - each traced to a finding)</h3>
 
     <div class="hyps">
     <div class="hyp">
-      <span class="hid">H1.</span> <span class="kw">IF</span> Flows leads with a <em>free, on-device</em> forward blended-income view, <span class="kw">THEN</span> beachhead investors prefer it to their spreadsheet for “this month’s income,” <span class="kw because">BECAUSE</span> that exact view is paywalled where it exists (Sharesight Future Income <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; Parqet upcoming distributions <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>) and absent in the strongest consolidators (Kubera <svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>).
+      <span class="hid">H1.</span> <span class="kw">IF</span> Flows offers a <em>free, on-device</em> forward blended-income view, <span class="kw">THEN</span> beachhead investors prefer it to their spreadsheet for “this month’s income,” <span class="kw because">BECAUSE</span> that exact view is paywalled where it exists (Sharesight Future Income <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>; Parqet upcoming distributions <svg class="ico ico-lock" aria-hidden="true"><use href="#i-lock"/></svg><svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>) and absent in the strongest consolidators (Kubera <svg class="ico ico-cam" aria-hidden="true"><use href="#i-cam"/></svg>).
     </div>
     <div class="hyp">
       <span class="hid">H2.</span> <span class="kw">IF</span> Flows offers typed asset stubs <strong>+</strong> a user custom-field escape hatch, <span class="kw">THEN</span> users can replicate 100% of their portfolio without bouncing back to Excel, <span class="kw because">BECAUSE</span> the deep-dive found the open escape hatch is the mechanism converting ~90% coverage to 100%, and Excel’s verified moat is coverage/flexibility.
@@ -593,24 +593,24 @@
       <span class="hid">H3.</span> <span class="kw">IF</span> Flows ships manual-first + first-class CSV import, <span class="kw">THEN</span> deferring auto-sync costs nothing vs competitors for the beachhead, <span class="kw because">BECAUSE</span> no tracker’s auto-sync reaches UA institutions, so every app collapses to manual for our users <svg class="ico ico-flag" aria-hidden="true"><use href="#i-flag"/></svg><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg>. <em>(Inferred from how aggregation works, not directly tested.)</em>
     </div>
     <div class="hyp">
-      <span class="hid">H4.</span> <span class="kw">IF</span> Flows is local-first, no-account, <span class="kw">THEN</span> it answers the trust objection that pushes users to spreadsheets, <span class="kw because">BECAUSE</span> investors openly call auto-sync a “red flag” (Bogleheads) and the leading free cloud aggregator (Mint) died. <strong>Exemplar + caveat (Wealthfolio, firsthand):</strong> a polished local-first tracker <em>can</em> have reach (~6k GitHub stars, HN/Product Hunt) — not a fringe-only dead end — and it even keeps <strong>AI local-first</strong> (on-device Ollama or BYOK + per-category data-access toggles), so the posture isn’t a ceiling on capability either. <strong>But</strong> its users <strong>self-select</strong> for privacy, and it still pairs the local core with <em>optional</em> cloud layers (Connect sync, managed AI), hinting at a convenience ceiling. So local-first reads as a <em>necessary posture, not a sufficient wedge</em> — whether the Inzhur beachhead values it stays a user-testing question.
+      <span class="hid">H4.</span> <span class="kw">IF</span> Flows is local-first, no-account, <span class="kw">THEN</span> it answers the trust objection that pushes users to spreadsheets, <span class="kw because">BECAUSE</span> investors openly call auto-sync a “red flag” (Bogleheads) and the leading free cloud aggregator (Mint) died. <strong>Exemplar + caveat (Wealthfolio, firsthand):</strong> a polished local-first tracker <em>can</em> have reach (~6k GitHub stars, HN/Product Hunt) - not a fringe-only dead end - and it even keeps <strong>AI local-first</strong> (on-device Ollama or BYOK + per-category data-access toggles), so the posture isn’t a ceiling on capability either. <strong>But</strong> its users <strong>self-select</strong> for privacy, and it still pairs the local core with <em>optional</em> cloud layers (Connect sync, managed AI), hinting at a convenience ceiling. So local-first reads as a <em>necessary posture, not a sufficient wedge</em> - whether the Inzhur beachhead values it stays a user-testing question.
     </div>
     <div class="hyp">
-      <span class="hid">H5.</span> <span class="kw">IF</span> the consolidated view is a summary-first income-led hero (not net-worth/treemap), <span class="kw">THEN</span> Flows wins the “understand total + income faster than my sheet” task on mobile, <span class="kw because">BECAUSE</span> the layout enforces income-lead and is mobile-native, while every dashboard competitor defaults net-worth-first.
+      <span class="hid">H5.</span> <span class="kw">IF</span> the consolidated view is a summary-first hero giving income and position co-equal billing (not net-worth/treemap), <span class="kw">THEN</span> Flows wins the “understand total + income faster than my sheet” task on mobile, <span class="kw because">BECAUSE</span> the layout keeps income from being buried under net worth and is mobile-native, while every dashboard competitor defaults net-worth-first.
     </div>
     </div>
 
     <div class="callout warn">
-      <span class="k"><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg> Load-bearing assumption — carried forward to user testing</span>
-      <strong>Everything above rests on one belief: that the beachhead actually stays on spreadsheets primarily for coverage/flexibility</strong> — i.e. that our make-or-break premise (“coverage is the dealbreaker; trust is only a barrier”) is true <em>for these specific users</em>. Today that rests on the Bogleheads thread and self-observation of the Inzhur community, <strong>not on direct evidence from the beachhead</strong> <span class="tok-unknown">[?]</span>. <strong>There are no interviews in the research stage</strong> — so Define proceeds on this as a <em>stated, unvalidated bet</em>, not a confirmed fact, and we carry it forward explicitly. <strong>It gets tested at the user-testing stage</strong>, via the comparative usability test against the participant’s own Excel workflow: the preference split, plus a debrief on <em>why</em> they would or wouldn’t drop the spreadsheet, is what confirms or overturns it. If that testing shows the real reason is something else — habit, cost, blanket distrust of any app, or simply not caring about a blended view — then the make-or-break dimension flips and H1–H5 weaken.
+      <span class="k"><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg> Load-bearing assumption - carried forward to user testing</span>
+      <strong>Everything above rests on one belief: that the beachhead actually stays on spreadsheets primarily for coverage/flexibility</strong> - i.e. that our make-or-break premise (“coverage is the dealbreaker; trust is only a barrier”) is true <em>for these specific users</em>. Today that rests on the Bogleheads thread and self-observation of the Inzhur community, <strong>not on direct evidence from the beachhead</strong> <span class="tok-unknown">[?]</span>. <strong>There are no interviews in the research stage</strong> - so Define proceeds on this as a <em>stated, unvalidated bet</em>, not a confirmed fact, and we carry it forward explicitly. <strong>It gets tested at the user-testing stage</strong>, via the comparative usability test against the participant’s own Excel workflow: the preference split, plus a debrief on <em>why</em> they would or wouldn’t drop the spreadsheet, is what confirms or overturns it. If that testing shows the real reason is something else - habit, cost, blanket distrust of any app, or simply not caring about a blended view - then the make-or-break dimension flips and H1–H5 weaken.
     </div>
   </section>
 
   <!-- ============ 6. SURVEY ============ -->
   <section id="survey">
     <span class="sec-tag"><span class="num">06</span> Survey</span>
-    <h2>Beachhead survey — primary data</h2>
-    <p class="lede">The first direct evidence from the beachhead. A 10-question survey (9 closed + 1 open, Ukrainian, no recruitment block) sent to the Inzhur community — <strong>N&nbsp;=&nbsp;22</strong>, two days. Convenience sample, so <em>directional, not statistical</em>; Inzhur is over-represented by construction. Instrument: <a class="cite" href="beachhead-survey.md">beachhead-survey.md</a> · every raw response: <a class="cite" href="beachhead-responses.md">beachhead-responses.md</a>.</p>
+    <h2>Beachhead survey - primary data</h2>
+    <p class="lede">The first direct evidence from the beachhead. A 10-question survey (9 closed + 1 open, Ukrainian, no recruitment block) sent to the Inzhur community - <strong>N&nbsp;=&nbsp;22</strong>, two days. Convenience sample, so <em>directional, not statistical</em>; Inzhur is over-represented by construction. Instrument: <a class="cite" href="beachhead-survey.md">beachhead-survey.md</a> · every raw response: <a class="cite" href="beachhead-responses.md">beachhead-responses.md</a>.</p>
 
     <div class="charts">
 
@@ -733,19 +733,19 @@
 
     <h3>What it moves</h3>
     <ol class="spaced">
-      <li><strong>The named pain is upkeep + consolidation — not "no forward income."</strong> Forward income was the top pain for just 1/22 and distrust for 0/22; scattered assets (27%) and effort — manual math + staleness (41% combined) — dominate. Open answers pinpoint the effort: <em>"once a month is tolerable; the pain is logging in here and there to gather all the data."</em> So forward income is a <strong>latent delight</strong> (50% already do it but don't name it), while the pain that wins adoption is <strong>"everything in one place without manual labour."</strong> → the consolidated view leads with two co-equal lenses (current position + income), user-switchable, rather than income alone.</li>
+      <li><strong>The named pain is upkeep + consolidation - not "no forward income."</strong> Forward income was the top pain for just 1/22 and distrust for 0/22; scattered assets (27%) and effort - manual math + staleness (41% combined) - dominate. Open answers pinpoint the effort: <em>"once a month is tolerable; the pain is logging in here and there to gather all the data."</em> So forward income is a <strong>latent delight</strong> (50% already do it but don't name it), while the pain that wins adoption is <strong>"everything in one place without manual labour."</strong> → the consolidated view leads with two co-equal lenses (current position + income), user-switchable, rather than income alone.</li>
       <li><strong>Trust is an adoption filter, not a daily pain.</strong> 36% have actually abandoned an app over account/data demands, yet 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps. → local-first becomes a <strong>user-selectable stance</strong> (with opt-in broker sync for those who prefer automation), not a single dogma.</li>
-      <li><strong>The two "manual" assets are the universal core — and a feed for them is feasible.</strong> Inzhur + OVDP are held by ~95%. A firsthand teardown of bonds.pp.ua shows both are reachable as live data (OVDP buy/sell + yields per ISIN across brokers; Inzhur REIT/Energy daily NAV + monthly dividend per certificate, UAH+USD). The source is Inzhur's own daily NAV publication. → the assets nobody else auto-updates — and that <strong>Strum doesn't even cover</strong> — can be auto-tracked for our beachhead.</li>
+      <li><strong>The two "manual" assets are the universal core - and a feed for them is feasible.</strong> Inzhur + OVDP are held by ~95%. A firsthand teardown of bonds.pp.ua shows both are reachable as live data (OVDP buy/sell + yields per ISIN across brokers; Inzhur REIT/Energy daily NAV + monthly dividend per certificate, UAH+USD). The source is Inzhur's own daily NAV publication. → the assets nobody else auto-updates - and that <strong>Strum doesn't even cover</strong> - can be auto-tracked for our beachhead.</li>
     </ol>
 
-    <p>Respondents also named the tools they use today — <strong>Strum</strong> (the closest direct competitor: Ukrainian, multi-asset, but no Inzhur certificates), plus firekit, Account Tracker, WiseWallet, Notion, and a self-built PowerBI report — a beachhead-sourced list to scan next. Full synthesis in <a class="cite" href="research.md">research.md §6</a>.</p>
+    <p>Respondents also named the tools they use today - <strong>Strum</strong> (the closest direct competitor: Ukrainian, multi-asset, but no Inzhur certificates), plus firekit, Account Tracker, WiseWallet, Notion, and a self-built PowerBI report - a beachhead-sourced list to scan next. Full synthesis in <a class="cite" href="research.md">research.md §6</a>.</p>
   </section>
 
 </div>
 </div>
 
 <script>
-  // Minimal scrollspy for the pinned nav — no dependencies.
+  // Minimal scrollspy for the pinned nav - no dependencies.
   (function () {
     var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
     var map = {};
@@ -759,7 +759,7 @@
 
     var obs = new IntersectionObserver(function (entries) {
       // At the very top the Overview header sits above the detection band, so the
-      // next section would otherwise win — pin Overview explicitly instead.
+      // next section would otherwise win - pin Overview explicitly instead.
       if (window.scrollY < 8) { activate('overview'); return; }
       entries.forEach(function (e) { if (e.isIntersecting) activate(e.target.id); });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
