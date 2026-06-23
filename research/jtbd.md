@@ -83,3 +83,51 @@ These are plausible but unevidenced. Each is a question for user testing, not a 
 ---
 
 *Check: every job in the main list describes the person's progress, not a Flows feature. No formulation names a screen, button, or capability (no "dashboard", "calendar", "import", "sync").*
+
+---
+
+## JTBD matrix (jobs x personas)
+
+*Revision: synced with the persona reframe and the §7 web scan. P2 is now "Low-Complexity Holder (mostly nowhere)", so most of its column is low; the trust cells for P3 cite §7.3 instead of the demoted Bogleheads thread.*
+
+**How to read importance.** `1-3` = how central the job is to that persona (3 = high). The survey reports the whole sample, not per-persona splits, so only **P1** importances have direct survey anchors (P1 is the modal respondent). For **P2/P3**, `infer` or a `§` ref marks importance reasoned from the persona's defining trait, not a measured value. `[?]` means no basis at all; it is left blank, not averaged. **P2 scores are for the bulk low-complexity group, who mostly do not need the product (§7.2); the subset outgrowing one platform moves toward P1's profile.**
+
+| Job | P1 - Excel Consolidator (primary) | P2 - Low-Complexity Holder (mostly nowhere) | P3 - Trust-Wary Abandoner | Function that closes it | Closed by competitors? (research.md) |
+|---|---|---|---|---|---|
+| **Main - whole position + income, no upkeep** | 3 · Q4/R7/goal | 1 · §7.2 (little to consolidate) | 3 · infer | Consolidated view, two co-equal lenses (position + income) | **No** - nobody blends cross-silo, incl. Inzhur/OVDP, into one forward number (§1 #1, §5 gap #3) |
+| **RJ1 - bring the numbers together** | 3 · R7 | 1 · §7.2 (few platforms to gather from) | 3 · infer | Auto-fetched prices (crypto/stocks + OVDP/Inzhur feeds), daily FX, opt-in sync | **No for UA core** - Plaid/Yodlee sync misses UA; Inzhur/OVDP feeds done by no one (§1 #3, §6 #3) |
+| **RJ2 - hold any asset I own** | 3 · R8/§5 | 1 · §7.2 (few, simple assets) | 2 · infer | Flexible generic asset model: typed stubs + custom-field escape hatch | **Partial** - broad catalogs exist but Inzhur certs/OVDP unmodeled; only Excel is a true escape hatch (§1, §2) |
+| **RJ3 - income coming + arrived** | 3 · Q7 | 1 · §7.2 (Inzhur app already shows their income) | 2 · infer | Forward income projection + realized auto-roll, blended across assets | **No / paywalled** - forward income gated (Sharesight, Parqet) and listed-only; Kubera/FIREkit none (§5 gap #1) |
+| **RJ4 - move in without redoing work** | 3 · Q4 | 1 · Q4 (nothing to bring) | [?] (Excel or nowhere unclear) | Move existing tracking in (auto-detect + remap), optional AI-assisted | **Yes** - getquin + Wealthfolio match CSV + AI import (§1, §4) |
+| **RJ5 - decide how much to share** | 1 · Q9 (distrust 0% top pain) | [?] no data | 3 · Q8/§7.3 | Local-first by default + opt-in sharing/sync; BYOK or on-device AI | **Partial** - only niche local-first tools (Wealthfolio, Ghostfolio, Portfolio Performance) (§1 #3, H4) |
+| **EJ1 - feel on top, not unsure** | 3 · Q9 (scattered 27%) | 1 · §7.2 (concentrated, already feel on top) | 2 · infer | Consolidated view + honest "as of" / empty states | **Partial** - consolidation views exist (getquin "all in one place") but not for the UA core blend (§1) |
+| **EJ2 - feel my data is mine** | 1 · Q9 | [?] no data | 3 · Q8/§7.3 | Local-first, no account, "never your balances" cues | **Partial** - Wealthfolio strongest local-first; Parqet privacy framing (§1) |
+| **EJ3 - feel my plan is working** | 2 · Q7 | 1 · §7.2 (Inzhur shows realized income) | 2 · infer | Realized income to-date / track record | **Yes** - realized income common (Inzhur all-time dividends, FIREkit, Wealthfolio) (§1) |
+
+Hypotheses (HJ1-HJ5) are deliberately out of the matrix: with no evidence, an importance score would be invented.
+
+---
+
+## Conclusion
+
+### 3 jobs for the MVP core
+
+The test is strict: **high for the primary persona (P1 = 3) and not closed by the market.** Three jobs pass cleanly, and together they are the consolidation + automation + blended-income spine of the product.
+
+1. **Main job - whole position + income in one place, without the upkeep.** P1 = 3; no competitor blends the cross-silo picture incl. the UA core (§5 gap #3).
+2. **RJ1 - bring the numbers together for the UA core.** P1 = 3; sync misses UA institutions and no one pulls the Inzhur/OVDP feeds, so this directly kills the named pain in R7 (§1 #3, §6 #3). The web scan adds that broken sync and wrong numbers are what competitors actually lose users over (§7.3), so our own feeds plus "as of" freshness attack the real failure mode.
+3. **RJ3 - income coming and arrived, blended.** P1 = 3; the forward blended view is the clearest market gap, gated or absent everywhere (§5 gap #1). This is the differentiator. The web scan confirms forward income is a real draw, and our knowable coupon/dividend dates make the forecast accurate rather than speculative (§7.4).
+
+Runner-up, deliberately not in the three: **RJ2 (hold any asset)** is also P1 = 3 and is the make-or-break flexibility dimension (§4), but Excel already closes it, so it is table-stakes against the spreadsheet rather than a market gap. It stays in scope as a must-have, just not a wedge.
+
+### Function candidates to cut or defer (close no unmet job)
+
+- **Opt-in broker sync (e.g. Interactive Brokers).** For the beachhead it closes no reachable job: sync does not reach UA institutions (§1 #3), and the UA core is covered by RJ1's own feeds. Helps only non-UA holdings, which are the long tail (Q1). Defer for the beachhead.
+- **P&L / total return.** Maps to no evidenced job (the only buy/sell/rebalance job, HJ5, has no support and is out of direction). Keep it minimal in holding detail, never a hero; do not invest beyond that.
+- **AI-assisted import (note, not a cut).** It closes RJ4, but RJ4 is already matched by competitors and is not an unmet job (§4). Keep it as an optional power path; do not treat it as a wedge or spend the MVP's weight on it.
+
+### Updated by the web scan (§7)
+
+- **Trust stays a stance, not a hero.** The scan confirms privacy is a secondary churn reason, not a daily pain (§7.3), so RJ5/EJ2 keep local-first as a selectable default and an acquisition story, not a headline screen. The hero is consolidation + blended income, not a trust pitch.
+- **The real reliability bar is freshness, not sync coverage.** Competitors lose users to broken sync and wrong numbers (§7.3), which reframes RJ1's success measure: "as of [freshness]" and never showing a fabricated number matter more than how many sources we can sync.
+- **P2 onboarding is no longer a strong design driver.** With "nowhere" reframed as mostly out of scope (§7.2), a special near-zero-setup path for P2 drops in priority; low setup still matters, but for P1's RJ4 and the outgrowing-P2 subset, not as its own goal.

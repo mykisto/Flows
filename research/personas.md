@@ -10,7 +10,7 @@ Three personas: one primary, two secondary. Rationale for the split is at the en
 
 ## P1 - The Excel Consolidator (PRIMARY)
 
-**Context.** A multi-asset retail investor in the Inzhur community. Holds the universal core, Inzhur certificates + OVDP (~95% each), plus a few of: stocks/ETF, crypto, real estate, deposits (mean ~3.5 asset types) `[N=22, Q1]`. Spread across 3+ platforms (73%), with no single platform holding the majority for most people (≤50% share for 55%) `[N=22, Q2/Q3]`. Already keeps everything in Excel or Google Sheets, the single biggest consolidation method `[N=22, Q4, 41%]`. Reviews weekly or more `[N=22, Q6, 55%]`. Works across phone and laptop; the sheet pulls them to a bigger screen `[N=22, Q5]`. The Inzhur app is their home silo, good for Inzhur assets only `[skrín inzhur-dashboard.png]`.
+**Context.** A multi-asset retail investor in the Inzhur community. Holds the universal core, Inzhur certificates + OVDP (~95% each), plus a few of: stocks/ETF, crypto, real estate, deposits (mean ~3.5 asset types) `[N=22, Q1]`. Spread across 3+ platforms (73%), with no single platform holding the majority for most people (≤50% share for 55%) `[N=22, Q2/Q3]`. Already keeps everything in Excel or Google Sheets, the single biggest consolidation method `[N=22, Q4, 41%]`. They stay on it for convenience and path-dependence (the shortest familiar path; the sheet grew organically and migrating costs more than continuing), not distrust `[§7.1]`. Reviews weekly or more `[N=22, Q6, 55%]`. Works across phone and laptop; the sheet pulls them to a bigger screen `[N=22, Q5]`. The Inzhur app is their home silo, good for Inzhur assets only `[skrín inzhur-dashboard.png]`.
 
 **Jobs.**
 - See total position and this-month's income across every platform in one place, without rebuilding the sheet by hand `[research goal; N=22, Q7: 82% track income, forward leads]`.
@@ -23,8 +23,8 @@ Three personas: one primary, two secondary. Rationale for the split is at the en
 - No app covers Inzhur certs / OVDP as anything but manual, and auto-sync does not reach UA institutions, so apps feel "manual anyway" `[§5 gap #2; §1 desk]`.
 
 **Trust triggers.**
-- Convinces: less manual labour is the actual driver here, not privacy `[N=22, Q9 distrust 0%]`. Local-first with no forced account, "we fetch public prices, never your balances", and honest "as of" freshness reassure without being the headline.
-- Repels: being pushed into a cloud account that holds the full picture `[N=22, Q8: 36% have abandoned an app over data demands; Bogleheads "red flag", §1]`.
+- Convinces: less manual labour, now confirmed as the real driver, not privacy `[N=22, Q9 distrust 0%; §7.1/7.3]`. Honest "as of" freshness and never showing a fabricated number matter more here than any privacy pitch, because broken sync and wrong numbers are what people actually abandon trackers over `[§7.3]`.
+- Repels: re-entering or re-checking data by hand, and tools whose numbers go stale or wrong `[§7.3]`. A forced cloud account is a mild negative, not a dealbreaker, for this persona `[N=22, Q9 distrust 0%]`.
 
 **Mood quote (real, beachhead).** *"once a month is tolerable; the pain is logging in here and there to gather all the data"* `[N=22, §6 #1 / R7]`.
 
@@ -32,32 +32,33 @@ Three personas: one primary, two secondary. Rationale for the split is at the en
 
 ---
 
-## P2 - The Scattered Non-Tracker (secondary)
+## P2 - The Low-Complexity Holder (mostly nowhere) (secondary)
 
-**Context.** Holds the same Inzhur + OVDP core, often a narrower portfolio, but consolidates nowhere: in their head or scattered notes `[N=22, Q4, 23% "nowhere / scattered"]`. Hypothesis: reviews less often or irregularly, and has a low tolerance for setup effort, which is why they never built a sheet `[?]`. Demographics `[?]`.
+**Context.** Holds few assets, often concentrated in one platform (for example everything in Inzhur) plus maybe one more they rarely open (a short, fixed-term crypto position). Consolidates nowhere because there is little to consolidate, not because they lack a tool `[N=22, Q4: 23% nowhere; Q3: 23% hold >75% in one platform; first-hand beachhead self-report; §7.2]`. Checks rarely and irregularly `[beachhead self-report; hypothesis]`. Demographics `[?]`.
 
 **Jobs.**
-- Get a first single view with near-zero setup: "what do I have, and what is it paying?" without building anything `[research goal; N=22, Q7 income interest]`.
-- Hypothesis: stay in a glanceable mode rather than maintaining a system `[?]`.
+- For most of this group, no job Flows serves yet: with little spread there is nothing to bring together `[§7.2]`.
+- The real prospect is the subset outgrowing one platform: when a second or third holding appears, get a single view without building anything `[N=22, Q7 income interest; hypothesis]`.
 
 **Pains (worst first).**
-- No overview at all; the upkeep of any tool or sheet has not felt worth it `[N=22, Q4; Q9 scattered assets 27%]`.
-- Apps feel like no real gain because sync does not reach UA holdings `[§1 desk, "manual anyway"]`.
-- Hypothesis: the blocker is an effort-to-payoff threshold, not distrust `[N=22, Q9 distrust 0%; inference]`.
+- For most, no acute pain; that is the point `[§7.2]`.
+- For the growing subset: the moment a second platform appears is when "nowhere" stops working `[hypothesis]`.
 
 **Trust triggers.**
-- Hypothesis: instant value with no account and no import chore is what converts them; a no-login demo lowered friction for FIREkit `[§1 FIREkit row; skrín firekit-demo-forecast.png]`.
+- Hypothesis: instant value with no account and no setup chore is what would convert the growing subset; a no-login demo lowered friction for FIREkit `[§1 FIREkit row; skrín firekit-demo-forecast.png]`.
 - Hypothesis: any heavy onboarding or mandatory sign-up loses them `[?]`.
 
-**Mood quote.** `[?]` - no verbatim from this segment exists in the research. Hypothesised sentiment, NOT a real quote: *"I roughly know, but I've never put it all in one place."*
+**Mood quote.** `[?]` - no verbatim from this segment exists in the research. Hypothesised sentiment, NOT a real quote: *"I roughly know what I have; it is mostly in one place, so I have never needed anything else."*
 
-**Why secondary.** Real and sizable (23%), but the success hypothesis is anchored on beating Excel, and this group has no Excel to beat. We also have the weakest signal on what actually converts them, so most of this persona is hypothesis.
+**Why secondary, and partly out of scope.** A large share of this group simply does not need a consolidation tool `[§7.2]`. Only the subset outgrowing one platform is a real prospect, and we have the thinnest evidence on them.
+
+**What changed (this revision).** Split "nowhere" from "Excel". "Nowhere" is reframed from "scattered people who want consolidation but lack a system" to low-complexity holders who mostly do not need the product. The earlier "often a narrower portfolio" line, previously unsupported, is now the defining trait, grounded in Q3 + first-hand beachhead self-report + the web scan `[§7.2]`. The earlier "two-thirds on a sheet or nothing" reading wrongly treated all of "nowhere" as latent demand `[corrects §6, Q4]`.
 
 ---
 
 ## P3 - The Trust-Wary Abandoner (secondary)
 
-**Context.** Multi-asset, but has actually quit an app over account or data-access demands `[N=22, Q8, 36%]`. Values data ownership; may sit in Excel or nowhere partly for this reason `[desk; Bogleheads]`. Demographics `[?]`.
+**Context.** Has actually quit an app over account or data-access demands at least once `[N=22, Q8, 36%]`, so trust is a real entry filter for them. But this is not why they are on Excel or nowhere: distrust is nobody's top daily pain `[N=22, Q9: 0%]`, and in the wider scan privacy is a secondary churn reason, not a primary one `[§7.3]`. Demographics `[?]`.
 
 **Jobs.**
 - Consolidate without handing the full picture to a cloud account `[CLAUDE.md Storage & trust]`.
@@ -66,15 +67,17 @@ Three personas: one primary, two secondary. Rationale for the split is at the en
 **Pains (worst first).**
 - Mainstream apps are cloud + account by default `[§1 shared pattern #2]`.
 - Real-time auto-sync reads as a "red flag" `[Bogleheads, §1 / H4]`.
-- Honest caveat: this is an adoption filter, not their daily felt pain. 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps `[N=22, Q8/Q9]`.
+- Honest caveat: this is an adoption filter, not their daily felt pain. 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps `[N=22, Q8/Q9]`; the web scan agrees that privacy is a secondary churn reason behind broken sync and wrong numbers `[§7.3]`.
 
 **Trust triggers.**
 - Convinces: local-first, no account, "never your balances", opt-in (not forced) sync, and on-device or BYOK AI so no server sees the data; a polished local-first tool can still have reach `[teardown / Wealthfolio, H4]`.
 - Repels: a forced account or always-on bank linking `[N=22, Q8; Bogleheads]`.
 
-**Mood quote (real, forum).** auto-sync is a *"red flag"* `[Bogleheads, §1 / H4]`.
+**Mood quote.** `[?]` for the beachhead. The often-cited *"red flag"* line about auto-sync is from Bogleheads, a non-beachhead forum, and is no longer load-bearing `[§7.3]`. We have no verbatim trust quote from our own users.
 
-**Why secondary.** Trust unlocks roughly a third of users and removes a real blocker, but nobody names it as their top difficulty and half are comfortable with bank/broker apps `[N=22, Q8/Q9]`. So it is a necessary posture, not the primary wedge `[H4]`.
+**Why secondary.** Trust unlocks roughly a third of users at the entry point, but nobody names it as their top difficulty and half are comfortable with bank/broker apps `[N=22, Q8/Q9]`. It reads as a necessary posture and an acquisition stance, not the primary wedge `[H4; §7.3]`.
+
+**What changed (this revision).** Removed the claim that this persona sits on Excel or nowhere because of distrust; the survey and the web scan refute it `[N=22, Q9; §7.3]`. Demoted the Bogleheads "red flag" quote to non-load-bearing. Trust reframed as an entry filter and acquisition stance, not a daily driver.
 
 ---
 
@@ -84,4 +87,4 @@ The "I'm fine" 27% `[N=22, Q9]`: mostly low-complexity holders or people already
 
 ## Why this split, and why P1 is primary
 
-The data offers no demographic axis (none was collected), so the personas cut along **behaviour**: how people consolidate today (Excel power-user / nowhere / on a tool) `[N=22, Q4]` crossed with their **trust stance** `[N=22, Q8]`. P1 is primary because the whole validation plan targets Excel users measured against their own sheet `[CLAUDE.md Validation]`, and P1 carries the named adoption pain `[N=22, R7]`. P2 and P3 are real, evidenced segments with distinct product implications (near-zero-setup onboarding; trust as a user-selectable stance), but each rests on thinner or more inferential evidence than P1.
+The data offers no demographic axis (none was collected), so the personas cut along **behaviour**: how people consolidate today and why `[N=22, Q4; §7.1/7.2]`. P1 is primary because the whole validation plan targets Excel users measured against their own sheet `[CLAUDE.md Validation]`, and P1 carries the named adoption pain `[N=22, R7]`. P2 is mostly out of scope: low-complexity holders who do not need consolidation, with only the outgrowing subset as a prospect `[§7.2]`. P3 captures a real entry filter (trust) that works as an acquisition stance, not a daily driver `[N=22, Q8/Q9; §7.3]`. Both secondaries rest on thinner evidence than P1.

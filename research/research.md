@@ -156,3 +156,42 @@ Respondents named the tools they actually use: **Strum** (Ukrainian, multi-asset
 
 The assumption ("the beachhead stays on spreadsheets primarily for coverage/flexibility") is **partly supported and partly redirected.** Supported: spreadsheets/nothing dominate (Q4) and flexibility-across-heterogeneous-assets is a named want (R8). Redirected: the *felt* dealbreaker is **ongoing upkeep / data-gathering** at least as much as coverage - so "Excel's flexibility without Excel's labour" should foreground the *labour* (ongoing automation), not just one-time coverage. The comparative usability test (the assumption's real test) still stands; the survey simply de-risks the direction going into Define.
 
+---
+
+## 7. Post-persona follow-up (web scan)
+
+After building the personas, a targeted web scan tested three load-bearing assumptions behind them. This is Western/global desk evidence (mostly tracker-vendor blogs, product reviews, app-store and forum posts), not the beachhead. It is directional only: the N=22 survey stays the authority for our users, and the comparative usability test is still the real test. The scan moves three things.
+
+### 7.1 People stay on a spreadsheet for convenience and path-dependence, not distrust
+Familiarity/habit and flexibility/control dominate; distrust is secondary and never the lead.
+- "people reverting to spreadsheets because that's what they know" and "As long as spreadsheets remain available and maintained, people will use them" (Planr, 2025, https://planr.com/transitioning-from-spreadsheets-to-portfolio-monitoring-software/).
+- "Around 70% of investors come to Sharesight having previously tracked their portfolio manually in a spreadsheet": the spreadsheet is the near-universal prior state (Sharesight, https://www.sharesight.com/blog/7-reasons-why-sharesight-is-better-than-a-spreadsheet/).
+- "easy to access, most people already know how to use them ... flexible, and they give you a sense of control" (FinGather, 2026, https://www.fingather.com/blog/excel-vs-portfolio-tracker-what-makes-more-sense-for-investors).
+
+This refutes any "Excel use = distrust" reading and backs the existing wedge ("Excel's flexibility without Excel's labour"). Caveat: most sources are tracker vendors with a motive to frame spreadsheet use as inertia; discount accordingly.
+
+### 7.2 "Excel" and "nowhere" are different people, not one bucket
+The earlier "two-thirds are on a sheet or nothing" framing (§6, Q4) lumps two motivations that the scan and the survey pull apart:
+- **Nowhere = low complexity.** Few assets, often concentrated in one platform, little to consolidate, so no tool is needed. Consistent with Q3 (>75% of holdings in one platform for 23%) and with first-hand beachhead self-report (a holder with everything in Inzhur plus a short, fixed-term crypto position they rarely open).
+- **Excel = convenience/path-dependence** (7.1): a deliberate consolidation choice for people who do have spread.
+
+Implication: the opportunity is the Excel / consolidation-needing group, plus the subset of "nowhere" holders outgrowing one platform. A chunk of "nowhere" simply does not need Flows and should not be counted as latent demand. This splits persona P2 (see [`personas.md`](personas.md)).
+
+### 7.3 Trust is an acquisition stance, not a churn driver
+In finance-specific sources, privacy/data sits middle-to-minor as a reason people leave an app. The top churn drivers are broken bank/broker sync and wrong or stale numbers, then complexity and cost.
+- "sync reliability is the most common complaint" and "investment tracking gets the most complaints ... connection issues" (Monarch review aggregating Reddit, 2026, https://envelopebudgeting.com/articles/monarch-money-review).
+- "If account linking fails, data goes stale, or transactions go missing, trust drops fast" (Plaid, https://plaid.com/trouble-connecting/).
+- Privacy works as positioning, not as a churn reason: Wealthfolio sells entirely on "private ... runs locally ... No account needed" (https://wealthfolio.app/). Generic cross-category uninstall surveys put privacy top-3 (29-61%), but that is self-reported and inflated by social desirability.
+
+This matches the survey (0% name distrust as top pain, 36% have abandoned an app over data demands, 50% comfortable with bank/broker apps). Two implications: (a) keep local-first as a selectable stance and an acquisition story, not a hero feature; (b) the failure competitors actually lose users over, sync that breaks and numbers that are wrong, is exactly what our "as of [freshness]", "never fabricate a number", and feed-feasibility decisions target.
+
+### 7.4 Forward income is a real draw, conditional on being real and accurate
+Directional yes. Every serious tracker leads with a forecast/calendar, users request it unprompted, and paid tiers monetise it.
+- "This is far better than the spreadsheet I used to use", an App Store reviewer on DivTracker's dividend calendar (2024, https://apps.apple.com/us/app/dividend-tracker-divtracker/id1512637716).
+- A Sharesight user who forecasts dividends in a spreadsheet today: "I would find this super useful and time-saving" (2024, https://community.sharesight.com/t/future-income-estimates/1538).
+
+Counter-signal: a thin or declared-only forecast disappoints ("The Future Income Report is terrible" because it only forecast declared dividends), and long-horizon dividend forecasting is inherently uncertain. For our beachhead this risk is smaller, not larger: OVDP coupons and Inzhur monthly REIT dividends have knowable dates and amounts, so a forward view is accurate rather than speculative. This strengthens RJ3 / H1. The survey's 50%-already-track-forward stays the strongest quantified anchor; the web adds qualitative "spreadsheet-killer" texture.
+
+### Note on Bogleheads
+Earlier sections lean on a Bogleheads thread (auto-sync as a "red flag"). With the survey plus this broader scan, that single non-beachhead thread is no longer load-bearing: it is one anecdote among many, and the privacy-as-secondary picture above is better supported. Treat it as colour, not evidence.
+

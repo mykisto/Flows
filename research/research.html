@@ -89,6 +89,26 @@
   }
   .side-nav a.active .n{color:var(--accent)}
 
+  /* ---- two-level nav: numbered parent item + unnumbered sub-items ---- */
+  .side-nav .nav-group{display:flex;flex-direction:column}
+  /* the line sits under the centre of the parent's number (~22px in);
+     sub-item text lines up with the parent's name (~45px in) */
+  .side-nav .subnav{
+    list-style:none;margin:0 0 0 22px;padding-left:12px;
+    display:flex;flex-direction:column;gap:8px;border-left:1px solid var(--line);
+    /* collapsed by default; quick smooth expand when the group opens (click or scroll) */
+    max-height:0;opacity:0;overflow:hidden;
+    transition:max-height .24s cubic-bezier(.4,0,.2,1),opacity .16s ease,margin-top .24s cubic-bezier(.4,0,.2,1);
+  }
+  .side-nav .nav-group.open > .subnav{
+    max-height:240px;opacity:1;margin-top:8px;
+    transition:max-height .26s cubic-bezier(.4,0,.2,1),opacity .2s ease .06s,margin-top .26s cubic-bezier(.4,0,.2,1);
+  }
+  @media (prefers-reduced-motion:reduce){ .side-nav .subnav{transition:none} }
+  /* parent of the section in view: orange number + white name, no background box */
+  .side-nav .nav-group > a.current{color:var(--ink);background:none;border-color:transparent}
+  .side-nav .nav-group > a.current .n{color:var(--accent)}
+
   /* ---- layout ---- */
   .wrap{flex:1;min-width:0;padding:0 0 120px 40px}
   header.doc{padding:72px 0 30px;border-bottom:1px solid var(--line)}
@@ -267,6 +287,12 @@
     .side-nav{flex-direction:row;gap:3px;flex-wrap:nowrap;overflow-x:auto;margin-left:auto}
     .side-nav a{padding:5px 9px;font-size:.8rem;white-space:nowrap}
     .side-nav .n{display:none}
+    /* flatten the two-level nav into the horizontal bar on small screens (no collapse) */
+    .side-nav .nav-group{flex-direction:row;gap:3px}
+    .side-nav .nav-group > .subnav,
+    .side-nav .nav-group.open > .subnav{
+      flex-direction:row;gap:3px;margin:0;padding:0;border-left:none;
+      max-height:none;opacity:1;overflow:visible;transition:none}
     .wrap{max-width:none;padding:0 22px 110px}
   }
   @media (max-width:640px){
@@ -298,12 +324,28 @@
     <span class="brand">Flows <small>research</small></span>
     <ul class="side-nav">
       <li><a href="#overview" class="active"><span class="n">00</span> Overview</a></li>
-      <li><a href="#competitors"><span class="n">01</span> Competitors</a></li>
-      <li><a href="#benchmark"><span class="n">02</span> Benchmark</a></li>
-      <li><a href="#patterns"><span class="n">03</span> Patterns</a></li>
-      <li><a href="#decisions"><span class="n">04</span> Decisions</a></li>
-      <li><a href="#conclusions"><span class="n">05</span> Conclusions</a></li>
-      <li><a href="#survey"><span class="n">06</span> Survey</a></li>
+
+      <li class="nav-group">
+        <a href="#competitors"><span class="n">01</span> Landscape &amp; strategy</a>
+        <ul class="subnav">
+          <li><a href="#competitors">Competitors</a></li>
+          <li><a href="#benchmark">Benchmark</a></li>
+          <li><a href="#patterns">Patterns</a></li>
+          <li><a href="#decisions">Decisions</a></li>
+          <li><a href="#conclusions">Conclusions</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#survey"><span class="n">02</span> Survey</a></li>
+
+      <li class="nav-group">
+        <a href="#personas"><span class="n">03</span> Personas</a>
+        <ul class="subnav">
+          <li><a href="#personas">Profiles</a></li>
+          <li><a href="#jobs">Jobs</a></li>
+          <li><a href="#jtbd-matrix">Matrix</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </nav>
@@ -337,7 +379,7 @@
 
   <!-- ============ 1. COMPETITORS ============ -->
   <section id="competitors">
-    <span class="sec-tag"><span class="num">01</span> Competitors</span>
+    <span class="sec-tag"><span class="num">01</span> Landscape &amp; strategy</span>
     <h2>The gap the market leaves</h2>
 
     <h3>Comparison matrix (our axes)</h3>
@@ -509,7 +551,7 @@
 
   <!-- ============ 2. BENCHMARK ============ -->
   <section id="benchmark">
-    <span class="sec-tag"><span class="num">02</span> Benchmark</span>
+    <span class="sec-tag">Benchmark</span>
     <h2>Flexibility without effort</h2>
 
     <p>The make-or-break dimension: replicate <strong>100%</strong> of any real portfolio while spending <strong>far less effort</strong> than a spreadsheet. Studied against five non-finance exemplars (Airtable, Notion, Todoist, Apple Health, Attio). Key finding: <em>no exemplar maxes both halves</em> - coverage leaders (Notion/Airtable) make you design the structure; effort leaders (Apple Health/Attio) cap what you can represent. Flows has to do both at once.</p>
@@ -530,7 +572,7 @@
 
   <!-- ============ 3. PATTERNS ============ -->
   <section id="patterns">
-    <span class="sec-tag"><span class="num">03</span> Patterns</span>
+    <span class="sec-tag">Patterns</span>
     <h2>Choosing the consolidated view</h2>
 
     <p>Five structurally distinct patterns for the consolidated view were considered. The choice:</p>
@@ -552,7 +594,7 @@
 
   <!-- ============ 4. DECISIONS ============ -->
   <section id="decisions">
-    <span class="sec-tag"><span class="num">04</span> Decisions</span>
+    <span class="sec-tag">Decisions</span>
     <h2>The make-or-break calls</h2>
 
     <p>The make-or-break calls already made:</p>
@@ -568,7 +610,7 @@
 
   <!-- ============ 5. CONCLUSIONS ============ -->
   <section id="conclusions">
-    <span class="sec-tag"><span class="num">05</span> Conclusions</span>
+    <span class="sec-tag">Conclusions</span>
     <h2>Gaps &amp; hypotheses</h2>
 
     <h3>Gaps this research exposes</h3>
@@ -608,7 +650,7 @@
 
   <!-- ============ 6. SURVEY ============ -->
   <section id="survey">
-    <span class="sec-tag"><span class="num">06</span> Survey</span>
+    <span class="sec-tag"><span class="num">02</span> Survey</span>
     <h2>Beachhead survey - primary data</h2>
     <p class="lede">The first direct evidence from the beachhead. A 10-question survey (9 closed + 1 open, Ukrainian, no recruitment block) sent to the Inzhur community - <strong>N&nbsp;=&nbsp;22</strong>, two days. Convenience sample, so <em>directional, not statistical</em>; Inzhur is over-represented by construction. Instrument: <a class="cite" href="beachhead-survey.md">beachhead-survey.md</a> · every raw response: <a class="cite" href="beachhead-responses.md">beachhead-responses.md</a>.</p>
 
@@ -741,20 +783,247 @@
     <p>Respondents also named the tools they use today - <strong>Strum</strong> (the closest direct competitor: Ukrainian, multi-asset, but no Inzhur certificates), plus firekit, Account Tracker, WiseWallet, Notion, and a self-built PowerBI report - a beachhead-sourced list to scan next. Full synthesis in <a class="cite" href="research.md">research.md §6</a>.</p>
   </section>
 
+  <!-- ============ 7. PERSONAS ============ -->
+  <section id="personas">
+    <span class="sec-tag"><span class="num">03</span> Personas</span>
+    <h2>Who this is for</h2>
+    <p>Behavioural personas, not demographic portraits: the research has no interviews, so we have how people act and choose, not deep why. Names, ages and photos are omitted because no demographic data was collected <span class="tok-unknown">[?]</span>. Evidence is tagged <span class="num">N=22</span> (beachhead survey, directional), <em>desk</em> (competitor / forum scan), or <span class="tok-unknown">[?]</span> where we have nothing. Full text: <a class="cite" href="personas.md">personas.md</a>.</p>
+
+    <h3><span class="verdict v-yes">Primary</span>P1 - The Excel Consolidator</h3>
+    <p>A multi-asset retail investor in the Inzhur community. Holds the universal core, Inzhur + OVDP (~95% each), plus a few of stocks/ETF, crypto, real estate, deposits (~3.5 types). Spread across 3+ platforms (73%), with no single platform holding the majority for most (≤50% share for 55%). Keeps everything in Excel or Sheets, the biggest method (41%) - for <strong>convenience and path-dependence</strong>, the shortest familiar path that grew organically, <strong>not distrust</strong>. Reviews weekly or more (55%).</p>
+    <p><strong>Jobs.</strong></p>
+    <ul>
+      <li>See total position and this-month's income in one place, without rebuilding the sheet by hand.</li>
+      <li>Keep it current with little effort: the monthly cadence is fine, the data-gathering is not (R7).</li>
+      <li>Record every asset they own, including odd ones, without hitting a catalog wall (R8).</li>
+    </ul>
+    <p><strong>Pains.</strong> Logging in across platforms to collect the numbers (R7); scattered assets + manual math + stale data (Q9); no app covers Inzhur certs / OVDP as anything but manual.</p>
+    <p><strong>Trust triggers.</strong> Less manual labour is the real draw, not privacy (Q9 distrust 0%). Honest "as of" freshness and never showing a fabricated number matter more here than any privacy pitch, because broken sync and wrong numbers are what people actually abandon trackers over (§7.3).</p>
+    <div class="callout note">
+      <span class="k">Mood quote - real, beachhead</span>
+      <em>"once a month is tolerable; the pain is logging in here and there to gather all the data."</em> <span class="num">(survey, R7)</span>
+    </div>
+    <p><strong>Why primary.</strong> The success hypothesis and the comparative usability test both run against the participant's own Excel workflow; Excel is the biggest incumbent (Q4) and this persona carries the named adoption pain (R7). The product is validated against this person.</p>
+
+    <h3><span class="verdict v-maybe">Secondary</span>P2 - The Low-Complexity Holder (mostly nowhere)</h3>
+    <p>Holds few assets, often concentrated in one platform (for example everything in Inzhur) plus maybe one more they rarely open (a short, fixed-term crypto position). Consolidates nowhere because there is little to consolidate, not because they lack a tool (Q4: 23% nowhere; Q3: 23% hold &gt;75% in one platform; first-hand beachhead self-report; §7.2).</p>
+    <p><strong>Jobs.</strong> For most of this group, none that Flows serves yet: with little spread there is nothing to bring together. The real prospect is the subset outgrowing one platform, when a second or third holding appears.</p>
+    <p><strong>Pains.</strong> For most, no acute pain; that is the point. For the growing subset, the moment a second platform appears is when "nowhere" stops working.</p>
+    <div class="callout">
+      <span class="k">Mood quote - <span class="tok-unknown">[?]</span> hypothesised, not real</span>
+      <em>"I roughly know what I have; it is mostly in one place, so I have never needed anything else."</em> No verbatim from this segment exists in the research.
+    </div>
+    <div class="callout note">
+      <span class="k">What changed</span>
+      Split "nowhere" from "Excel". "Nowhere" is reframed from "scattered people who want consolidation but lack a system" to low-complexity holders who mostly do not need the product. The earlier "two-thirds on a sheet or nothing" reading wrongly treated all of "nowhere" as latent demand (§7.2).
+    </div>
+
+    <h3><span class="verdict v-maybe">Secondary</span>P3 - The Trust-Wary Abandoner</h3>
+    <p>Has actually quit an app over account or data-access demands at least once (Q8: 36%), so trust is a real entry filter for them. But this is not why they are on Excel or nowhere: distrust is nobody's top daily pain (Q9: 0%), and in the wider scan privacy is a secondary churn reason, not a primary one (§7.3).</p>
+    <p><strong>Jobs.</strong> Consolidate without handing the full picture to a cloud account; choose their own spot on the privacy-vs-convenience line (opt into sync for part of the portfolio, keep the rest local).</p>
+    <p><strong>Pains.</strong> Mainstream apps are cloud + account by default; real-time auto-sync reads as a red flag. Honest caveat: this is an adoption filter, not a daily felt pain - 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps (Q8/Q9; §7.3).</p>
+    <p><strong>Trust triggers.</strong> Local-first, no account, "never your balances", opt-in (not forced) sync, and on-device or BYOK AI so no server sees the data.</p>
+    <div class="callout note">
+      <span class="k">What changed</span>
+      Removed the claim that this persona sits on Excel or nowhere because of distrust; the survey and the web scan refute it (Q9; §7.3). Demoted the Bogleheads "red flag" quote to non-load-bearing. Trust reframed as an entry filter and acquisition stance, not a daily driver. No verbatim trust quote from our own users exists <span class="tok-unknown">[?]</span>.
+    </div>
+
+    <div class="callout">
+      <span class="k">Out of scope (named, not a target)</span>
+      The "I'm fine" 27% (Q9): mostly low-complexity holders or people already on a dedicated tool, including one respondent who uses <strong>Strum</strong> daily and is satisfied. Not a design target now. A frustrated Strum-style user (the tool misses Inzhur certificates, the 95% core) could be a future switch target, but the research has only the one satisfied data point, so we do not invent that persona <span class="tok-unknown">[?]</span>.
+    </div>
+  </section>
+
+  <!-- ============ 8. JOBS ============ -->
+  <section id="jobs">
+    <span class="sec-tag">Jobs</span>
+    <h2>Jobs to be done</h2>
+    <p>Each job is written as progress for the person, not a product feature: <em>When [situation], I want [motivation], so I can [outcome].</em> Every job carries its persona and the evidence it grew from. Jobs nothing supports live in Hypotheses. Full text: <a class="cite" href="jtbd.md">jtbd.md</a>.</p>
+
+    <div class="callout note">
+      <span class="k">Main job</span>
+      <strong>When my money is spread across several platforms and I am piecing the picture together by hand, I want to understand my whole position and what it is paying me, faster than my spreadsheet does, so I can know where I stand without the manual upkeep.</strong>
+      <p style="margin:.6em 0 0">From P1. Evidence: research goal; Excel is the biggest incumbent (Q4); fragmentation is real (Q2); income is tracked by most (Q7); the felt pain is the manual gathering (R7).</p>
+    </div>
+
+    <h3>Related jobs (the path to the main job)</h3>
+    <ol class="spaced">
+      <li><strong>RJ1 - bring the numbers together.</strong> When my holdings sit on several platforms, I want my numbers to come together without me logging into each one, so I can keep the picture current without the chore. <span class="num">(P1; R7, Q2)</span></li>
+      <li><strong>RJ2 - hold any asset I own.</strong> When I own something the usual apps do not fit (an Inzhur certificate, an OVDP line, a one-off), I want to record it anyway, so I do not fall back to a spreadsheet for the parts that do not fit. <span class="num">(P1; R8, §5)</span></li>
+      <li><strong>RJ3 - income coming and arrived.</strong> When I depend on payouts from different assets, I want to see what is coming and what has already arrived across all of them, so I can plan around my income. <span class="num">(P1; Q7)</span></li>
+      <li><strong>RJ4 - move in without redoing work.</strong> When I already track this in a spreadsheet, I want to bring it across without re-entering everything, so I can switch without losing the work I have done. <span class="num">(P1; Q4)</span></li>
+      <li><strong>RJ5 - decide how much to share.</strong> When I am wary of handing my full financial picture to an app, I want to choose what stays on my device and what I share, so I can use it without giving up control. <span class="num">(P3; Q8, §7.3)</span></li>
+    </ol>
+
+    <h3>Emotional jobs</h3>
+    <ol class="spaced">
+      <li><strong>EJ1 - feel on top, not unsure.</strong> When my assets are scattered, I want to feel on top of my money instead of vaguely unsure, so I can stop worrying that I have missed something. <span class="num">(P1; Q9 scattered 27%)</span></li>
+      <li><strong>EJ2 - feel my data is mine.</strong> When I try a finance app, I want to feel my data is mine and not being harvested, so I can use it without a nagging distrust. <span class="num">(P3; Q8, §7.3)</span></li>
+      <li><strong>EJ3 - feel my plan is working.</strong> When I have been investing for a while, I want to see the income I have actually earned add up, so I can feel my plan is working. <span class="num">(P1; Q7)</span></li>
+    </ol>
+
+    <h3>Social jobs</h3>
+    <p>No social job is supported by the current research: the survey did not ask how people are seen by others, and no response touches it. Candidate social jobs are in Hypotheses below, marked <span class="tok-unknown">[?]</span>, so they are not mistaken for findings.</p>
+
+    <h3>Hypotheses (no support yet)</h3>
+    <div class="hyps">
+      <div class="hyp"><span class="hid">HJ1</span> <em>Social.</em> Be seen as having my finances in order among peers. <span class="tok-unknown">[?]</span> The community exists, but nothing shows people want the product for image.</div>
+      <div class="hyp"><span class="hid">HJ2</span> <em>Social.</em> Share or compare my setup with the community. <span class="tok-unknown">[?]</span> Weak signal: some built and shared their own tools (PowerBI, Notion).</div>
+      <div class="hyp"><span class="hid">HJ3</span> Track progress toward a long-term goal (e.g. financial independence). <span class="tok-unknown">[?]</span> Only an adjacent hint (FIREkit), no beachhead data.</div>
+      <div class="hyp"><span class="hid">HJ4</span> Stay aware without maintaining anything (P2). <span class="tok-unknown">[?]</span> Inferred from the 23% who consolidate nowhere; motivation unknown.</div>
+      <div class="hyp"><span class="hid">HJ5</span> Decide what to buy, sell, or rebalance. <span class="tok-unknown">[?]</span> No evidence, and out of direction (not P&amp;L-led). Marked as deliberately excluded.</div>
+    </div>
+  </section>
+
+  <!-- ============ 9. JTBD MATRIX ============ -->
+  <section id="jtbd-matrix">
+    <span class="sec-tag">Matrix</span>
+    <h2>JTBD matrix</h2>
+    <p>Rows are jobs, columns are personas. A cell shows importance <span class="num">1-3</span> (3 = high) and what confirms it. Only <strong>P1</strong> has direct survey anchors (the modal respondent); for P2/P3, <em>infer</em> or a <span class="num">§</span> ref marks importance reasoned from the persona, not measured. <span class="tok-unknown">[?]</span> is left blank, not averaged. P2 scores are for the bulk low-complexity group, who mostly do not need the product (§7.2).</p>
+
+    <div class="scroll-hint"><svg class="ico ico-scroll" aria-hidden="true"><use href="#i-scroll"/></svg> scroll the table horizontally on small screens</div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Job</th>
+            <th>P1 - Excel Consolidator <span class="wedge">(primary)</span></th>
+            <th>P2 - Low-Complexity Holder</th>
+            <th>P3 - Trust-Wary Abandoner</th>
+            <th>Function that closes it</th>
+            <th>Closed by competitors?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Main - whole position + income, no upkeep</th>
+            <td><strong>3</strong> · Q4/R7/goal</td>
+            <td><strong>1</strong> · §7.2</td>
+            <td><strong>3</strong> · infer</td>
+            <td>Consolidated view, two co-equal lenses (position + income)</td>
+            <td><strong>No</strong> - nobody blends cross-silo incl. Inzhur/OVDP into one forward number (§1, §5)</td>
+          </tr>
+          <tr>
+            <th scope="row">RJ1 - bring the numbers together</th>
+            <td><strong>3</strong> · R7</td>
+            <td><strong>1</strong> · §7.2</td>
+            <td><strong>3</strong> · infer</td>
+            <td>Auto-fetched prices (crypto/stocks + OVDP/Inzhur feeds), daily FX, opt-in sync</td>
+            <td><strong>No for UA core</strong> - sync misses UA; Inzhur/OVDP feeds done by no one (§1, §6)</td>
+          </tr>
+          <tr>
+            <th scope="row">RJ2 - hold any asset I own</th>
+            <td><strong>3</strong> · R8/§5</td>
+            <td><strong>1</strong> · §7.2</td>
+            <td><strong>2</strong> · infer</td>
+            <td>Flexible generic asset model: typed stubs + custom-field escape hatch</td>
+            <td><strong>Partial</strong> - broad catalogs exist but Inzhur/OVDP unmodeled; only Excel is a true escape hatch</td>
+          </tr>
+          <tr>
+            <th scope="row">RJ3 - income coming + arrived</th>
+            <td><strong>3</strong> · Q7</td>
+            <td><strong>1</strong> · §7.2</td>
+            <td><strong>2</strong> · infer</td>
+            <td>Forward income projection + realized auto-roll, blended</td>
+            <td><strong>No / paywalled</strong> - gated (Sharesight, Parqet), listed-only; Kubera/FIREkit none (§5)</td>
+          </tr>
+          <tr>
+            <th scope="row">RJ4 - move in without redoing work</th>
+            <td><strong>3</strong> · Q4</td>
+            <td><strong>1</strong> · Q4</td>
+            <td><span class="tok-unknown">[?]</span></td>
+            <td>Move existing tracking in (auto-detect + remap), optional AI-assisted</td>
+            <td><strong>Yes</strong> - getquin + Wealthfolio match CSV + AI import (§1, §4)</td>
+          </tr>
+          <tr>
+            <th scope="row">RJ5 - decide how much to share</th>
+            <td><strong>1</strong> · Q9</td>
+            <td><span class="tok-unknown">[?]</span></td>
+            <td><strong>3</strong> · Q8/§7.3</td>
+            <td>Local-first by default + opt-in sharing/sync; BYOK or on-device AI</td>
+            <td><strong>Partial</strong> - only niche local-first tools (Wealthfolio, Ghostfolio) (§1, H4)</td>
+          </tr>
+          <tr>
+            <th scope="row">EJ1 - feel on top, not unsure</th>
+            <td><strong>3</strong> · Q9</td>
+            <td><strong>1</strong> · §7.2</td>
+            <td><strong>2</strong> · infer</td>
+            <td>Consolidated view + honest "as of" / empty states</td>
+            <td><strong>Partial</strong> - consolidation views exist but not for the UA core blend (§1)</td>
+          </tr>
+          <tr>
+            <th scope="row">EJ2 - feel my data is mine</th>
+            <td><strong>1</strong> · Q9</td>
+            <td><span class="tok-unknown">[?]</span></td>
+            <td><strong>3</strong> · Q8/§7.3</td>
+            <td>Local-first, no account, "never your balances" cues</td>
+            <td><strong>Partial</strong> - Wealthfolio strongest local-first; Parqet privacy framing (§1)</td>
+          </tr>
+          <tr>
+            <th scope="row">EJ3 - feel my plan is working</th>
+            <td><strong>2</strong> · Q7</td>
+            <td><strong>1</strong> · §7.2</td>
+            <td><strong>2</strong> · infer</td>
+            <td>Realized income to-date / track record</td>
+            <td><strong>Yes</strong> - realized income common (Inzhur, FIREkit, Wealthfolio) (§1)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>3 jobs for the MVP core</h3>
+    <p>The test is strict: high for the primary persona (P1 = 3) and not closed by the market. Three pass cleanly, and together they are the consolidation + automation + blended-income spine.</p>
+    <ol class="spaced">
+      <li><strong>Main job</strong> - whole position + income in one place, without the upkeep. No competitor blends the cross-silo picture incl. the UA core.</li>
+      <li><strong>RJ1</strong> - bring the numbers together for the UA core. Sync misses UA institutions and no one pulls the Inzhur/OVDP feeds, so this kills the named pain in R7. The web scan adds that broken sync and wrong numbers are what competitors actually lose users over (§7.3), so our own feeds plus "as of" freshness attack the real failure mode.</li>
+      <li><strong>RJ3</strong> - income coming and arrived, blended. The forward blended view is the clearest market gap, gated or absent everywhere. The web scan confirms forward income is a real draw, and our knowable coupon/dividend dates make the forecast accurate rather than speculative (§7.4). This is the differentiator.</li>
+    </ol>
+    <p><strong>Runner-up, not in the three:</strong> RJ2 (hold any asset) is also P1 = 3 and the make-or-break flexibility dimension, but Excel already closes it, so it is table-stakes against the spreadsheet rather than a market gap. In scope as a must-have, not a wedge.</p>
+
+    <h3>Function candidates to cut or defer</h3>
+    <ul>
+      <li><strong>Opt-in broker sync (e.g. Interactive Brokers).</strong> For the beachhead it closes no reachable job: sync does not reach UA institutions, and the UA core is covered by RJ1's own feeds. Helps only non-UA holdings. Defer.</li>
+      <li><strong>P&amp;L / total return.</strong> Maps to no evidenced job (the only buy/sell/rebalance job, HJ5, has no support and is out of direction). Keep minimal in holding detail, never a hero.</li>
+      <li><strong>AI-assisted import (note, not a cut).</strong> Closes RJ4, but RJ4 is already matched by competitors and is not an unmet job. Keep as an optional power path, not a wedge.</li>
+    </ul>
+
+    <h3>Post-persona follow-up (web scan)</h3>
+    <p>After building the personas, a targeted web scan tested three load-bearing assumptions. This is Western/global desk evidence (mostly tracker-vendor blogs, product reviews, forum posts), not the beachhead; directional only, with the survey still the authority. It moves four things.</p>
+    <ol class="spaced">
+      <li><strong>People stay on a spreadsheet for convenience and path-dependence, not distrust.</strong> "people reverting to spreadsheets because that's what they know" (<a href="https://planr.com/transitioning-from-spreadsheets-to-portfolio-monitoring-software/">Planr</a>); "~70% of investors come to Sharesight having previously tracked in a spreadsheet" (<a href="https://www.sharesight.com/blog/7-reasons-why-sharesight-is-better-than-a-spreadsheet/">Sharesight</a>). Refutes "Excel = distrust".</li>
+      <li><strong>"Excel" and "nowhere" are different people.</strong> Nowhere = low complexity, little to consolidate; Excel = a deliberate consolidation choice. Splits P2 (above).</li>
+      <li><strong>Trust is an acquisition stance, not a churn driver.</strong> The top churn drivers are broken sync and wrong numbers: "sync reliability is the most common complaint" (<a href="https://envelopebudgeting.com/articles/monarch-money-review">Monarch review</a>). Privacy sells (<a href="https://wealthfolio.app/">Wealthfolio</a>) more than it churns. Matches the survey.</li>
+      <li><strong>Forward income is a real draw, if accurate.</strong> "This is far better than the spreadsheet I used to use" (<a href="https://apps.apple.com/us/app/dividend-tracker-divtracker/id1512637716">DivTracker review</a>). A thin or declared-only forecast disappoints; for our core, knowable coupon/dividend dates make it accurate. Strengthens RJ3.</li>
+    </ol>
+    <p>Full follow-up with all sources: <a class="cite" href="research.md">research.md §7</a>.</p>
+  </section>
+
 </div>
 </div>
 
 <script>
-  // Minimal scrollspy for the pinned nav - no dependencies.
+  // Scrollspy + auto-accordion for the pinned nav - no dependencies.
   (function () {
     var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+    var groups = Array.prototype.slice.call(document.querySelectorAll('.side-nav .nav-group'));
     var map = {};
     links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
     var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
 
     function activate(id) {
       links.forEach(function (l) { l.classList.remove('active'); });
-      if (map[id]) map[id].classList.add('active');
+      var a = map[id];
+      if (!a) return;
+      a.classList.add('active');
+      // open the group that holds the active section (close the others), and mark
+      // its parent item as current: orange number + white name, no background box.
+      var activeGroup = a.closest('.nav-group');
+      groups.forEach(function (g) {
+        var on = g === activeGroup;
+        g.classList.toggle('open', on);
+        var parent = g.querySelector('a');
+        if (parent) parent.classList.toggle('current', on);
+      });
     }
 
     var obs = new IntersectionObserver(function (entries) {
