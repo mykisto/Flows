@@ -29,33 +29,33 @@ Core fields: asset name, type, quantity, cost basis, current value, currency, an
 
 Assets split into two valuation classes:
 - **Price-tracked** (crypto, stocks/ETFs): current value + history auto-fetched from public price feeds, keyed on a symbol.
-- **Manually-valued** (OVDP, Inzhur certificates, real estate, deposits): user-entered value, updated periodically. OVDP & Inzhur are modeled **feed-ready** so a data source can slot in later.
+- **Manually-valued** (real estate, deposits): user-entered value, updated periodically.
+- **OVDP & Inzhur certificates — now feed-feasible, not just feed-ready.** A firsthand teardown (bonds.pp.ua) confirmed live data exists for both: OVDP buy/sell + yields per ISIN across brokers, and Inzhur REIT/Energy daily NAV + monthly dividend per certificate (UAH+USD), sourced from Inzhur's own daily NAV publication. The prototype auto-pulls their current price; which exact source we use is still open (we don't have to use bonds.pp.ua).
 
 ## Valuation & 30-day change
 Every value is shown with its direction, but **only where we have real data** — fetched history for price-tracked assets, the user's own snapshot history for manually-valued ones. Everywhere else: a neutral state, never a fabricated number. Freshness varies by class (crypto 24/7, stocks market-hours, manual assets infrequent), so show "as of [time]" cues and fall back gracefully to the last-known value.
 
-## Cash flow / passive income (the hero)
-Both projected and realized, **leading forward-looking**. A payout calendar / projection of upcoming income across all assets is the emotional core; realized income-to-date is the track record. **This month's income (realized + projected) is the primary "why I opened the app" metric — not net worth.** Realized capture: a projected payout **auto-rolls to realized once its date passes, flagged for one-tap confirm/edit.**
+## Cash flow / passive income
+Income is one of **two co-equal leads** (see *Main consolidated view*) — the emotional differentiator and delight, not a metric that outranks current position. Both projected and realized, **leading forward-looking**. A payout calendar / projection of upcoming income across all assets is the emotional core; realized income-to-date is the track record. **The user can focus on income alone if that's all they care about**, but it doesn't subordinate the consolidated current position. *(Survey: forward income is latent — 50% already track it, yet the named adoption pain is "everything in one place without manual labour.")* Realized capture: a projected payout **auto-rolls to realized once its date passes, flagged for one-tap confirm/edit.**
 
-## Main consolidated view (priority order)
-1. Total position across everything
-2. Blended monthly + projected income
-3. Breakdown by asset type
-4. Upcoming payout calendar
+## Main consolidated view
+**Two co-equal lenses the user switches between** (the default lens, and whether they can also appear together, is a wireframe/testing decision), over one shared holdings base:
+- **Position:** total position across everything → breakdown by asset type.
+- **Income:** blended monthly + projected income → upcoming payout calendar.
 
 Assume ~5–30 holdings → a grouped, scannable list (no heavy search/filter on day one); confirm the real range in user testing.
 
 ## Performance / P&L
-Income leads everywhere. Unrealized gain/loss + total return live in **holding detail, not the dashboard hero** — keeps the income wedge sharp rather than becoming "just another portfolio tracker."
+Neither lens is a P&L screen. Unrealized gain/loss + total return live in **holding detail, not the dashboard hero** — keeps both the income and position leads sharp rather than becoming "just another portfolio tracker."
 
 ## Currency
 Multi-currency entry, one user-chosen display currency. **FX rate auto-fetched daily** (keeps a fresh price from being paired with a stale rate; live-tick FX is unnecessary). Native currency is shown alongside the converted value. Treat currency clarity as a design theme, not a footnote (Inzhur values in UAH pegged to USD; users hold other currencies too).
 
 ## Data in (onboarding)
-Manual entry across asset types, plus **first-class CSV import** — the bridge FROM Excel that removes switching cost. Import accepts the user's existing sheet: **auto-detect common headers, with a quick remap step** to fix mismatches. **Optional AI-assisted import** (an LLM that drafts mapped activities from a messy CSV/statement — later images/PDF — for the user to review) sits on top as a power path, built so **no Flows server ever sees the data**: BYOK to the user's own LLM key now, on-device later (see DECISION-LOG #32). Live account integrations / auto-sync are deferred.
+Manual entry across asset types, plus **first-class CSV import** — the bridge FROM Excel that removes switching cost. Import accepts the user's existing sheet: **auto-detect common headers, with a quick remap step** to fix mismatches. **Optional AI-assisted import** (an LLM that drafts mapped activities from a messy CSV/statement — later images/PDF — for the user to review) sits on top as a power path, built so **no Flows server ever sees the data**: BYOK to the user's own LLM key now, on-device later (see DECISION-LOG #32). **Adding holdings spans a control↔automation spectrum the user picks from** — manual entry, CSV import, and **opt-in account sync (e.g. Interactive Brokers) for the part of the portfolio that supports it** (sync pulls the holdings list; prices stay fresh via our own feeds). One "+" reveals *what* to add, then *how*. Sync reaches only what it can; Inzhur & OVDP auto-update via their feeds, the rest stays manual/CSV. Blanket bank-aggregation / always-on sync of every platform stays deferred.
 
 ## Storage & trust
-**Local-first, no account** — data lives in the browser (IndexedDB); nothing leaves the device except public price lookups, the daily FX fetch, and — **only if the user opts in** — an AI-assisted import that runs on-device or via the user's own LLM key (**never through a Flows server**). Trust copy: "we fetch public prices, never your balances." Distrust is part of why people avoid these apps, so trust cues (data locality, "as of" freshness, honest empty states) are first-class. Cross-device sync deferred.
+**Local-first, no account** — data lives in the browser (IndexedDB); nothing leaves the device except public price lookups, the daily FX fetch, and — **only if the user opts in** — an AI-assisted import that runs on-device or via the user's own LLM key (**never through a Flows server**). Trust copy: "we fetch public prices, never your balances." Distrust is part of why people avoid these apps, so trust cues (data locality, "as of" freshness, honest empty states) are first-class. **But trust is a user-selectable stance, not a single dogma:** local-first/no-account is the default, while a user who prefers automation can opt into sharing part of their portfolio (e.g. broker sync) — they choose where they sit on the privacy↔convenience spectrum. *(Survey: 36% have abandoned an app over account/data demands, yet 50% are comfortable with bank/broker apps and 0% name distrust as their top pain.)* Cross-device sync deferred.
 
 ## Wedge against Excel
 Excel gives total flexibility but makes you do all the math and upkeep by hand. Flows matches enough flexibility (custom assets/fields) while automatically handling income projection, the payout calendar, live prices where available, and consolidated visualization. **"Excel's flexibility without Excel's labor."**
@@ -64,15 +64,15 @@ Excel gives total flexibility but makes you do all the math and upkeep by hand. 
 Clean, calm, trustworthy, data-forward but not intimidating for first-time investors. Deliberately NOT generic fintech-blue — this is also a portfolio piece, so distinctiveness matters. Owned by the designer; treat as direction, not a lock.
 
 ## Language
-English UI for v1, built for localization from the start. Language picker with English and Ukrainian as the initial two options; Ukrainian localization follows.
+Built for localization from the start, with a **working in-UI language switch (English ↔ Ukrainian)**, not a deferred nicety. Two delivery contexts: the **Ukrainian interface is what the usability tests with Inzhur users run on**, while **English is the default for the portfolio case study** — flipping the whole UI between them must be one easy toggle. Further locales follow.
 
 ## Validation
-Comparative usability test against participants' own Excel workflow, recruited from the Inzhur community. Measure task completion time, a clarity rating, and a preference split (optionally a SUS score). Maps directly to the success hypothesis.
+Comparative usability test against participants' own Excel workflow, recruited from the Inzhur community. Measure task completion time, a clarity rating, and a preference split (optionally a SUS score). Maps directly to the success hypothesis. A closed-question **beachhead survey (N=22)** was run ahead of it to pre-test the load-bearing assumptions (see `research/` — survey findings).
 
 ## Scope
-**In (v1):** manual entry across asset types; first-class CSV import (auto-detect + remap); the consolidated holdings + cash-flow view (total position, blended income, breakdown by type, payout calendar); live price + history for crypto and listed stocks/ETFs; daily auto-fetched FX; local-first storage; **optional AI-assisted import (BYOK now, on-device later; no Flows server sees the data)**; EN UI + EN/UA language picker.
+**In (v1):** manual entry across asset types; first-class CSV import (auto-detect + remap); the consolidated holdings + cash-flow view (total position, blended income, breakdown by type, payout calendar); live price + history for crypto and listed stocks/ETFs; **auto-fetched price for OVDP & Inzhur certificates**; daily auto-fetched FX; local-first storage with **opt-in account sync for supported holdings (e.g. Interactive Brokers)**; **optional AI-assisted import (BYOK now, on-device later; no Flows server sees the data)**; **in-UI EN↔UA language switch (UA for user tests, EN for the portfolio)**.
 
-**Deferred:** account integrations / auto-sync; AI features **beyond import**; buying/selling/transactions; accounts + cross-device sync; live-tick FX; live feeds for OVDP & Inzhur (manual now, modeled feed-ready); broader (non-beachhead) audience.
+**Deferred:** blanket bank-aggregation / always-on auto-sync of every platform (opt-in broker sync for supported holdings is in); AI features **beyond import**; buying/selling/transactions; accounts + cross-device sync; live-tick FX; broader (non-beachhead) audience.
 
 ## Constraints
 Solo designer; becomes a portfolio case study — keep the reasoning explicit throughout (see decision log).
@@ -84,12 +84,15 @@ Solo designer; becomes a portfolio case study — keep the reasoning explicit th
 The list below is a snapshot of key calls; the log holds the full set.
 
 1. **Build directly in code** (not Figma-first) — the real build is both the portfolio artifact and what the usability test runs on.
-2. **Local-first, no account** (IndexedDB) — strongest privacy story for a distrusted category; least backend for a solo build; sync deferred.
+2. **Local-first by default; trust as a user-selectable stance** (IndexedDB; opt-in sharing/broker sync for users who prefer automation) — privacy without forcing it. Survey: 36% have abandoned an app over data demands, but 50% are fine with bank/broker apps and 0% name distrust as their top pain. Blanket aggregation/sync deferred.
 3. **Asset model splits price-tracked vs manually-valued** — clean basis for how valuation and the 30-day change behave per type.
-4. **Live price + history for crypto & stocks/ETFs; OVDP & Inzhur manual but feed-ready** — honest about Ukrainian-market data availability; avoids overpromising live feeds we can't reliably get.
+4. **Live price for crypto & stocks/ETFs; OVDP & Inzhur now feed-feasible (auto-pulled in the prototype)** — a firsthand teardown confirmed live data exists for both (and they're the ~95% beachhead core); real estate & deposits stay manual. Revises the earlier "OVDP & Inzhur manual but feed-ready" call.
 5. **30-day change shown only where real data exists** (fetched or snapshot) — never fabricate a number; protects trust.
 6. **Realized income = auto-roll past-due payouts, flagged for one-tap confirm** — low labor with user control.
-7. **Income leads; P&L secondary** (holding detail) — keeps the income wedge sharp vs. a generic tracker.
+7. **Income and current position are co-equal, user-switchable lenses; P&L stays in holding detail** — survey showed forward income is a latent delight (50% already track it) while consolidation + upkeep is the named adoption pain. Revises the earlier "income leads; P&L secondary" call.
 8. **CSV import = auto-detect + remap fallback** — a true bridge from Excel without full column-mapping complexity (a bridge, not a differentiator — competitors match it).
 9. **FX auto-fetched daily** — keeps fresh prices from pairing with a stale rate; live-tick FX is unnecessary.
 10. **AI-assisted import adopted** — optional power path on top of CSV; BYOK to the user's own LLM now, on-device later, so no Flows server sees the data. Reverses the earlier "no AI import" call (DECISION-LOG #32).
+11. **Beachhead survey (N=22) run before user testing** — confirms multi-asset fragmentation and the spreadsheet incumbent; redirects the wedge toward *ongoing automation* (upkeep + consolidation is the named pain, forward income a latent delight); first direct beachhead evidence.
+12. **Opt-in broker sync as one option on a control↔automation spectrum** — manual / CSV / sync; sync pulls the holdings list, our feeds keep prices fresh. Pairs with #2 (trust is the user's choice).
+13. **In-UI EN↔UA language switch** — Ukrainian for the Inzhur usability tests, English for the portfolio; one easy toggle.

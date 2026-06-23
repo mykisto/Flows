@@ -114,4 +114,45 @@ The make-or-break calls already made — the conclusions below build on these:
 - **H5.** **IF** the consolidated view is a summary-first income-led hero (not net-worth/treemap), **THEN** Flows wins the "understand total + income faster than my sheet" task on mobile, **BECAUSE** the layout enforces income-lead and is mobile-native, while every dashboard competitor defaults net-worth-first ([portfolio-view-patterns.md](portfolio-view-patterns.md)).
 
 ### ⚠️ Load-bearing assumption (carried forward to user testing)
-**Everything above rests on one belief: that the beachhead actually stays on spreadsheets primarily for coverage/flexibility** — i.e. that our make-or-break premise ("coverage is the dealbreaker; trust is only a barrier") is true *for these specific users*. Today that rests on the Bogleheads thread and self-observation of the Inzhur community, **not on direct evidence from the beachhead** `[?]`. **There are no interviews in the research stage** — so Define proceeds on this as a *stated, unvalidated bet*, not a confirmed fact, and we carry it forward explicitly. **It gets tested at the user-testing stage**, via the comparative usability test against the participant's own Excel workflow: the preference split, plus a debrief on *why* they would or wouldn't drop the spreadsheet, is what confirms or overturns it. If that testing shows the real reason is something else — habit, cost, blanket distrust of any app, or simply not caring about a blended view — then the make-or-break dimension flips and H1–H5 weaken.
+**Everything above rests on one belief: that the beachhead actually stays on spreadsheets primarily for coverage/flexibility** — i.e. that our make-or-break premise ("coverage is the dealbreaker; trust is only a barrier") is true *for these specific users*. Today that rests on the Bogleheads thread and self-observation of the Inzhur community, **not on direct evidence from the beachhead** `[?]`. **There are no interviews in the research stage** — so Define proceeds on this as a *stated, unvalidated bet*, not a confirmed fact, and we carry it forward explicitly. **It gets tested at the user-testing stage**, via the comparative usability test against the participant’s own Excel workflow: the preference split, plus a debrief on *why* they would or wouldn't drop the spreadsheet, is what confirms or overturns it. If that testing shows the real reason is something else — habit, cost, blanket distrust of any app, or simply not caring about a blended view — then the make-or-break dimension flips and H1–H5 weaken.
+
+> **Update (§6 below).** A closed-question beachhead survey now supplies the **first direct evidence from these users** this assumption flagged as missing. It doesn't replace the comparative usability test — but it pressure-tests the bet early, and it moves three things.
+
+---
+
+## 6. Beachhead survey — primary data (N=22)
+
+First primary data from the actual beachhead. A 10-question survey (9 closed + 1 open, Ukrainian, no recruitment block) went to the Inzhur community; **22 responses** over two days. Convenience sample — **directional, not statistical**, and Inzhur is over-represented by construction (that's the beachhead). Full instrument: [`beachhead-survey.md`](beachhead-survey.md); every raw response: [`beachhead-responses.md`](beachhead-responses.md).
+
+### Distributions
+
+- **Q1 — Asset types (multi).** Inzhur 21/22 (95%) · OVDP 21/22 (95%) · Stocks/ETF 9 (41%) · Crypto 9 (41%) · Real estate 9 (41%) · Deposits 8 (36%). Mean ≈ 3.5 types each. **Inzhur + OVDP are the universal core; everything else is a long tail.**
+- **Q2 — Platforms.** 3+ platforms for 73% (16/22); 5+ for 36%. ✔ fragmentation confirmed.
+- **Q3 — Share in the largest platform.** ≤50% for 55% (genuinely spread); >75% for only 23%. **Consolidation value holds for the majority — but not for everyone.**
+- **Q4 — Where they consolidate (primary method).** Excel/Sheets 9 (41%) · nowhere / in head / scattered 5 (23%) · dedicated tracker 5 (23%) · native Inzhur/broker app 3 (14%). **Spreadsheets are the single biggest method; with "nowhere," ⅔ are on a sheet or nothing.**
+- **Q5 — Device.** Phone 45% · laptop 27% · varies 27% · tablet 0. Phone-inclusive ≈ 73%, **but laptop/varies = 55% and skews to the spreadsheet/tool power users** → mobile-first, desktop essential.
+- **Q6 — Cadence.** Daily 23% + weekly 32% = **55% check weekly or more**; monthly 32%. High engagement → manual upkeep hurts *repeatedly*.
+- **Q7 — Income tracking.** Realized + projected 50% · realized only 32% · none 18%. **82% track income; forward-looking is already the single largest group.**
+- **Q8 — Abandoned an app over account/data demands.** Yes 36% · didn't stop me 14% · comfortable with bank/broker apps 50%.
+- **Q9 — Biggest difficulty (single choice).** Scattered assets 27% · manual math 23% · data goes stale 18% · no forward income **5%** · distrust **0%** · "I'm fine" 27%.
+
+### What it confirms, challenges, and moves
+
+**Confirms:** multi-asset fragmentation (Q1/Q2), the spreadsheet as the real incumbent (Q4 — H3/Excel-as-competitor), mobile-first with a desktop tier (Q5, H5), income demand with forward already leading (Q7), and — verbatim in Q10 — the flexible-generic-asset thesis with the price-tracked/manual split (R8) and multi-currency / USD-peg (R8).
+
+**Three things it moves:**
+
+1. **The named pain is upkeep + consolidation, not "no forward income."** Forward income was the top pain for only **1/22** and distrust for **0/22**; the named pains are scattered assets (27%) and effort — manual math + staleness (41% combined). Q10 sharpens *which* effort: R7 — "once a month is tolerable; the pain is **logging in here and there to gather all the data**." So **forward income is a latent delight (50% already do it but don't name it as the pain); the pain that wins adoption is "everything in one place without manual labor."** This reframes the hero (see below).
+
+2. **Trust is an adoption filter, not a daily pain.** 36% have *actually abandoned* an app over account/data demands (real past behaviour) — yet 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps. So local-first removes a real blocker for ~⅓, but isn't what most users feel day-to-day → **trust as a user-selectable stance, not a single dogma** (it also reconciles with offering opt-in broker sync for the half who want automation over local-only).
+
+3. **The two "manual, feed-ready" assets are the universal core — and a feed for them is demonstrably feasible.** Inzhur + OVDP are held by ~95% of respondents, and a firsthand teardown of **bonds.pp.ua** shows both are obtainable as live data: it aggregates OVDP buy/sell quotes + yields per ISIN across brokers (with a computed coupon/redemption cash-flow schedule), and exposes a clean per-fund JSON for **Inzhur REIT and Energy** — daily NAV/buy/sell (UAH+USD) with history **plus** monthly dividend per certificate. The underlying source is Inzhur's own daily NAV publication; bonds.pp.ua only proves it's reachable. So the assets nobody else auto-updates — and that **Strum doesn't cover at all** — can be auto-tracked for our beachhead, attacking the #1 named pain directly.
+
+### Competitor signal from the responses
+
+Respondents named the tools they actually use: **Strum** (Ukrainian, multi-asset — the closest direct competitor; one respondent uses it daily and is satisfied, but it omits Inzhur certificates, the 95% core), plus **firekit**, **Account Tracker**, **WiseWallet**, **Notion**, and a self-built **PowerBI** report. The "I'm fine" 27% are mostly either low-complexity holders or already on a dedicated tool — **the opportunity is the spreadsheet / nowhere / scattered majority**, not the tool-satisfied tail. firekit, Account Tracker and WiseWallet are queued for a later scan.
+
+### Effect on the load-bearing assumption
+
+The assumption ("the beachhead stays on spreadsheets primarily for coverage/flexibility") is **partly supported and partly redirected.** Supported: spreadsheets/nothing dominate (Q4) and flexibility-across-heterogeneous-assets is a named want (R8). Redirected: the *felt* dealbreaker is **ongoing upkeep / data-gathering** at least as much as coverage — so "Excel's flexibility without Excel's labour" should foreground the *labour* (ongoing automation), not just one-time coverage. The comparative usability test (the assumption's real test) still stands; the survey simply de-risks the direction going into Define.
+

@@ -119,6 +119,31 @@
   a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(229,89,29,.32)}
   a:hover{border-bottom-color:var(--accent)}
 
+  /* ---- survey charts (inline, no JS/deps) — refine pass pending ---- */
+  .charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:1.4em 0}
+  .chart{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px;background-image:var(--sheen)}
+  .chart h4{margin:0 0 2px;color:var(--ink);font-size:.92rem}
+  .chart .q{color:var(--faint);font-size:.78rem;margin:0 0 14px}
+  /* bar charts */
+  .bars{display:flex;flex-direction:column;gap:9px}
+  .bar-row{display:grid;grid-template-columns:128px 1fr auto;align-items:center;gap:10px;font-size:.82rem}
+  .bar-row .lab{color:var(--ink-2);text-align:right;line-height:1.25}
+  .bar-track{display:block;width:100%;height:9px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+  .bar-fill{display:block;height:100%;min-width:2px;background:linear-gradient(90deg,var(--accent-deep),var(--accent));border-radius:99px}
+  .bar-fill.mute{background:var(--faint)}
+  .bar-fill.zero{background:transparent;min-width:0}
+  .bar-row .val{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.78rem}
+  .bar-row .val b{color:var(--ink)}
+  /* pie charts */
+  .pie-wrap{display:flex;align-items:center;gap:16px}
+  .pie{width:120px;height:120px;border-radius:50%;flex:none}
+  .pie-legend{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:.8rem}
+  .pie-legend li{margin:0;display:flex;align-items:center;gap:8px;color:var(--ink-2);max-width:none}
+  .pie-legend .sw{width:10px;height:10px;border-radius:3px;flex:none}
+  .pie-legend .pv{color:var(--muted);margin-left:auto;padding-left:10px;font-variant-numeric:tabular-nums}
+  .pie-legend .pv b{color:var(--ink)}
+  @media (max-width:720px){ .charts{grid-template-columns:1fr} }
+
   /* ---- legend ---- */
   .legend{
     max-width:var(--measure);
@@ -278,6 +303,7 @@
       <li><a href="#patterns"><span class="n">03</span> Patterns</a></li>
       <li><a href="#decisions"><span class="n">04</span> Decisions</a></li>
       <li><a href="#conclusions"><span class="n">05</span> Conclusions</a></li>
+      <li><a href="#survey"><span class="n">06</span> Survey</a></li>
     </ul>
   </div>
 </nav>
@@ -578,6 +604,141 @@
       <span class="k"><svg class="ico ico-warn" aria-hidden="true"><use href="#i-warn"/></svg> Load-bearing assumption — carried forward to user testing</span>
       <strong>Everything above rests on one belief: that the beachhead actually stays on spreadsheets primarily for coverage/flexibility</strong> — i.e. that our make-or-break premise (“coverage is the dealbreaker; trust is only a barrier”) is true <em>for these specific users</em>. Today that rests on the Bogleheads thread and self-observation of the Inzhur community, <strong>not on direct evidence from the beachhead</strong> <span class="tok-unknown">[?]</span>. <strong>There are no interviews in the research stage</strong> — so Define proceeds on this as a <em>stated, unvalidated bet</em>, not a confirmed fact, and we carry it forward explicitly. <strong>It gets tested at the user-testing stage</strong>, via the comparative usability test against the participant’s own Excel workflow: the preference split, plus a debrief on <em>why</em> they would or wouldn’t drop the spreadsheet, is what confirms or overturns it. If that testing shows the real reason is something else — habit, cost, blanket distrust of any app, or simply not caring about a blended view — then the make-or-break dimension flips and H1–H5 weaken.
     </div>
+  </section>
+
+  <!-- ============ 6. SURVEY ============ -->
+  <section id="survey">
+    <span class="sec-tag"><span class="num">06</span> Survey</span>
+    <h2>Beachhead survey — primary data</h2>
+    <p class="lede">The first direct evidence from the beachhead. A 10-question survey (9 closed + 1 open, Ukrainian, no recruitment block) sent to the Inzhur community — <strong>N&nbsp;=&nbsp;22</strong>, two days. Convenience sample, so <em>directional, not statistical</em>; Inzhur is over-represented by construction. Instrument: <a class="cite" href="beachhead-survey.md">beachhead-survey.md</a> · every raw response: <a class="cite" href="beachhead-responses.md">beachhead-responses.md</a>.</p>
+
+    <div class="charts">
+
+      <div class="chart">
+        <h4>Asset types held</h4>
+        <p class="q">Q1 · multi-select · % of 22</p>
+        <div class="bars">
+          <div class="bar-row"><span class="lab">Inzhur (REIT/funds)</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>21</b> · 95%</span></div>
+          <div class="bar-row"><span class="lab">OVDP (gov bonds)</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>21</b> · 95%</span></div>
+          <div class="bar-row"><span class="lab">Stocks / ETF</span><span class="bar-track"><span class="bar-fill" style="width:43%"></span></span><span class="val"><b>9</b> · 41%</span></div>
+          <div class="bar-row"><span class="lab">Crypto</span><span class="bar-track"><span class="bar-fill" style="width:43%"></span></span><span class="val"><b>9</b> · 41%</span></div>
+          <div class="bar-row"><span class="lab">Real estate</span><span class="bar-track"><span class="bar-fill" style="width:43%"></span></span><span class="val"><b>9</b> · 41%</span></div>
+          <div class="bar-row"><span class="lab">Bank deposits</span><span class="bar-track"><span class="bar-fill" style="width:38%"></span></span><span class="val"><b>8</b> · 36%</span></div>
+          <div class="bar-row"><span class="lab">Other / custom</span><span class="bar-track"><span class="bar-fill" style="width:10%"></span></span><span class="val"><b>2</b> · 9%</span></div>
+        </div>
+      </div>
+
+      <div class="chart">
+        <h4>Platforms holdings sit on</h4>
+        <p class="q">Q2 · 3+ platforms for 73%</p>
+        <div class="bars">
+          <div class="bar-row"><span class="lab">1</span><span class="bar-track"><span class="bar-fill" style="width:13%"></span></span><span class="val"><b>1</b> · 5%</span></div>
+          <div class="bar-row"><span class="lab">2</span><span class="bar-track"><span class="bar-fill" style="width:63%"></span></span><span class="val"><b>5</b> · 23%</span></div>
+          <div class="bar-row"><span class="lab">3</span><span class="bar-track"><span class="bar-fill" style="width:50%"></span></span><span class="val"><b>4</b> · 18%</span></div>
+          <div class="bar-row"><span class="lab">4</span><span class="bar-track"><span class="bar-fill" style="width:50%"></span></span><span class="val"><b>4</b> · 18%</span></div>
+          <div class="bar-row"><span class="lab">5 or more</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>8</b> · 36%</span></div>
+        </div>
+      </div>
+
+      <div class="chart">
+        <h4>Share in the largest platform</h4>
+        <p class="q">Q3 · ≤50% for 55% → genuinely spread</p>
+        <div class="pie-wrap">
+          <div class="pie" style="background:conic-gradient(var(--faint) 0 9.09%,var(--accent) 9.09% 54.55%,var(--ua) 54.55% 77.27%,var(--lock) 77.27% 100%)"></div>
+          <ul class="pie-legend">
+            <li><span class="sw" style="background:var(--faint)"></span>under 25%<span class="pv"><b>2</b> · 9%</span></li>
+            <li><span class="sw" style="background:var(--accent)"></span>25–50%<span class="pv"><b>10</b> · 45%</span></li>
+            <li><span class="sw" style="background:var(--ua)"></span>50–75%<span class="pv"><b>5</b> · 23%</span></li>
+            <li><span class="sw" style="background:var(--lock)"></span>over 75%<span class="pv"><b>5</b> · 23%</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="chart">
+        <h4>Where they consolidate today</h4>
+        <p class="q">Q4 · primary method (some use several)</p>
+        <div class="bars">
+          <div class="bar-row"><span class="lab">Excel / Sheets</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>9</b> · 41%</span></div>
+          <div class="bar-row"><span class="lab">Nowhere / scattered</span><span class="bar-track"><span class="bar-fill" style="width:56%"></span></span><span class="val"><b>5</b> · 23%</span></div>
+          <div class="bar-row"><span class="lab">Dedicated tracker</span><span class="bar-track"><span class="bar-fill" style="width:56%"></span></span><span class="val"><b>5</b> · 23%</span></div>
+          <div class="bar-row"><span class="lab">Inzhur / broker app</span><span class="bar-track"><span class="bar-fill" style="width:33%"></span></span><span class="val"><b>3</b> · 14%</span></div>
+        </div>
+      </div>
+
+      <div class="chart">
+        <h4>Device most used</h4>
+        <p class="q">Q5 · phone leads, but desktop = 55%</p>
+        <div class="pie-wrap">
+          <div class="pie" style="background:conic-gradient(var(--accent) 0 45.45%,var(--ua) 45.45% 72.73%,var(--faint) 72.73% 100%)"></div>
+          <ul class="pie-legend">
+            <li><span class="sw" style="background:var(--accent)"></span>Phone<span class="pv"><b>10</b> · 45%</span></li>
+            <li><span class="sw" style="background:var(--ua)"></span>Laptop / desktop<span class="pv"><b>6</b> · 27%</span></li>
+            <li><span class="sw" style="background:var(--faint)"></span>Varies<span class="pv"><b>6</b> · 27%</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="chart">
+        <h4>How often they update / review</h4>
+        <p class="q">Q6 · 55% weekly or more</p>
+        <div class="bars">
+          <div class="bar-row"><span class="lab">Daily</span><span class="bar-track"><span class="bar-fill" style="width:71%"></span></span><span class="val"><b>5</b> · 23%</span></div>
+          <div class="bar-row"><span class="lab">Weekly</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>7</b> · 32%</span></div>
+          <div class="bar-row"><span class="lab">Monthly</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>7</b> · 32%</span></div>
+          <div class="bar-row"><span class="lab">Every few months</span><span class="bar-track"><span class="bar-fill" style="width:14%"></span></span><span class="val"><b>1</b> · 5%</span></div>
+          <div class="bar-row"><span class="lab">Not regularly</span><span class="bar-track"><span class="bar-fill" style="width:29%"></span></span><span class="val"><b>2</b> · 9%</span></div>
+        </div>
+      </div>
+
+      <div class="chart">
+        <h4>Income tracking</h4>
+        <p class="q">Q7 · 82% track it; forward already leads</p>
+        <div class="pie-wrap">
+          <div class="pie" style="background:conic-gradient(var(--pos) 0 50%,var(--accent) 50% 81.82%,var(--faint) 81.82% 100%)"></div>
+          <ul class="pie-legend">
+            <li><span class="sw" style="background:var(--pos)"></span>Realized + projected<span class="pv"><b>11</b> · 50%</span></li>
+            <li><span class="sw" style="background:var(--accent)"></span>Realized only<span class="pv"><b>7</b> · 32%</span></li>
+            <li><span class="sw" style="background:var(--faint)"></span>Don't track<span class="pv"><b>4</b> · 18%</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="chart">
+        <h4>Ever abandoned an app over account / data access</h4>
+        <p class="q">Q8 · trust = a filter, not a daily pain</p>
+        <div class="pie-wrap">
+          <div class="pie" style="background:conic-gradient(var(--lock) 0 36.36%,var(--warn) 36.36% 50%,var(--faint) 50% 100%)"></div>
+          <ul class="pie-legend">
+            <li><span class="sw" style="background:var(--lock)"></span>Yes, abandoned<span class="pv"><b>8</b> · 36%</span></li>
+            <li><span class="sw" style="background:var(--warn)"></span>No, didn't stop me<span class="pv"><b>3</b> · 14%</span></li>
+            <li><span class="sw" style="background:var(--faint)"></span>Comfortable w/ bank·broker<span class="pv"><b>11</b> · 50%</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="chart">
+        <h4>Biggest difficulty today</h4>
+        <p class="q">Q9 · single choice · the named pain</p>
+        <div class="bars">
+          <div class="bar-row"><span class="lab">Scattered assets</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>6</b> · 27%</span></div>
+          <div class="bar-row"><span class="lab">Manual math</span><span class="bar-track"><span class="bar-fill" style="width:83%"></span></span><span class="val"><b>5</b> · 23%</span></div>
+          <div class="bar-row"><span class="lab">Data goes stale</span><span class="bar-track"><span class="bar-fill" style="width:67%"></span></span><span class="val"><b>4</b> · 18%</span></div>
+          <div class="bar-row"><span class="lab">No forward income</span><span class="bar-track"><span class="bar-fill" style="width:17%"></span></span><span class="val"><b>1</b> · 5%</span></div>
+          <div class="bar-row"><span class="lab">Distrust data</span><span class="bar-track"><span class="bar-fill zero" style="width:0"></span></span><span class="val"><b>0</b> · 0%</span></div>
+          <div class="bar-row"><span class="lab">I'm fine</span><span class="bar-track"><span class="bar-fill mute" style="width:100%"></span></span><span class="val"><b>6</b> · 27%</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3>What it moves</h3>
+    <ol class="spaced">
+      <li><strong>The named pain is upkeep + consolidation — not "no forward income."</strong> Forward income was the top pain for just 1/22 and distrust for 0/22; scattered assets (27%) and effort — manual math + staleness (41% combined) — dominate. Open answers pinpoint the effort: <em>"once a month is tolerable; the pain is logging in here and there to gather all the data."</em> So forward income is a <strong>latent delight</strong> (50% already do it but don't name it), while the pain that wins adoption is <strong>"everything in one place without manual labour."</strong> → the consolidated view leads with two co-equal lenses (current position + income), user-switchable, rather than income alone.</li>
+      <li><strong>Trust is an adoption filter, not a daily pain.</strong> 36% have actually abandoned an app over account/data demands, yet 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps. → local-first becomes a <strong>user-selectable stance</strong> (with opt-in broker sync for those who prefer automation), not a single dogma.</li>
+      <li><strong>The two "manual" assets are the universal core — and a feed for them is feasible.</strong> Inzhur + OVDP are held by ~95%. A firsthand teardown of bonds.pp.ua shows both are reachable as live data (OVDP buy/sell + yields per ISIN across brokers; Inzhur REIT/Energy daily NAV + monthly dividend per certificate, UAH+USD). The source is Inzhur's own daily NAV publication. → the assets nobody else auto-updates — and that <strong>Strum doesn't even cover</strong> — can be auto-tracked for our beachhead.</li>
+    </ol>
+
+    <p>Respondents also named the tools they use today — <strong>Strum</strong> (the closest direct competitor: Ukrainian, multi-asset, but no Inzhur certificates), plus firekit, Account Tracker, WiseWallet, Notion, and a self-built PowerBI report — a beachhead-sourced list to scan next. Full synthesis in <a class="cite" href="research.md">research.md §6</a>.</p>
   </section>
 
 </div>

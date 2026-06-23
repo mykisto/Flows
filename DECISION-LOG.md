@@ -129,7 +129,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 ## 09 - English-first UI, localization built in
 - Date: 2026-06-09
 - Stage: Brief
-- Status: Active
+- Status: Revisited in #38
 - Decision: Ship the v1 UI in English, but build for localization from the start, with a language picker offering English and Ukrainian as the initial two options. Ukrainian localization follows.
 - Why: The portfolio audience is international, so English presents best - but the real user community is Ukrainian, so localization isn't an afterthought. Designing the picker now forces the UI to handle localization properly instead of retrofitting it later.
 - Alternatives considered: Ukrainian-first (rejected - weaker for an international portfolio audience); English-only with no localization plan (rejected - ignores the actual user base and makes later localization a retrofit).
@@ -139,7 +139,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 ## 10 - v1 scope guard
 - Date: 2026-06-09
 - Stage: Brief
-- Status: Revisited in #15, #20, #32
+- Status: Revisited in #15, #20, #32, #36
 - Decision: In scope for the 0-to-1 build - manual entry across asset types, CSV import, and the consolidated holdings + cash-flow view. Deferred - live integrations/auto-sync, AI features, buying/selling/transactions, live FX.
 - Why: The consolidated view plus getting data in is enough to prove the concept and validate the hypothesis. Aggregation/integrations is the part that balloons, so it's explicitly fenced off. AI and visual polish are a deliberate later pass.
 - Alternatives considered: Including integrations or AI in v1 (rejected - scope explosion that would swamp the timeline and dilute the core problem).
@@ -169,7 +169,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 ## 13 - Local-first storage, no account
 - Date: 2026-06-09
 - Stage: Brief
-- Status: Revisited in #28, #32
+- Status: Revisited in #28, #32, #36
 - Decision: Keep all data local-first in the browser (IndexedDB) with no account in v1; nothing leaves the device except public price lookups and the daily FX fetch. Cross-device sync is deferred.
 - Why: Distrust is part of why people avoid these apps, so "your balances never leave your device" is the strongest trust story I can offer - and it's the least backend to build solo. Sync is a real need, but not a v1 one.
 - Alternatives considered: Accounts + cloud database (rejected for v1 - more to build and a bigger trust ask for a new app holding someone's whole financial picture); a seeded demo with no real storage (rejected - participants couldn't enter their own data, weakening the comparison against their spreadsheet).
@@ -189,7 +189,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 ## 15 - Live prices for crypto and stocks; OVDP and Inzhur stay manual
 - Date: 2026-06-09
 - Stage: Brief
-- Status: Active
+- Status: Revisited in #37
 - Decision: Auto-fetch price and history for crypto and listed stocks/ETFs; keep OVDP, Inzhur certificates, real estate, and deposits manually valued, with OVDP and Inzhur modeled feed-ready. Refines the "live integrations deferred" line of #10: read-only public price lookups are in; account auto-sync stays out.
 - Why: Crypto and listed equities have easy, reliable public data; OVDP and Inzhur don't (OVDP is yield/accrued-interest off NBU/broker data, Inzhur is periodic NAV, not a live ticker). Promising live data everywhere would overpromise, and a read-only lookup is categorically different from the account integrations I'm still deferring.
 - Alternatives considered: Live data for all six types (rejected - OVDP/Inzhur lack clean feeds; bespoke sourcing burns solo build time and risks overpromising); all values manual (rejected - throws away easy, high-value automation for crypto and stocks).
@@ -219,7 +219,7 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 ## 18 - Income leads; performance/P&L stays secondary
 - Date: 2026-06-09
 - Stage: Brief
-- Status: Active
+- Status: Revisited in #35
 - Decision: Keep income the headline everywhere and put unrealized gain/loss and total return in holding detail, not on the dashboard hero.
 - Why: Income is the wedge and the reason to open the app; leading with P&L would blur Flows into "just another portfolio tracker." But people with a cost basis still want to know if they're up or down, so P&L belongs in the product - just not in the lead.
 - Alternatives considered: Income only, no P&L at all (rejected - feels incomplete to anyone tracking cost basis); equal billing for position/P&L and income (rejected - dilutes the income story that's the whole reason to exist).
@@ -373,3 +373,53 @@ The same applies to Reversed and Dropped: record the state change on the entry's
 - Decision: Send a short survey (10 questions - 9 multiple-choice + one optional open) in Ukrainian to Inzhur community members, purely about how they track their portfolio, to gather first-person evidence on the gaps the synthesis flagged but never validated on the beachhead: fragmentation and how much already sits inside Inzhur, device, update cadence/effort, whether they want forward (not just realized) income, and the trust/local-first pillar via past app-abandonment. This adds a research-stage primary-data step ahead of the comparative usability test (#11), which still stands.
 - Why: The whole synthesis rests on one unvalidated belief - that the beachhead stays on spreadsheets for coverage/flexibility - and two of its pillars (cadence in H3, trust in H4) lean on a US Bogleheads thread, not these users. Rather than carry that all the way to a tiny usability-test sample, a cheap closed-question survey pressure-tests it now and sizes the consolidation pain - above all how much of a portfolio already lives inside Inzhur, which directly bounds Flows' cross-silo value. Closed questions keep the response rate up and make the answers quantifiable across the gaps; one open question catches pains the closed set missed. Question 9 forces a single "biggest difficulty" choice across the candidate wedges (manual math / scattered / no forward income / staleness / distrust), so the answer points straight at which wedge is real. No recruitment in this form - kept purely about the product to maximise completion.
 - Alternatives considered: Keep all validation for the usability test only (rejected - leaves the load-bearing assumption untested until late, on a sample too small to size the Inzhur-concentration question); open-ended interviews (rejected - slower, lower response from a community blast, and I want a quantifiable distribution, not anecdotes); ask local-first importance directly (rejected - collects polite agreement; the past-abandonment question is the honest test); include a recruitment block for the usability test (rejected for this form - it lengthens it and dilutes focus; recruit separately).
+
+------------------------------------------------------
+
+## 34 - Beachhead survey results redirect the wedge toward ongoing automation
+- Date: 2026-06-23
+- Stage: Research
+- Status: Active
+- Decision: Act on the returned survey (N=22). It confirms the multi-asset, fragmented, spreadsheet-or-nothing picture (Inzhur + OVDP held by ~95%; 3+ platforms for 73%; Excel/Sheets the top consolidation method; 55% check weekly or more). But it redirects the wedge: the named top pains are scattered assets (27%) and effort/upkeep (manual math + staleness, 41% combined), while "no forward income" was named by only 1/22 and distrust by 0/22. So I reframe the make-or-break around ongoing automation + consolidation ("everything in one place without manual labour"), with forward income as a latent delight rather than the stated pain. Findings written up in research/research.md §6 and research/beachhead-responses.md; this entry is the source of the more specific calls #35-#37.
+- Why: This is the first direct evidence from these specific users - the exact gap the load-bearing assumption (#33, and research.md §5) flagged. The open answers pinpointed the real labour ("logging in here and there to gather all the data," not one-time entry), which is what should drive the design. Acting now de-risks Define before the small, late usability-test sample.
+- Alternatives considered: Treat the survey as confirmation-only and keep income as the sole hero (rejected - the data contradicts it: forward income is latent, not the felt pain); wait for the usability test to change direction (rejected - that sample is tiny and late, and the survey already points clearly); over-read a convenience sample of 22 as statistical truth (rejected - it's directional, so it steers direction, not precise sizing).
+
+------------------------------------------------------
+
+## 35 - Income and current position as two co-equal, user-switchable lenses
+- Date: 2026-06-23
+- Stage: Define
+- Status: Active
+- Decision: The consolidated view leads with two co-equal lenses the user switches between - current position (consolidated total) and cash flow / income - rather than income outranking net worth. The user picks focus: someone who only cares about income sees income; someone who wants the real current state sees consolidation. Whether they can also appear together vs. via a toggle, and the default lens, is left to wireframes/testing.
+- Why: Survey #34 - forward income is a latent delight (50% already track it) while the named adoption pain is consolidation + upkeep. Leading with income alone would foreground the delight and bury the pain we actually win on; leading with position alone would abandon the forward-income differentiator nothing else does well. Co-equal + switchable serves both the income-led user and the state-now user without diluting either.
+- Alternatives considered: Keep income the single hero, net worth secondary (rejected - the survey shows that's not the felt pain); make current position the single hero (rejected - throws away the forward-income differentiator); fix "both shown together, always" now (rejected - that's a layout call for wireframes, not a brief-level lock).
+
+------------------------------------------------------
+
+## 36 - Trust as a user-selectable stance, with opt-in broker sync on a control-to-automation spectrum
+- Date: 2026-06-23
+- Stage: Define
+- Status: Active
+- Decision: Treat trust as a user-selectable stance instead of a single dogma. Local-first / no-account stays the default, but the user can opt into sharing part of their portfolio - most concretely opt-in broker sync (e.g. Interactive Brokers) - as one option on a control-to-automation spectrum alongside manual entry and CSV. Sync pulls the holdings list once; our own feeds keep prices fresh. This brings opt-in broker sync into scope (revising the blanket "integrations deferred" of #10); blanket bank-aggregation / always-on sync of every platform stays deferred.
+- Why: Survey #34 - 36% have abandoned an app over account/data demands (real behaviour, so local-first removes a genuine blocker for ~a third), but 50% are comfortable with bank/broker apps, 0% name distrust as their top pain, and the #1 pain is upkeep. Letting the user choose dissolves a false either/or: privacy-minded users stay fully local; automation-minded users kill the upkeep pain via sync. This is a product/experience decision; the technical question (where sync needs a server vs. read-only client-side) is deliberately deferred - the brief optimises for the ideal experience first.
+- Alternatives considered: Keep local-first a hard dogma with no sync (rejected - leaves the #1 pain unsolved for the half who'd happily sync); make sync + accounts the default (rejected - breaks the trust story for the third who'd bounce); settle the sync architecture now (rejected - premature; design the experience first).
+
+------------------------------------------------------
+
+## 37 - OVDP and Inzhur certificates are feed-feasible; auto-pull their price in the prototype
+- Date: 2026-06-23
+- Stage: Define
+- Status: Active
+- Decision: Treat OVDP and Inzhur certificates as feed-feasible and auto-pull their current price in the prototype, rather than leaving them manual / "feed-ready" (#15). Real estate and deposits stay manual.
+- Why: A firsthand teardown of bonds.pp.ua confirmed live data exists for both - OVDP buy/sell + yields per ISIN aggregated across brokers (with a coupon/redemption cash-flow schedule), and a clean per-fund JSON for Inzhur REIT and Energy with daily NAV/buy/sell (UAH+USD) and monthly dividend per certificate. The real source is Inzhur's own daily NAV publication; bonds.pp.ua only proves it's reachable. These two assets are the ~95% beachhead core (#34), so auto-updating them attacks the #1 pain (upkeep) for almost every target user - and they are exactly what competitors like Strum don't cover.
+- Alternatives considered: Keep them manual with snapshot history (rejected - leaves the core assets as the very upkeep chore we're trying to kill, now that a feed is proven feasible); commit to bonds.pp.ua as the source (rejected - it's an undocumented third-party API; for production the source/terms need verifying with Inzhur directly, so we commit only to "a feed is feasible," not to a specific provider).
+
+------------------------------------------------------
+
+## 38 - Working in-UI EN/UA language switch; Ukrainian for tests, English for the portfolio
+- Date: 2026-06-23
+- Stage: Define
+- Status: Active
+- Decision: Ship a working in-UI language switch (English / Ukrainian) and run two delivery contexts off it - the Ukrainian interface for the Inzhur usability tests, English as the default for the portfolio case study - with one easy toggle flipping the whole UI. Refines #09 (EN-first + an EN/UA picker) into a concrete runtime requirement.
+- Why: The Inzhur community has already asked to test the prototype, and those tests must run in Ukrainian to be valid; the portfolio audience is international and reads best in English. Both needs are real and simultaneous, so the switch can't be a deferred localization nicety - it's a build requirement, and other Ukrainian tools (Strum, firekit) set the expectation.
+- Alternatives considered: English-only for v1 with localization later (rejected - the UA usability tests need a UA interface now); two separate builds (rejected - duplicate work and drift; one build with a toggle applies the single-responsive-app principle to language); Ukrainian-only (rejected - weakens the international portfolio).
