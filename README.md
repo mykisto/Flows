@@ -12,7 +12,7 @@ Flows consolidates a retail investor's holdings from many platforms — REIT/fun
 | --- | --- |
 | [`app/`](app/) | The Next.js app — the product itself |
 | [`research/`](research/) | User research - [`research.md`](research/research.md), [`competitor-analysis.md`](research/competitor-analysis.md) (desk scan), [`competitor-teardown.md`](research/competitor-teardown.md) (hands-on teardown - logged-in web apps + a firsthand desktop app), [`flexibility-deep-dive.md`](research/flexibility-deep-dive.md) (flexibility-without-effort study, non-finance exemplars), [`beachhead-survey.md`](research/beachhead-survey.md) (Inzhur-community survey + form generator), [`beachhead-responses.md`](research/beachhead-responses.md) (all 22 responses; summary + charts in `research.md` §6 / the research page), [`personas.md`](research/personas.md) (3 behavioural personas), [`jtbd.md`](research/jtbd.md) (jobs-to-be-done matrix) + [`screens/`](research/screens/) (competitor captures; usability test to come) |
-| [`wireframes/`](wireframes/) | Low-fi flows & layouts |
+| [`wireframes/`](wireframes/) | Low-fi flows & layouts - [`sitemap.md`](wireframes/sitemap.md) (entity inventory: the objects each job needs, traced to `jtbd.md`, before any screen is drawn) |
 | [`concept/`](concept/) | Visual direction & concept exploration |
 | [`tokens/`](tokens/) | Design tokens |
 | [`components/`](components/) | Component inventory & specs |
