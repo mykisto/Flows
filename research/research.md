@@ -120,21 +120,21 @@ The make-or-break calls already made - the conclusions below build on these:
 
 ---
 
-## 6. Beachhead survey - primary data (N=22)
+## 6. Beachhead survey - primary data (N=30)
 
-First primary data from the actual beachhead. A 10-question survey (9 closed + 1 open, Ukrainian, no recruitment block) went to the Inzhur community; **22 responses** over two days. Convenience sample - **directional, not statistical**, and Inzhur is over-represented by construction (that's the beachhead). Full instrument: [`beachhead-survey.md`](beachhead-survey.md); every raw response: [`beachhead-responses.md`](beachhead-responses.md).
+First primary data from the actual beachhead. A 10-question survey (9 closed + 1 open, Ukrainian, no recruitment block) went to the Inzhur community; **30 responses** over three days. Convenience sample - **directional, not statistical**, and Inzhur is over-represented by construction (that's the beachhead). Full instrument: [`beachhead-survey.md`](beachhead-survey.md); every raw response: [`beachhead-responses.md`](beachhead-responses.md).
 
 ### Distributions
 
-- **Q1 - Asset types (multi).** Inzhur 21/22 (95%) · OVDP 21/22 (95%) · Stocks/ETF 9 (41%) · Crypto 9 (41%) · Real estate 9 (41%) · Deposits 8 (36%). Mean ≈ 3.5 types each. **Inzhur + OVDP are the universal core; everything else is a long tail.**
-- **Q2 - Platforms.** 3+ platforms for 73% (16/22); 5+ for 36%. ✔ fragmentation confirmed.
-- **Q3 - Share in the largest platform.** ≤50% for 55% (genuinely spread); >75% for only 23%. **Consolidation value holds for the majority - but not for everyone.**
-- **Q4 - Where they consolidate (primary method).** Excel/Sheets 9 (41%) · nowhere / in head / scattered 5 (23%) · dedicated tracker 5 (23%) · native Inzhur/broker app 3 (14%). **Spreadsheets are the single biggest method; with "nowhere," ⅔ are on a sheet or nothing.**
-- **Q5 - Device.** Phone 45% · laptop 27% · varies 27% · tablet 0. Phone-inclusive ≈ 73%, **but laptop/varies = 55% and skews to the spreadsheet/tool power users** → mobile-first, desktop essential.
-- **Q6 - Cadence.** Daily 23% + weekly 32% = **55% check weekly or more**; monthly 32%. High engagement → manual upkeep hurts *repeatedly*.
-- **Q7 - Income tracking.** Realized + projected 50% · realized only 32% · none 18%. **82% track income; forward-looking is already the single largest group.**
-- **Q8 - Abandoned an app over account/data demands.** Yes 36% · didn't stop me 14% · comfortable with bank/broker apps 50%.
-- **Q9 - Biggest difficulty (single choice).** Scattered assets 27% · manual math 23% · data goes stale 18% · no forward income **5%** · distrust **0%** · "I'm fine" 27%.
+- **Q1 - Asset types (multi).** Inzhur 29/30 (97%) · OVDP 28/30 (93%) · Crypto 14 (47%) · Stocks/ETF 12 (40%) · Real estate 12 (40%) · Deposits 9 (30%). Mean ≈ 3.6 types each. **Inzhur + OVDP are the universal core; everything else is a long tail.**
+- **Q2 - Platforms.** 3+ platforms for 70% (21/30); 5+ for 40%. ✔ fragmentation confirmed.
+- **Q3 - Share in the largest platform.** ≤50% for 50% (genuinely spread); >75% for only 27%. **Consolidation value holds for the majority - but not for everyone.**
+- **Q4 - Where they consolidate (primary method).** Excel/Sheets 12 (40%) · nowhere / in head / scattered 6 (20%) · dedicated tracker 5 (17%) · native Inzhur/broker app 7 (23%). **Spreadsheets are the single biggest method; with "nowhere," 60% are on a sheet or nothing.**
+- **Q5 - Device.** Phone 43% · laptop 30% · varies 27% · tablet 0. Phone-inclusive ≈ 70%, **but laptop/varies = 57% and skews to the spreadsheet/tool power users** → mobile-first, desktop essential.
+- **Q6 - Cadence.** Daily 20% + weekly 37% = **57% check weekly or more**; monthly 33%. High engagement → manual upkeep hurts *repeatedly*.
+- **Q7 - Income tracking.** Realized + projected 53% · realized only 33% · none 13%. **87% track income; forward-looking is already the single largest group.**
+- **Q8 - Abandoned an app over account/data demands.** Yes 37% · didn't stop me 13% · comfortable with bank/broker apps 50%.
+- **Q9 - Biggest difficulty (single choice).** Scattered assets 27% · manual math 23% · data goes stale 20% · no forward income **7%** · distrust **0%** · "I'm fine" 23%.
 
 ### What it confirms, challenges, and moves
 
@@ -142,25 +142,31 @@ First primary data from the actual beachhead. A 10-question survey (9 closed + 1
 
 **Three things it moves:**
 
-1. **The named pain is upkeep and consolidation, not "no forward income."** Forward income was the top pain for only 1/22 and distrust for 0/22; the named pains are scattered assets (27%) and effort - manual math plus staleness, 41% combined. Q10 sharpens which effort: R7 - "once a month is tolerable; the pain is logging in here and there to gather all the data." So forward income is a latent delight (50% already do it but don't name it as the pain), while the pain that wins adoption is "everything in one place without manual labour." This is why the two leads are co-equal rather than income alone (see below).
+1. **The named pain is upkeep and consolidation, not "no forward income."** Forward income was the top pain for only 2/30 and distrust for 0/30; the named pains are scattered assets (27%) and effort - manual math plus staleness, 43% combined. Q10 sharpens which effort: R7 - "once a month is tolerable; the pain is logging in here and there to gather all the data." So forward income is a latent delight (53% already do it but don't name it as the pain), while the pain that wins adoption is "everything in one place without manual labour." This is why the two leads are co-equal rather than income alone (see below).
 
-2. **Trust is an adoption filter, not a daily pain.** 36% have *actually abandoned* an app over account/data demands (real past behaviour) - yet 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps. So local-first removes a real blocker for ~⅓, but isn't what most users feel day-to-day → **trust as a user-selectable stance, not a single dogma** (it also reconciles with offering opt-in broker sync for the half who want automation over local-only).
+2. **Trust is an adoption filter, not a daily pain.** 37% have *actually abandoned* an app over account/data demands (real past behaviour) - yet 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps. So local-first removes a real blocker for ~⅓, but isn't what most users feel day-to-day → **trust as a user-selectable stance, not a single dogma** (it also reconciles with offering opt-in broker sync for the half who want automation over local-only).
 
-3. **The two "manual, feed-ready" assets are the universal core - and a feed for them is demonstrably feasible.** Inzhur + OVDP are held by ~95% of respondents, and a firsthand teardown of **bonds.pp.ua** shows both are obtainable as live data: it aggregates OVDP buy/sell quotes + yields per ISIN across brokers (with a computed coupon/redemption cash-flow schedule), and exposes a clean per-fund JSON for **Inzhur REIT and Energy** - daily NAV/buy/sell (UAH+USD) with history **plus** monthly dividend per certificate. The underlying source is Inzhur's own daily NAV publication; bonds.pp.ua only proves it's reachable. So the assets nobody else auto-updates - and that **Strum doesn't cover at all** - can be auto-tracked for our beachhead, attacking the #1 named pain directly.
+3. **The two "manual, feed-ready" assets are the universal core - and a feed for them is demonstrably feasible.** Inzhur + OVDP are held by ~95% of respondents (Inzhur 97%, OVDP 93%), and a firsthand teardown of **bonds.pp.ua** shows both are obtainable as live data: it aggregates OVDP buy/sell quotes + yields per ISIN across brokers (with a computed coupon/redemption cash-flow schedule), and exposes a clean per-fund JSON for **Inzhur REIT and Energy** - daily NAV/buy/sell (UAH+USD) with history **plus** monthly dividend per certificate. The underlying source is Inzhur's own daily NAV publication; bonds.pp.ua only proves it's reachable. So the assets nobody else auto-updates - and that **Strum doesn't cover at all** - can be auto-tracked for our beachhead, attacking the #1 named pain directly.
+
+**A thin fourth signal: an analytics / goals layer.** Two of the ten open answers ask for something past the consolidated view: R26 wants "a calculator: how much to contribute per month to reach the desired result," and R23 wants "statistical data / interpolation for the past and the future." Both are single voices (and R26's named top difficulty is "I'm fine"), so this stays a complementary want, not a felt pain. But it is the first direct beachhead signal for a derived analytics screen and a goal calculator on top of the position + income base, and it lifts the long-term-goal hypothesis (HJ3) from no evidence to thin evidence.
 
 ### Competitor signal from the responses
 
-Respondents named the tools they actually use: **Strum** (Ukrainian, multi-asset - the closest direct competitor; one respondent uses it daily and is satisfied, but it omits Inzhur certificates, the 95% core), plus **firekit**, **Account Tracker**, **WiseWallet**, **Notion**, and a self-built **PowerBI** report. The "I'm fine" 27% are mostly either low-complexity holders or already on a dedicated tool - **the opportunity is the spreadsheet / nowhere / scattered majority**, not the tool-satisfied tail. firekit, Account Tracker and WiseWallet are queued for a later scan.
+Respondents named the tools they actually use: **Strum** (Ukrainian, multi-asset - the closest direct competitor; one respondent uses it daily and is satisfied, but it omits Inzhur certificates, the 95% core), plus **firekit**, **Account Tracker**, **WiseWallet**, **Notion**, **Google Finance**, and a self-built **PowerBI** report. The "I'm fine" 23% are mostly either low-complexity holders or already on a dedicated tool - **the opportunity is the spreadsheet / nowhere / scattered majority**, not the tool-satisfied tail. firekit, Account Tracker and WiseWallet are queued for a later scan.
 
 ### Effect on the load-bearing assumption
 
 The assumption ("the beachhead stays on spreadsheets primarily for coverage/flexibility") is **partly supported and partly redirected.** Supported: spreadsheets/nothing dominate (Q4) and flexibility-across-heterogeneous-assets is a named want (R8). Redirected: the *felt* dealbreaker is **ongoing upkeep / data-gathering** at least as much as coverage - so "Excel's flexibility without Excel's labour" should foreground the *labour* (ongoing automation), not just one-time coverage. The comparative usability test (the assumption's real test) still stands; the survey simply de-risks the direction going into Define.
 
+### A data gap the architecture surfaces
+
+Drawing the screens exposed one thing the survey never measured: **how many holdings a person actually has.** Q2 counts platforms (3+ for 70%) and Q3 the share in the largest one, but neither gives the number of individual positions. The sitemap leans on an assumed ~5-30 holdings to justify a grouped, scannable list with no heavy search or filter on day one; if real portfolios run longer, that list and its grouping need rethinking. Flagged here to measure directly in the comparative usability test (count holdings per participant), rather than carry the assumption silently into the wireframes.
+
 ---
 
 ## 7. Post-persona follow-up (web scan)
 
-After building the personas, a targeted web scan tested three load-bearing assumptions behind them. This is Western/global desk evidence (mostly tracker-vendor blogs, product reviews, app-store and forum posts), not the beachhead. It is directional only: the N=22 survey stays the authority for our users, and the comparative usability test is still the real test. The scan moves three things.
+After building the personas, a targeted web scan tested three load-bearing assumptions behind them. This is Western/global desk evidence (mostly tracker-vendor blogs, product reviews, app-store and forum posts), not the beachhead. It is directional only: the N=30 survey stays the authority for our users, and the comparative usability test is still the real test. The scan moves three things.
 
 ### 7.1 People stay on a spreadsheet for convenience and path-dependence, not distrust
 Familiarity/habit and flexibility/control dominate; distrust is secondary and never the lead.
@@ -172,7 +178,7 @@ This refutes any "Excel use = distrust" reading and backs the existing wedge ("E
 
 ### 7.2 "Excel" and "nowhere" are different people, not one bucket
 The earlier "two-thirds are on a sheet or nothing" framing (§6, Q4) lumps two motivations that the scan and the survey pull apart:
-- **Nowhere = low complexity.** Few assets, often concentrated in one platform, little to consolidate, so no tool is needed. Consistent with Q3 (>75% of holdings in one platform for 23%) and with first-hand beachhead self-report (a holder with everything in Inzhur plus a short, fixed-term crypto position they rarely open).
+- **Nowhere = low complexity.** Few assets, often concentrated in one platform, little to consolidate, so no tool is needed. Consistent with Q3 (>75% of holdings in one platform for 27%) and with first-hand beachhead self-report (a holder with everything in Inzhur plus a short, fixed-term crypto position they rarely open).
 - **Excel = convenience/path-dependence** (7.1): a deliberate consolidation choice for people who do have spread.
 
 Implication: the opportunity is the Excel / consolidation-needing group, plus the subset of "nowhere" holders outgrowing one platform. A chunk of "nowhere" simply does not need Flows and should not be counted as latent demand. This splits persona P2 (see [`personas.md`](personas.md)).
@@ -183,7 +189,7 @@ In finance-specific sources, privacy/data sits middle-to-minor as a reason peopl
 - "If account linking fails, data goes stale, or transactions go missing, trust drops fast" (Plaid, https://plaid.com/trouble-connecting/).
 - Privacy works as positioning, not as a churn reason: Wealthfolio sells entirely on "private ... runs locally ... No account needed" (https://wealthfolio.app/). Generic cross-category uninstall surveys put privacy top-3 (29-61%), but that is self-reported and inflated by social desirability.
 
-This matches the survey (0% name distrust as top pain, 36% have abandoned an app over data demands, 50% comfortable with bank/broker apps). Two implications: (a) keep local-first as a selectable stance and an acquisition story, not a hero feature; (b) the failure competitors actually lose users over, sync that breaks and numbers that are wrong, is exactly what our "as of [freshness]", "never fabricate a number", and feed-feasibility decisions target.
+This matches the survey (0% name distrust as top pain, 37% have abandoned an app over data demands, 50% comfortable with bank/broker apps). Two implications: (a) keep local-first as a selectable stance and an acquisition story, not a hero feature; (b) the failure competitors actually lose users over, sync that breaks and numbers that are wrong, is exactly what our "as of [freshness]", "never fabricate a number", and feed-feasibility decisions target.
 
 ### 7.4 Forward income is a real draw, conditional on being real and accurate
 Directional yes. Every serious tracker leads with a forecast/calendar, users request it unprompted, and paid tiers monetise it.

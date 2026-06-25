@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flows (research)</title>
+<title>Flows (case study)</title>
 <style>
   /* Visual language ported from linear.app - lifted near-black canvas, Inter
      (system fallback to SF Pro), light body / medium headings with tight negative
@@ -350,6 +350,56 @@
     header.doc{padding:40px 0 24px}
     .hyps{grid-template-columns:1fr}
   }
+
+  /* ---- 04 architecture: sitemap tree, nav summary, traceability, flows ---- */
+  .tree{margin:1.3em 0 .6em;max-width:var(--measure)}
+  .tree ul{list-style:none;margin:0;padding:0}
+  .tree>ul>li.grp{margin:0 0 16px}
+  .tree li.grp{color:var(--ink);font-weight:560;font-size:.93rem}
+  .tree li.grp .gl{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;
+    border-radius:6px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.72rem;
+    font-family:var(--mono);margin-right:9px}
+  .tree li.grp.chrome{color:var(--muted);font-weight:500}
+  .tree li.grp.chrome .gl{background:var(--surface-2);color:var(--faint)}
+  .tree li.grp .muted{color:var(--faint);font-weight:400;font-size:.86em}
+  .tree li.grp>ul{margin:9px 0 0 10px;border-left:1px solid var(--line);padding-left:16px}
+  .tree li.scr{margin:.5em 0;font-size:.86rem;color:var(--ink-2);line-height:1.4}
+  .tree li.scr>ul{margin:7px 0 3px;border-left:1px solid var(--line);padding-left:16px}
+  .tree .row{display:flex;flex-wrap:wrap;align-items:baseline;gap:9px}
+  .tree .nm{color:var(--ink);font-weight:520}
+  .tree li.scr.drv .nm{font-weight:500;color:var(--ink-2)}
+  .tree li.scr.drv .nm::before{content:"derived \00b7 ";color:var(--faint);font-weight:400;font-size:.86em}
+  .tree .jb{color:var(--faint);font-family:var(--mono);font-size:.74rem;letter-spacing:0}
+  .tree .pt{font-size:.63rem;font-weight:700;letter-spacing:.05em;padding:1px 5px;border-radius:5px}
+  .tree .pt.p1{color:var(--pos);background:rgba(76,183,130,.12);border:1px solid rgba(76,183,130,.3)}
+  .tree .pt.p3{color:var(--lock);background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.3)}
+  .tree .thin{color:var(--warn);font-family:var(--sans);font-size:.68rem;font-weight:600;letter-spacing:.04em;
+    text-transform:uppercase;border:1px solid rgba(227,179,65,.4);background:var(--warn-bg);border-radius:5px;padding:0 5px}
+
+  .navrow{list-style:none;padding:0;margin:1em 0;max-width:var(--measure);display:flex;flex-direction:column;gap:9px}
+  .navrow li{margin:0;font-size:.88rem;color:var(--ink-2)}
+  .navrow .tab{display:inline-block;min-width:92px;text-align:center;font-weight:560;color:var(--ink);
+    border:1px solid var(--line-2);border-radius:7px;padding:2px 11px;margin-right:11px;font-size:.79rem}
+
+  table.trace{min-width:840px;font-size:.8rem}
+  table.trace thead th{font-family:var(--mono);font-size:.72rem;letter-spacing:0;text-align:center}
+  table.trace thead th:first-child{text-align:left}
+  table.trace td{text-align:center;padding:9px 6px;color:var(--faint)}
+  table.trace tbody th[scope=row]{font-weight:520;color:var(--ink);font-size:.8rem;white-space:nowrap}
+  table.trace td.y{color:var(--pos);font-weight:700}
+  table.trace tr.thin th[scope=row],table.trace tr.thin td{background:var(--warn-bg)}
+  .tflag{font-size:.64rem;color:var(--warn);border:1px solid rgba(227,179,65,.4);background:var(--warn-bg);
+    border-radius:5px;padding:0 5px;margin-left:7px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+  .mxnote{color:var(--muted);font-size:.84rem;max-width:var(--measure)}
+
+  .diagram{background:var(--sheen),var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;margin:12px 0 24px;overflow-x:auto}
+  pre.mermaid{margin:0;min-width:520px;font-family:var(--mono);font-size:.76rem;line-height:1.5;
+    color:var(--faint);white-space:pre;border:none;background:none;padding:0}
+  pre.mermaid:not([data-processed]){opacity:0}
+  pre.mermaid[data-processed]{opacity:1;min-width:0;white-space:normal}
+  pre.mermaid svg{max-width:100%;height:auto;display:block;margin:0 auto}
+  .flowdesc{color:var(--muted);font-size:.88rem;max-width:var(--measure);margin:.3em 0 0}
 </style>
 </head>
 <body>
@@ -367,7 +417,7 @@
 <div class="page">
 <nav class="side" aria-label="Section navigation">
   <div class="side-inner">
-    <span class="brand">Flows <small>research</small></span>
+    <span class="brand">Flows <small>case study</small></span>
     <ul class="side-nav">
       <li><a href="#overview" class="active" data-label="Overview"><span class="n">00</span> Overview</a></li>
 
@@ -392,6 +442,14 @@
           <li><a href="#jtbd-matrix" data-label="Matrix">Matrix</a></li>
         </ul>
       </li>
+
+      <li class="nav-group">
+        <a href="#sitemap" data-label="Architecture"><span class="n">04</span> Architecture</a>
+        <ul class="subnav">
+          <li><a href="#sitemap" data-label="Sitemap">Sitemap</a></li>
+          <li><a href="#flows" data-label="Flows">Flows</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </nav>
@@ -400,8 +458,8 @@
 
   <header class="doc" id="overview">
     <span class="sec-tag"><span class="num">00</span> Overview</span>
-    <h1>Flows <span style="color:var(--faint);font-weight:500">| research</span></h1>
-    <p class="lede">The research so far, in one place - the competitive landscape, the make-or-break design dimension, and the hypotheses they point to. The full evidence lives in four source threads:</p>
+    <h1>Flows <span style="color:var(--faint);font-weight:500">| case study</span></h1>
+    <p class="lede">The design process in one place - from the competitive landscape and the make-or-break design dimension, through the beachhead survey and the personas it points to, to the screen architecture the product is built on. The research evidence behind the early sections lives in four source threads:</p>
 
     <ul class="sources">
       <li><a class="cite" href="competitor-analysis.md">competitor-analysis.md</a> - the three-group competitor map (desk research, <span class="num">June 2026</span>)</li>
@@ -698,46 +756,46 @@
   <section id="survey">
     <span class="sec-tag"><span class="num">02</span> Survey</span>
     <h2>Beachhead survey - primary data</h2>
-    <p class="lede">The first direct evidence from the beachhead. A 10-question survey (9 closed + 1 open, Ukrainian, no recruitment block) sent to the Inzhur community - <strong>N&nbsp;=&nbsp;22</strong>, two days. Convenience sample, so <em>directional, not statistical</em>; Inzhur is over-represented by construction. Instrument: <a class="cite" href="beachhead-survey.md">beachhead-survey.md</a> · every raw response: <a class="cite" href="beachhead-responses.md">beachhead-responses.md</a>.</p>
+    <p class="lede">The first direct evidence from the beachhead. A 10-question survey (9 closed + 1 open, Ukrainian, no recruitment block) sent to the Inzhur community - <strong>N&nbsp;=&nbsp;30</strong>, three days. Convenience sample, so <em>directional, not statistical</em>; Inzhur is over-represented by construction. Instrument: <a class="cite" href="beachhead-survey.md">beachhead-survey.md</a> · every raw response: <a class="cite" href="beachhead-responses.md">beachhead-responses.md</a>.</p>
 
     <div class="charts">
 
       <div class="chart">
         <h4>Asset types held</h4>
-        <p class="q">Q1 · multi-select · % of 22</p>
+        <p class="q">Q1 · multi-select · % of 30</p>
         <div class="bars">
-          <div class="bar-row"><span class="lab">Inzhur (REIT/funds)</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>21</b> · 95%</span></div>
-          <div class="bar-row"><span class="lab">OVDP (gov bonds)</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>21</b> · 95%</span></div>
-          <div class="bar-row"><span class="lab">Stocks / ETF</span><span class="bar-track"><span class="bar-fill" style="width:43%"></span></span><span class="val"><b>9</b> · 41%</span></div>
-          <div class="bar-row"><span class="lab">Crypto</span><span class="bar-track"><span class="bar-fill" style="width:43%"></span></span><span class="val"><b>9</b> · 41%</span></div>
-          <div class="bar-row"><span class="lab">Real estate</span><span class="bar-track"><span class="bar-fill" style="width:43%"></span></span><span class="val"><b>9</b> · 41%</span></div>
-          <div class="bar-row"><span class="lab">Bank deposits</span><span class="bar-track"><span class="bar-fill" style="width:38%"></span></span><span class="val"><b>8</b> · 36%</span></div>
-          <div class="bar-row"><span class="lab">Other / custom</span><span class="bar-track"><span class="bar-fill" style="width:10%"></span></span><span class="val"><b>2</b> · 9%</span></div>
+          <div class="bar-row"><span class="lab">Inzhur (REIT/funds)</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>29</b> · 97%</span></div>
+          <div class="bar-row"><span class="lab">OVDP (gov bonds)</span><span class="bar-track"><span class="bar-fill" style="width:97%"></span></span><span class="val"><b>28</b> · 93%</span></div>
+          <div class="bar-row"><span class="lab">Crypto</span><span class="bar-track"><span class="bar-fill" style="width:48%"></span></span><span class="val"><b>14</b> · 47%</span></div>
+          <div class="bar-row"><span class="lab">Stocks / ETF</span><span class="bar-track"><span class="bar-fill" style="width:41%"></span></span><span class="val"><b>12</b> · 40%</span></div>
+          <div class="bar-row"><span class="lab">Real estate</span><span class="bar-track"><span class="bar-fill" style="width:41%"></span></span><span class="val"><b>12</b> · 40%</span></div>
+          <div class="bar-row"><span class="lab">Bank deposits</span><span class="bar-track"><span class="bar-fill" style="width:31%"></span></span><span class="val"><b>9</b> · 30%</span></div>
+          <div class="bar-row"><span class="lab">Other / custom</span><span class="bar-track"><span class="bar-fill" style="width:10%"></span></span><span class="val"><b>3</b> · 10%</span></div>
         </div>
       </div>
 
       <div class="chart">
         <h4>Platforms holdings sit on</h4>
-        <p class="q">Q2 · 3+ platforms for 73%</p>
+        <p class="q">Q2 · 3+ platforms for 70%</p>
         <div class="bars">
-          <div class="bar-row"><span class="lab">1</span><span class="bar-track"><span class="bar-fill" style="width:13%"></span></span><span class="val"><b>1</b> · 5%</span></div>
-          <div class="bar-row"><span class="lab">2</span><span class="bar-track"><span class="bar-fill" style="width:63%"></span></span><span class="val"><b>5</b> · 23%</span></div>
-          <div class="bar-row"><span class="lab">3</span><span class="bar-track"><span class="bar-fill" style="width:50%"></span></span><span class="val"><b>4</b> · 18%</span></div>
-          <div class="bar-row"><span class="lab">4</span><span class="bar-track"><span class="bar-fill" style="width:50%"></span></span><span class="val"><b>4</b> · 18%</span></div>
-          <div class="bar-row"><span class="lab">5 or more</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>8</b> · 36%</span></div>
+          <div class="bar-row"><span class="lab">1</span><span class="bar-track"><span class="bar-fill" style="width:33%"></span></span><span class="val"><b>4</b> · 13%</span></div>
+          <div class="bar-row"><span class="lab">2</span><span class="bar-track"><span class="bar-fill" style="width:42%"></span></span><span class="val"><b>5</b> · 17%</span></div>
+          <div class="bar-row"><span class="lab">3</span><span class="bar-track"><span class="bar-fill" style="width:42%"></span></span><span class="val"><b>5</b> · 17%</span></div>
+          <div class="bar-row"><span class="lab">4</span><span class="bar-track"><span class="bar-fill" style="width:33%"></span></span><span class="val"><b>4</b> · 13%</span></div>
+          <div class="bar-row"><span class="lab">5 or more</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>12</b> · 40%</span></div>
         </div>
       </div>
 
       <div class="chart">
         <h4>Share in the largest platform</h4>
-        <p class="q">Q3 · ≤50% for 55% → genuinely spread</p>
+        <p class="q">Q3 · ≤50% for 50% → genuinely spread</p>
         <div class="pie-wrap">
-          <div class="pie" style="background:conic-gradient(var(--faint) 0 9.09%,var(--accent) 9.09% 54.55%,var(--ua) 54.55% 77.27%,var(--lock) 77.27% 100%)"></div>
+          <div class="pie" style="background:conic-gradient(var(--faint) 0 10%,var(--accent) 10% 50%,var(--ua) 50% 73.33%,var(--lock) 73.33% 100%)"></div>
           <ul class="pie-legend">
-            <li><span class="sw" style="background:var(--faint)"></span>under 25%<span class="pv"><b>2</b> · 9%</span></li>
-            <li><span class="sw" style="background:var(--accent)"></span>25–50%<span class="pv"><b>10</b> · 45%</span></li>
-            <li><span class="sw" style="background:var(--ua)"></span>50–75%<span class="pv"><b>5</b> · 23%</span></li>
-            <li><span class="sw" style="background:var(--lock)"></span>over 75%<span class="pv"><b>5</b> · 23%</span></li>
+            <li><span class="sw" style="background:var(--faint)"></span>under 25%<span class="pv"><b>3</b> · 10%</span></li>
+            <li><span class="sw" style="background:var(--accent)"></span>25–50%<span class="pv"><b>12</b> · 40%</span></li>
+            <li><span class="sw" style="background:var(--ua)"></span>50–75%<span class="pv"><b>7</b> · 23%</span></li>
+            <li><span class="sw" style="background:var(--lock)"></span>over 75%<span class="pv"><b>8</b> · 27%</span></li>
           </ul>
         </div>
       </div>
@@ -746,47 +804,47 @@
         <h4>Where they consolidate today</h4>
         <p class="q">Q4 · primary method (some use several)</p>
         <div class="bars">
-          <div class="bar-row"><span class="lab">Excel / Sheets</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>9</b> · 41%</span></div>
-          <div class="bar-row"><span class="lab">Nowhere / scattered</span><span class="bar-track"><span class="bar-fill" style="width:56%"></span></span><span class="val"><b>5</b> · 23%</span></div>
-          <div class="bar-row"><span class="lab">Dedicated tracker</span><span class="bar-track"><span class="bar-fill" style="width:56%"></span></span><span class="val"><b>5</b> · 23%</span></div>
-          <div class="bar-row"><span class="lab">Inzhur / broker app</span><span class="bar-track"><span class="bar-fill" style="width:33%"></span></span><span class="val"><b>3</b> · 14%</span></div>
+          <div class="bar-row"><span class="lab">Excel / Sheets</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>12</b> · 40%</span></div>
+          <div class="bar-row"><span class="lab">Inzhur / broker app</span><span class="bar-track"><span class="bar-fill" style="width:58%"></span></span><span class="val"><b>7</b> · 23%</span></div>
+          <div class="bar-row"><span class="lab">Nowhere / scattered</span><span class="bar-track"><span class="bar-fill" style="width:50%"></span></span><span class="val"><b>6</b> · 20%</span></div>
+          <div class="bar-row"><span class="lab">Dedicated tracker</span><span class="bar-track"><span class="bar-fill" style="width:42%"></span></span><span class="val"><b>5</b> · 17%</span></div>
         </div>
       </div>
 
       <div class="chart">
         <h4>Device most used</h4>
-        <p class="q">Q5 · phone leads, but desktop = 55%</p>
+        <p class="q">Q5 · phone leads, but desktop = 57%</p>
         <div class="pie-wrap">
-          <div class="pie" style="background:conic-gradient(var(--accent) 0 45.45%,var(--ua) 45.45% 72.73%,var(--faint) 72.73% 100%)"></div>
+          <div class="pie" style="background:conic-gradient(var(--accent) 0 43.33%,var(--ua) 43.33% 73.33%,var(--faint) 73.33% 100%)"></div>
           <ul class="pie-legend">
-            <li><span class="sw" style="background:var(--accent)"></span>Phone<span class="pv"><b>10</b> · 45%</span></li>
-            <li><span class="sw" style="background:var(--ua)"></span>Laptop / desktop<span class="pv"><b>6</b> · 27%</span></li>
-            <li><span class="sw" style="background:var(--faint)"></span>Varies<span class="pv"><b>6</b> · 27%</span></li>
+            <li><span class="sw" style="background:var(--accent)"></span>Phone<span class="pv"><b>13</b> · 43%</span></li>
+            <li><span class="sw" style="background:var(--ua)"></span>Laptop / desktop<span class="pv"><b>9</b> · 30%</span></li>
+            <li><span class="sw" style="background:var(--faint)"></span>Varies<span class="pv"><b>8</b> · 27%</span></li>
           </ul>
         </div>
       </div>
 
       <div class="chart">
         <h4>How often they update / review</h4>
-        <p class="q">Q6 · 55% weekly or more</p>
+        <p class="q">Q6 · 57% weekly or more</p>
         <div class="bars">
-          <div class="bar-row"><span class="lab">Daily</span><span class="bar-track"><span class="bar-fill" style="width:71%"></span></span><span class="val"><b>5</b> · 23%</span></div>
-          <div class="bar-row"><span class="lab">Weekly</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>7</b> · 32%</span></div>
-          <div class="bar-row"><span class="lab">Monthly</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>7</b> · 32%</span></div>
-          <div class="bar-row"><span class="lab">Every few months</span><span class="bar-track"><span class="bar-fill" style="width:14%"></span></span><span class="val"><b>1</b> · 5%</span></div>
-          <div class="bar-row"><span class="lab">Not regularly</span><span class="bar-track"><span class="bar-fill" style="width:29%"></span></span><span class="val"><b>2</b> · 9%</span></div>
+          <div class="bar-row"><span class="lab">Daily</span><span class="bar-track"><span class="bar-fill" style="width:55%"></span></span><span class="val"><b>6</b> · 20%</span></div>
+          <div class="bar-row"><span class="lab">Weekly</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>11</b> · 37%</span></div>
+          <div class="bar-row"><span class="lab">Monthly</span><span class="bar-track"><span class="bar-fill" style="width:91%"></span></span><span class="val"><b>10</b> · 33%</span></div>
+          <div class="bar-row"><span class="lab">Every few months</span><span class="bar-track"><span class="bar-fill" style="width:9%"></span></span><span class="val"><b>1</b> · 3%</span></div>
+          <div class="bar-row"><span class="lab">Not regularly</span><span class="bar-track"><span class="bar-fill" style="width:18%"></span></span><span class="val"><b>2</b> · 7%</span></div>
         </div>
       </div>
 
       <div class="chart">
         <h4>Income tracking</h4>
-        <p class="q">Q7 · 82% track it; forward already leads</p>
+        <p class="q">Q7 · 87% track it; forward already leads</p>
         <div class="pie-wrap">
-          <div class="pie" style="background:conic-gradient(var(--pos) 0 50%,var(--accent) 50% 81.82%,var(--faint) 81.82% 100%)"></div>
+          <div class="pie" style="background:conic-gradient(var(--pos) 0 53.33%,var(--accent) 53.33% 86.67%,var(--faint) 86.67% 100%)"></div>
           <ul class="pie-legend">
-            <li><span class="sw" style="background:var(--pos)"></span>Realized + projected<span class="pv"><b>11</b> · 50%</span></li>
-            <li><span class="sw" style="background:var(--accent)"></span>Realized only<span class="pv"><b>7</b> · 32%</span></li>
-            <li><span class="sw" style="background:var(--faint)"></span>Don't track<span class="pv"><b>4</b> · 18%</span></li>
+            <li><span class="sw" style="background:var(--pos)"></span>Realized + projected<span class="pv"><b>16</b> · 53%</span></li>
+            <li><span class="sw" style="background:var(--accent)"></span>Realized only<span class="pv"><b>10</b> · 33%</span></li>
+            <li><span class="sw" style="background:var(--faint)"></span>Don't track<span class="pv"><b>4</b> · 13%</span></li>
           </ul>
         </div>
       </div>
@@ -795,11 +853,11 @@
         <h4>Ever abandoned an app over account / data access</h4>
         <p class="q">Q8 · trust = a filter, not a daily pain</p>
         <div class="pie-wrap">
-          <div class="pie" style="background:conic-gradient(var(--lock) 0 36.36%,var(--warn) 36.36% 50%,var(--faint) 50% 100%)"></div>
+          <div class="pie" style="background:conic-gradient(var(--lock) 0 36.67%,var(--warn) 36.67% 50%,var(--faint) 50% 100%)"></div>
           <ul class="pie-legend">
-            <li><span class="sw" style="background:var(--lock)"></span>Yes, abandoned<span class="pv"><b>8</b> · 36%</span></li>
-            <li><span class="sw" style="background:var(--warn)"></span>No, didn't stop me<span class="pv"><b>3</b> · 14%</span></li>
-            <li><span class="sw" style="background:var(--faint)"></span>Comfortable w/ bank·broker<span class="pv"><b>11</b> · 50%</span></li>
+            <li><span class="sw" style="background:var(--lock)"></span>Yes, abandoned<span class="pv"><b>11</b> · 37%</span></li>
+            <li><span class="sw" style="background:var(--warn)"></span>No, didn't stop me<span class="pv"><b>4</b> · 13%</span></li>
+            <li><span class="sw" style="background:var(--faint)"></span>Comfortable w/ bank·broker<span class="pv"><b>15</b> · 50%</span></li>
           </ul>
         </div>
       </div>
@@ -808,12 +866,12 @@
         <h4>Biggest difficulty today</h4>
         <p class="q">Q9 · single choice · the named pain</p>
         <div class="bars">
-          <div class="bar-row"><span class="lab">Scattered assets</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>6</b> · 27%</span></div>
-          <div class="bar-row"><span class="lab">Manual math</span><span class="bar-track"><span class="bar-fill" style="width:83%"></span></span><span class="val"><b>5</b> · 23%</span></div>
-          <div class="bar-row"><span class="lab">Data goes stale</span><span class="bar-track"><span class="bar-fill" style="width:67%"></span></span><span class="val"><b>4</b> · 18%</span></div>
-          <div class="bar-row"><span class="lab">No forward income</span><span class="bar-track"><span class="bar-fill" style="width:17%"></span></span><span class="val"><b>1</b> · 5%</span></div>
+          <div class="bar-row"><span class="lab">Scattered assets</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><span class="val"><b>8</b> · 27%</span></div>
+          <div class="bar-row"><span class="lab">Manual math</span><span class="bar-track"><span class="bar-fill" style="width:88%"></span></span><span class="val"><b>7</b> · 23%</span></div>
+          <div class="bar-row"><span class="lab">Data goes stale</span><span class="bar-track"><span class="bar-fill" style="width:75%"></span></span><span class="val"><b>6</b> · 20%</span></div>
+          <div class="bar-row"><span class="lab">No forward income</span><span class="bar-track"><span class="bar-fill" style="width:25%"></span></span><span class="val"><b>2</b> · 7%</span></div>
           <div class="bar-row"><span class="lab">Distrust data</span><span class="bar-track"><span class="bar-fill zero" style="width:0"></span></span><span class="val"><b>0</b> · 0%</span></div>
-          <div class="bar-row"><span class="lab">I'm fine</span><span class="bar-track"><span class="bar-fill mute" style="width:100%"></span></span><span class="val"><b>6</b> · 27%</span></div>
+          <div class="bar-row"><span class="lab">I'm fine</span><span class="bar-track"><span class="bar-fill mute" style="width:88%"></span></span><span class="val"><b>7</b> · 23%</span></div>
         </div>
       </div>
 
@@ -821,22 +879,24 @@
 
     <h3>What it moves</h3>
     <ol class="spaced">
-      <li><strong>The named pain is upkeep + consolidation - not "no forward income."</strong> Forward income was the top pain for just 1/22 and distrust for 0/22; scattered assets (27%) and effort - manual math + staleness (41% combined) - dominate. Open answers pinpoint the effort: <em>"once a month is tolerable; the pain is logging in here and there to gather all the data."</em> So forward income is a <strong>latent delight</strong> (50% already do it but don't name it), while the pain that wins adoption is <strong>"everything in one place without manual labour."</strong> → the consolidated view leads with two co-equal lenses (current position + income), user-switchable, rather than income alone.</li>
-      <li><strong>Trust is an adoption filter, not a daily pain.</strong> 36% have actually abandoned an app over account/data demands, yet 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps. → local-first becomes a <strong>user-selectable stance</strong> (with opt-in broker sync for those who prefer automation), not a single dogma.</li>
-      <li><strong>The two "manual" assets are the universal core - and a feed for them is feasible.</strong> Inzhur + OVDP are held by ~95%. A firsthand teardown of bonds.pp.ua shows both are reachable as live data (OVDP buy/sell + yields per ISIN across brokers; Inzhur REIT/Energy daily NAV + monthly dividend per certificate, UAH+USD). The source is Inzhur's own daily NAV publication. → the assets nobody else auto-updates - and that <strong>Strum doesn't even cover</strong> - can be auto-tracked for our beachhead.</li>
+      <li><strong>The named pain is upkeep + consolidation - not "no forward income."</strong> Forward income was the top pain for just 2/30 and distrust for 0/30; scattered assets (27%) and effort - manual math + staleness (43% combined) - dominate. Open answers pinpoint the effort: <em>"once a month is tolerable; the pain is logging in here and there to gather all the data."</em> So forward income is a <strong>latent delight</strong> (53% already do it but don't name it), while the pain that wins adoption is <strong>"everything in one place without manual labour."</strong> → the consolidated view leads with two co-equal lenses (current position + income), user-switchable, rather than income alone.</li>
+      <li><strong>Trust is an adoption filter, not a daily pain.</strong> 37% have actually abandoned an app over account/data demands, yet 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps. → local-first becomes a <strong>user-selectable stance</strong> (with opt-in broker sync for those who prefer automation), not a single dogma.</li>
+      <li><strong>The two "manual" assets are the universal core - and a feed for them is feasible.</strong> Inzhur + OVDP are held by ~95% (Inzhur 97%, OVDP 93%). A firsthand teardown of bonds.pp.ua shows both are reachable as live data (OVDP buy/sell + yields per ISIN across brokers; Inzhur REIT/Energy daily NAV + monthly dividend per certificate, UAH+USD). The source is Inzhur's own daily NAV publication. → the assets nobody else auto-updates - and that <strong>Strum doesn't even cover</strong> - can be auto-tracked for our beachhead.</li>
     </ol>
 
-    <p>Respondents also named the tools they use today - <strong>Strum</strong> (the closest direct competitor: Ukrainian, multi-asset, but no Inzhur certificates), plus firekit, Account Tracker, WiseWallet, Notion, and a self-built PowerBI report - a beachhead-sourced list to scan next. Full synthesis in <a class="cite" href="research.md">research.md §6</a>.</p>
+    <p>A thin fourth signal points past the consolidated view: two open answers ask for an <strong>analytics / goals layer</strong> - "a calculator: how much to contribute per month to reach the desired result" (R26) and "statistical interpolation for the past and the future" (R23). Both are single voices (R26's own top difficulty is "I'm fine"), so this is a complementary want, not a felt pain - but it is the first direct beachhead signal for a derived analytics screen and a goal calculator on top of the position + income base.</p>
+
+    <p>Respondents also named the tools they use today - <strong>Strum</strong> (the closest direct competitor: Ukrainian, multi-asset, but no Inzhur certificates), plus firekit, Account Tracker, WiseWallet, Notion, Google Finance, and a self-built PowerBI report - a beachhead-sourced list to scan next. Full synthesis in <a class="cite" href="research.md">research.md §6</a>.</p>
   </section>
 
   <!-- ============ 7. PERSONAS ============ -->
   <section id="personas">
     <span class="sec-tag"><span class="num">03</span> Personas</span>
     <h2>Who this is for</h2>
-    <p>Behavioural personas, not demographic portraits: the research has no interviews, so we have how people act and choose, not deep why. Names, ages and photos are omitted because no demographic data was collected <span class="tok-unknown">[?]</span>. Evidence is tagged <span class="num">N=22</span> (beachhead survey, directional), <em>desk</em> (competitor / forum scan), or <span class="tok-unknown">[?]</span> where we have nothing. Full text: <a class="cite" href="personas.md">personas.md</a>.</p>
+    <p>Behavioural personas, not demographic portraits: the research has no interviews, so we have how people act and choose, not deep why. Names, ages and photos are omitted because no demographic data was collected <span class="tok-unknown">[?]</span>. Evidence is tagged <span class="num">N=30</span> (beachhead survey, directional), <em>desk</em> (competitor / forum scan), or <span class="tok-unknown">[?]</span> where we have nothing. Full text: <a class="cite" href="personas.md">personas.md</a>.</p>
 
     <h3><span class="verdict v-yes">Primary</span>P1 - The Excel Consolidator</h3>
-    <p>A multi-asset retail investor in the Inzhur community. Holds the universal core, Inzhur + OVDP (~95% each), plus a few of stocks/ETF, crypto, real estate, deposits (~3.5 types). Spread across 3+ platforms (73%), with no single platform holding the majority for most (≤50% share for 55%). Keeps everything in Excel or Sheets, the biggest method (41%) - for <strong>convenience and path-dependence</strong>, the shortest familiar path that grew organically, <strong>not distrust</strong>. Reviews weekly or more (55%).</p>
+    <p>A multi-asset retail investor in the Inzhur community. Holds the universal core, Inzhur + OVDP (~95% each), plus a few of stocks/ETF, crypto, real estate, deposits (~3.6 types). Spread across 3+ platforms (70%), with no single platform holding the majority for most (≤50% share for 50%). Keeps everything in Excel or Sheets, the biggest method (40%) - for <strong>convenience and path-dependence</strong>, the shortest familiar path that grew organically, <strong>not distrust</strong>. Reviews weekly or more (57%).</p>
     <p><strong>Jobs.</strong></p>
     <ul>
       <li>See total position and this-month's income in one place, without rebuilding the sheet by hand.</li>
@@ -852,7 +912,7 @@
     <p><strong>Why primary.</strong> The success hypothesis and the comparative usability test both run against the participant's own Excel workflow; Excel is the biggest incumbent (Q4) and this persona carries the named adoption pain (R7). The product is validated against this person.</p>
 
     <h3><span class="verdict v-maybe">Secondary</span>P2 - The Low-Complexity Holder (mostly nowhere)</h3>
-    <p>Holds few assets, often concentrated in one platform (for example everything in Inzhur) plus maybe one more they rarely open (a short, fixed-term crypto position). Consolidates nowhere because there is little to consolidate, not because they lack a tool (Q4: 23% nowhere; Q3: 23% hold &gt;75% in one platform; first-hand beachhead self-report; §7.2).</p>
+    <p>Holds few assets, often concentrated in one platform (for example everything in Inzhur) plus maybe one more they rarely open (a short, fixed-term crypto position). Consolidates nowhere because there is little to consolidate, not because they lack a tool (Q4: 20% nowhere; Q3: 27% hold &gt;75% in one platform; first-hand beachhead self-report; §7.2).</p>
     <p><strong>Jobs.</strong> For most of this group, none that Flows serves yet: with little spread there is nothing to bring together. The real prospect is the subset outgrowing one platform, when a second or third holding appears.</p>
     <p><strong>Pains.</strong> For most, no acute pain; that is the point. For the growing subset, the moment a second platform appears is when "nowhere" stops working.</p>
     <div class="callout">
@@ -865,7 +925,7 @@
     </div>
 
     <h3><span class="verdict v-maybe">Secondary</span>P3 - The Trust-Wary Abandoner</h3>
-    <p>Has actually quit an app over account or data-access demands at least once (Q8: 36%), so trust is a real entry filter for them. But this is not why they are on Excel or nowhere: distrust is nobody's top daily pain (Q9: 0%), and in the wider scan privacy is a secondary churn reason, not a primary one (§7.3).</p>
+    <p>Has actually quit an app over account or data-access demands at least once (Q8: 37%), so trust is a real entry filter for them. But this is not why they are on Excel or nowhere: distrust is nobody's top daily pain (Q9: 0%), and in the wider scan privacy is a secondary churn reason, not a primary one (§7.3).</p>
     <p><strong>Jobs.</strong> Consolidate without handing the full picture to a cloud account; choose their own spot on the privacy-vs-convenience line (opt into sync for part of the portfolio, keep the rest local).</p>
     <p><strong>Pains.</strong> Mainstream apps are cloud + account by default; real-time auto-sync reads as a red flag. Honest caveat: this is an adoption filter, not a daily felt pain - 0% name distrust as the top difficulty and 50% are comfortable with bank/broker apps (Q8/Q9; §7.3).</p>
     <p><strong>Trust triggers.</strong> Local-first, no account, "never your balances", opt-in (not forced) sync, and on-device or BYOK AI so no server sees the data.</p>
@@ -876,7 +936,7 @@
 
     <div class="callout">
       <span class="k">Out of scope (named, not a target)</span>
-      The "I'm fine" 27% (Q9): mostly low-complexity holders or people already on a dedicated tool, including one respondent who uses <strong>Strum</strong> daily and is satisfied. Not a design target now. A frustrated Strum-style user (the tool misses Inzhur certificates, the 95% core) could be a future switch target, but the research has only the one satisfied data point, so we do not invent that persona <span class="tok-unknown">[?]</span>.
+      The "I'm fine" 23% (Q9): mostly low-complexity holders or people already on a dedicated tool, including one respondent who uses <strong>Strum</strong> daily and is satisfied. Not a design target now. A frustrated Strum-style user (the tool misses Inzhur certificates, the 95% core) could be a future switch target, but the research has only the one satisfied data point, so we do not invent that persona <span class="tok-unknown">[?]</span>.
     </div>
   </section>
 
@@ -915,7 +975,7 @@
     <div class="hyps">
       <div class="hyp"><span class="hid">HJ1</span> <em>Social.</em> Be seen as having my finances in order among peers. <span class="tok-unknown">[?]</span> The community exists, but nothing shows people want the product for image.</div>
       <div class="hyp"><span class="hid">HJ2</span> <em>Social.</em> Share or compare my setup with the community. <span class="tok-unknown">[?]</span> Weak signal: some built and shared their own tools (PowerBI, Notion).</div>
-      <div class="hyp"><span class="hid">HJ3</span> Track progress toward a long-term goal (e.g. financial independence). <span class="tok-unknown">[?]</span> Only an adjacent hint (FIREkit), no beachhead data.</div>
+      <div class="hyp"><span class="hid">HJ3</span> Track progress toward a long-term goal (e.g. financial independence). <span class="tok-unknown">[thin]</span> Now one direct beachhead request - "a calculator: how much to contribute per month to reach the desired result" (R26) - plus an analytics ask for past/future interpolation (R23). Single voices, but no longer no data; motivates the complementary Goals/Analytics screens.</div>
       <div class="hyp"><span class="hid">HJ4</span> Stay aware without maintaining anything (P2). <span class="tok-unknown">[?]</span> Inferred from the 23% who consolidate nowhere; motivation unknown.</div>
       <div class="hyp"><span class="hid">HJ5</span> Decide what to buy, sell, or rebalance. <span class="tok-unknown">[?]</span> No evidence, and out of direction (not P&amp;L-led). Marked as deliberately excluded.</div>
     </div>
@@ -1044,6 +1104,367 @@
     <p>Full follow-up with all sources: <a class="cite" href="research.md">research.md §7</a>.</p>
   </section>
 
+  <!-- ============ 04a. SITEMAP ============ -->
+  <section id="sitemap">
+    <span class="sec-tag"><span class="num">04</span> Architecture</span>
+    <h2>The screen map</h2>
+    <p>The bridge from jobs to wireframes. Every screen is derived from an object a person handles in <a class="cite" href="../wireframes/sitemap.md">sitemap.md</a> and traced to a job in <a class="cite" href="jtbd.md">jtbd.md</a> - nothing is added because a finance app usually has it. Each screen below carries its primary persona (<span style="color:var(--pos)">P1</span> primary, <span style="color:var(--lock)">P3</span> secondary) and the job it helps close.</p>
+
+    <div class="tree">
+      <ul>
+        <li class="grp"><span class="gl">A</span> See where I stand
+          <ul>
+            <li class="scr"><span class="row"><span class="nm">Overview</span> <span class="pt p1">P1</span> <span class="jb">Main &middot; EJ1</span></span></li>
+            <li class="scr"><span class="row"><span class="nm">Calendar</span> <span class="pt p1">P1</span> <span class="jb">Main &middot; RJ1 &middot; RJ3 &middot; EJ1 &middot; EJ3</span></span></li>
+            <li class="scr drv"><span class="row"><span class="nm">Analytics</span> <span class="pt p1">P1</span> <span class="jb">EJ1 &middot; EJ3</span> <span class="thin">thin &middot; R23</span></span></li>
+            <li class="scr drv"><span class="row"><span class="nm">Goals / Calculator</span> <span class="pt p1">P1</span> <span class="jb">EJ3</span> <span class="thin">thin &middot; R26 &middot; HJ3</span></span></li>
+          </ul>
+        </li>
+        <li class="grp"><span class="gl">B</span> Work with my holdings
+          <ul>
+            <li class="scr"><span class="row"><span class="nm">Holding detail</span> <span class="pt p1">P1</span> <span class="jb">RJ2 &middot; RJ3</span></span></li>
+            <li class="scr"><span class="row"><span class="nm">Record changes</span> <span class="pt p1">P1</span> <span class="jb">Main &middot; RJ2 &middot; EJ3</span></span></li>
+            <li class="scr"><span class="row"><span class="nm">Payout edit</span> <span class="pt p1">P1</span> <span class="jb">EJ3</span></span></li>
+          </ul>
+        </li>
+        <li class="grp"><span class="gl">C</span> Get holdings in
+          <ul>
+            <li class="scr"><span class="row"><span class="nm">Get started (onboarding)</span> <span class="pt p1">P1</span> <span class="jb">RJ1 &middot; RJ2 &middot; RJ4</span></span></li>
+            <li class="scr"><span class="row"><span class="nm">Add a holding</span> <span class="pt p1">P1</span> <span class="jb">RJ2</span></span>
+              <ul>
+                <li class="scr"><span class="row"><span class="nm">Add manually</span> <span class="pt p1">P1</span> <span class="jb">RJ2</span></span></li>
+                <li class="scr"><span class="row"><span class="nm">Import from a spreadsheet</span> <span class="pt p1">P1</span> <span class="jb">RJ4</span></span>
+                  <ul>
+                    <li class="scr"><span class="row"><span class="nm">Map columns (remap)</span> <span class="pt p1">P1</span> <span class="jb">RJ4</span></span></li>
+                    <li class="scr"><span class="row"><span class="nm">Review draft holdings</span> <span class="pt p1">P1</span> <span class="jb">RJ4</span></span></li>
+                  </ul>
+                </li>
+                <li class="scr"><span class="row"><span class="nm">Connect an account / broker sync</span> <span class="pt p3">P3</span> <span class="jb">RJ1</span></span></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="grp"><span class="gl">D</span> Control my data &amp; privacy
+          <ul>
+            <li class="scr"><span class="row"><span class="nm">My data &amp; privacy</span> <span class="pt p3">P3</span> <span class="jb">RJ5 &middot; EJ2</span></span></li>
+          </ul>
+        </li>
+        <li class="grp chrome"><span class="gl">&middot;&middot;</span> Global header <span class="muted">(chrome on every screen, not screens)</span>
+          <ul>
+            <li class="scr"><span class="row"><span class="nm">Display-currency switch &middot; Language EN&harr;UA &middot; Profile</span></span></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <h3>Navigation &amp; depth</h3>
+    <p>Global navigation is four tabs. The create action and the profile are deliberately <em>not</em> tabs.</p>
+    <ul class="navrow">
+      <li><span class="tab">Overview</span> total position + a blended this-month income headline <span class="jb" style="font-family:var(--mono);color:var(--faint)">Main, EJ1</span></li>
+      <li><span class="tab">Calendar</span> a month view of dated money events, income the lead layer <span class="jb" style="font-family:var(--mono);color:var(--faint)">RJ3, EJ3</span></li>
+      <li><span class="tab">Analytics</span> allocation, income by source, P&amp;L + trends over time <span class="jb" style="font-family:var(--mono);color:var(--faint)">EJ1, EJ3</span></li>
+      <li><span class="tab">Goals</span> the contribution-to-goal calculator, labeled an estimate <span class="jb" style="font-family:var(--mono);color:var(--faint)">EJ3</span></li>
+    </ul>
+    <p><strong>Add (+)</strong> lives on the Overview screen, not in the nav: adding is occasional, not a recurring destination. <strong>Profile</strong> is a header entry point (create / log in / manage), the door to the opt-in account and My data &amp; privacy; local-first means a user can do everything without opening it. Display currency and the EN&harr;UA language toggle are global-header controls, so there is no Settings tab.</p>
+    <p><strong>Depth.</strong> Launch lands on Overview, whose hero carries total position and this-month's blended income together, so the main job sits <strong>0 taps</strong> in for a returning user. The full income calendar, a single holding, Add, and Record changes are each <strong>1 tap</strong>. The very first session routes through Get started instead of dropping the user on an empty dashboard.</p>
+
+    <h3>Traceability matrix</h3>
+    <p>Rows are every job in <a class="cite" href="jtbd.md">jtbd.md</a>; columns are every screen above. A check means the screen genuinely helps close that job, not merely touches it. The target is no empty row (a job no screen serves) and no empty column (a screen no job needs).</p>
+
+    <div class="scroll-hint"><svg class="ico ico-scroll" aria-hidden="true"><use href="#i-scroll"/></svg> scroll the table horizontally on small screens</div>
+    <div class="table-scroll">
+      <table class="trace">
+        <thead>
+          <tr>
+            <th>Job</th>
+            <th title="Overview / consolidated dashboard">DASH</th>
+            <th title="Calendar (month view)">CAL</th>
+            <th title="Analytics">ANL</th>
+            <th title="Goals / Calculator">GOAL</th>
+            <th title="Holding detail">HD</th>
+            <th title="Record changes">CHG</th>
+            <th title="Payout edit">PAY</th>
+            <th title="Get started (onboarding)">ONB</th>
+            <th title="Add a holding">ADD</th>
+            <th title="Add manually">MAN</th>
+            <th title="Import from a spreadsheet">IMP</th>
+            <th title="Map columns (remap)">MAP</th>
+            <th title="Review draft holdings">REV</th>
+            <th title="Connect an account / broker sync">CONN</th>
+            <th title="My data &amp; privacy">DATA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Main - whole position + income</th>
+            <td class="y">&check;</td><td class="y">&check;</td><td></td><td></td><td></td><td class="y">&check;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr class="thin">
+            <th scope="row">RJ1 - bring the numbers together <span class="tflag">thin</span></th>
+            <td class="y">&check;</td><td class="y">&check;</td><td></td><td></td><td></td><td></td><td></td><td class="y">&check;</td><td></td><td></td><td></td><td></td><td></td><td class="y">&check;</td><td></td>
+          </tr>
+          <tr>
+            <th scope="row">RJ2 - hold everything I own</th>
+            <td></td><td></td><td></td><td></td><td class="y">&check;</td><td class="y">&check;</td><td></td><td class="y">&check;</td><td class="y">&check;</td><td class="y">&check;</td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th scope="row">RJ3 - income coming + arrived</th>
+            <td class="y">&check;</td><td class="y">&check;</td><td></td><td></td><td class="y">&check;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th scope="row">RJ4 - move in without redoing work</th>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="y">&check;</td><td class="y">&check;</td><td></td><td class="y">&check;</td><td class="y">&check;</td><td class="y">&check;</td><td></td><td></td>
+          </tr>
+          <tr class="thin">
+            <th scope="row">RJ5 - decide how much to share <span class="tflag">thin</span></th>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="y">&check;</td><td class="y">&check;</td>
+          </tr>
+          <tr>
+            <th scope="row">EJ1 - feel on top, not unsure</th>
+            <td class="y">&check;</td><td class="y">&check;</td><td class="y">&check;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr class="thin">
+            <th scope="row">EJ2 - feel my data is mine <span class="tflag">thin</span></th>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="y">&check;</td>
+          </tr>
+          <tr>
+            <th scope="row">EJ3 - feel my plan is working</th>
+            <td></td><td class="y">&check;</td><td class="y">&check;</td><td class="y">&check;</td><td class="y">&check;</td><td class="y">&check;</td><td class="y">&check;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mxnote">No empty row and no empty column: no screen-orphan, no job-orphan. Three rows are <span class="tflag">thin</span> and watched before wireframes - <strong>RJ1</strong> is closed mostly by background feeds rather than a screen of its own; <strong>RJ5</strong>'s per-holding sharing has only a portfolio-level control today; <strong>EJ2</strong> rests on the single My data &amp; privacy screen. The former Language and Display-currency columns are gone: both are global-header controls, not screens.</p>
+  </section>
+
+  <!-- ============ 04b. FLOWS ============ -->
+  <section id="flows">
+    <span class="sec-tag">Flows</span>
+    <h2>User flows</h2>
+    <p>Screen-to-screen flows for the load-bearing jobs, one per job, drawn for the primary persona (P1) unless noted. Both ends are shown on purpose - the success path <em>and</em> the dead-ends, not just the happy path. Full source: <a class="cite" href="../wireframes/flows.md">flows.md</a>.</p>
+
+    <div class="legend">
+      <b>Flow shapes</b>
+      <span><i><code>[ ]</code></i>screen</span>
+      <span><i><code>[/ /]</code></i>state of a screen</span>
+      <span><i><code>{ }</code></i>decision</span>
+      <span><i><code>([ ])</code></i>start / success</span>
+      <span><i><code>{{ }}</code></i>dead-end</span>
+    </div>
+
+    <h3>Onboarding - first run, getting holdings in</h3>
+    <p class="flowdesc">Three on-ramps (manual / import / connect) before any empty state; skip lands on an empty dashboard that repeats them, so the one dead-end is only reached by declining help twice.</p>
+    <div class="diagram"><pre class="mermaid">flowchart TD
+    Start(["First launch, no holdings yet"]) --&gt; Welcome["Get started"]
+    Welcome --&gt; QHow{"How do you want to bring holdings in?"}
+    QHow --&gt;|I have a spreadsheet| Imp["Import from a spreadsheet"]
+    QHow --&gt;|I have a broker account| Conn["Connect an account / broker sync"]
+    QHow --&gt;|add one by hand| Man["Add manually"]
+    QHow --&gt;|skip for now| Empty[/"State: empty dashboard, on-ramps repeated"/]
+    Imp --&gt; ImpNote(["continues in the RJ4 import flow"])
+    Man --&gt; ManNote(["continues in the RJ2 add-manually flow"])
+    Conn --&gt; ConnNote(["opt-in account, P3; no UA institution falls back to manual / CSV"])
+    ImpNote --&gt; Done(["Holdings in, lands on populated dashboard: onboarding done"])
+    ManNote --&gt; Done
+    ConnNote --&gt; Done
+    Empty --&gt; Dash["Consolidated dashboard"]
+    Dash --&gt; QLater{"Pick an on-ramp now?"}
+    QLater --&gt;|yes| QHow
+    QLater --&gt;|no| Dead1{{"Dead-end: empty dashboard, user leaves for Excel"}}</pre></div>
+
+    <h3>Main job - whole position + what it pays</h3>
+    <p class="flowdesc">The dashboard is the 0-tap landing; a failed fetch falls back to the last-known value with an "as of" flag, never a fabricated number, and a session-open greeting surfaces income that landed while the user was away.</p>
+    <div class="diagram"><pre class="mermaid">flowchart TD
+    Start(["Open Flows"]) --&gt; Dash["Consolidated dashboard"]
+    Dash --&gt; QHolds{"Any holdings yet?"}
+    QHolds --&gt;|no| Empty[/"State: empty, no holdings"/]
+    Empty --&gt; QStart{"Tap Add to start?"}
+    QStart --&gt;|no| Dead1{{"Dead-end: blank screen, user goes back to Excel"}}
+    QStart --&gt;|yes| Add["Add a holding"]
+    QHolds --&gt;|yes| Load[/"State: loading, fetching prices + FX"/]
+    Load --&gt; QTimeout{"Returned, or timed out / offline?"}
+    QTimeout --&gt;|timed out / offline| Errf[/"State: error, fetch failed"/]
+    QTimeout --&gt;|returned| QFresh{"Prices + FX returned?"}
+    QFresh --&gt;|yes, all| Full[/"State: populated, total position + blended income"/]
+    QFresh --&gt;|some failed| Partial[/"State: partial, priced holdings live + stale flags on the rest"/]
+    QFresh --&gt;|no| Errf
+    Partial --&gt; Full
+    Errf --&gt; QLast{"Any last-known value?"}
+    QLast --&gt;|yes| Stale[/"State: last-known value + as-of stale flag"/]
+    Stale --&gt; Full
+    QLast --&gt;|no| Neutral[/"State: neutral, no fabricated number"/]
+    Neutral --&gt; Full
+    Full --&gt; QArrived{"Payouts landed since last visit, or today?"}
+    QArrived --&gt;|no| Win(["Sees whole position + what it pays: MAIN JOB met"])
+    QArrived --&gt;|yes| Greet[/"State: greeting, income arrived while you were away: lists what landed"/]
+    Greet --&gt;|looks right, dismiss| Win
+    Greet --&gt;|that did not happen, I sold| ChgNote(["continues in the Record changes flow"])
+    Full --&gt;|open Calendar| Calendar["Calendar"]
+    Full --&gt;|tap a holding| Detail["Holding detail"]
+    Full --&gt;|tap plus| Add</pre></div>
+
+    <h3>RJ4 - move in without redoing the work</h3>
+    <p class="flowdesc">Auto-detect straight to review is the happy path; remap is the safety net, and an unsupported file offers AI-assisted import or a manual add instead of a dead-end.</p>
+    <div class="diagram"><pre class="mermaid">flowchart TD
+    Add["Add a holding"] --&gt;|choose Import| Imp["Import from a spreadsheet"]
+    Imp --&gt; Pick[/"State: pick or drop a CSV file"/]
+    Pick --&gt; Parse[/"State: loading, parsing file"/]
+    Parse --&gt; QParsed{"File readable with rows?"}
+    QParsed --&gt;|no| Eparse[/"State: error, unreadable or empty"/]
+    Eparse --&gt; QFmt{"Format supported, CSV or sheet?"}
+    QFmt --&gt;|no| QAlt{"Try AI-assisted import, or add manually?"}
+    QAlt --&gt;|AI import| AINote(["opt-in AI-assisted import, BYOK, separate flow"])
+    QAlt --&gt;|add manually| Add
+    QFmt --&gt;|yes| QRetry{"Retry or cancel?"}
+    QRetry --&gt;|retry| Pick
+    QRetry --&gt;|cancel| Add
+    QParsed --&gt;|yes| QDetect{"Headers auto-detected?"}
+    QDetect --&gt;|yes| Review["Review draft holdings"]
+    QDetect --&gt;|no| Map["Map columns (remap)"]
+    Map --&gt; QValid{"Required fields mapped?"}
+    QValid --&gt;|yes| Review
+    QValid --&gt;|no| QPresent{"Is that column even in the file?"}
+    QPresent --&gt;|yes, remap| Emap[/"State: error, unmapped required column"/]
+    Emap --&gt; Map
+    QPresent --&gt;|no, not in file| Escape{"Fill it later, or add this one manually?"}
+    Escape --&gt;|fill later| Review
+    Escape --&gt;|add manually| Add
+    Review --&gt; QRows{"Draft rows look right?"}
+    QRows --&gt;|no, fix mapping| Map
+    QRows --&gt;|some rows invalid| Erows[/"State: row errors flagged, fix or skip"/]
+    Erows --&gt; Review
+    QRows --&gt;|yes, confirm| Importing[/"State: loading, importing rows"/]
+    Importing --&gt; Created[/"State: holdings created"/]
+    Created --&gt; Dash["Consolidated dashboard"]
+    Dash --&gt; Win(["Existing sheet moved in without re-entry: RJ4 met"])</pre></div>
+
+    <h3>RJ3 - see income coming and arriving</h3>
+    <p class="flowdesc">A month view: realized behind, projected (labeled) ahead; payouts past their date auto-roll to realized with no per-payout tap, and divergence hands off to Record changes.</p>
+    <div class="diagram"><pre class="mermaid">flowchart TD
+    Dash["Consolidated dashboard"] --&gt;|open Calendar| Inc["Calendar"]
+    Inc --&gt; ILoad[/"State: loading, computing this month's projections"/]
+    ILoad --&gt; QInc{"Any income-bearing holdings?"}
+    QInc --&gt;|no| Eempty[/"State: empty, no projected income"/]
+    Eempty --&gt; Qadd{"Add an income asset?"}
+    Qadd --&gt;|yes| Add["Add a holding"]
+    Qadd --&gt;|no| Dead1{{"Dead-end: empty calendar, user stays on Excel"}}
+    QInc --&gt;|yes| QProj{"Projections + FX ready?"}
+    QProj --&gt;|yes| Cal[/"State: populated month view, this month blended; back = realized, forward = projected (labeled)"/]
+    QProj --&gt;|no| IErr[/"State: error, projection unavailable, shows last-known schedule"/]
+    IErr --&gt; Cal
+    Cal --&gt;|prev / next month| Month[/"State: another month, realized if past or projected (labeled) if future"/]
+    Month --&gt; Cal
+    Cal --&gt; QDue{"Any payout past its date?"}
+    QDue --&gt;|no| Win1(["Sees what income is coming: RJ3 met"])
+    QDue --&gt;|yes| Roll[/"State: past-due payout auto-rolled to realized, on the known schedule, no confirm step"/]
+    Roll --&gt; Real[/"State: realized income, added automatically"/]
+    Real --&gt; Win2(["Realized income adds up on its own: EJ3 met"])
+    Real --&gt;|it did not happen, or paid differently| ChgNote(["continues in the Record changes flow"])
+    Cal --&gt;|tap a holding| Detail["Holding detail"]
+    Detail --&gt; QSched{"Holding has an income schedule?"}
+    QSched --&gt;|yes| Cal
+    QSched --&gt;|no| Gap[/"State: no income schedule, prompt to add one"/]
+    Gap --&gt; QFix{"Add an income schedule now?"}
+    QFix --&gt;|yes| Form["Add manually"]
+    QFix --&gt;|no| Cal
+    Form --&gt; Cal</pre></div>
+
+    <h3>RJ2 - hold everything I actually own</h3>
+    <p class="flowdesc">Typed stubs cover the common ~90%; the custom-field escape hatch covers the rest, so no unmatched asset bounces the user back to Excel.</p>
+    <div class="diagram"><pre class="mermaid">flowchart TD
+    Plus(["Tap +"]) --&gt; Add["Add a holding"]
+    Add --&gt; QHow{"How to add?"}
+    QHow --&gt;|import| Imp["Import from a spreadsheet"]
+    QHow --&gt;|connect| Conn["Connect an account / broker sync"]
+    QHow --&gt;|manually| QType{"Asset type has a typed stub?"}
+    QType --&gt;|yes| Form["Add manually"]
+    QType --&gt;|no, odd asset| QEsc{"Use the custom-field escape hatch?"}
+    QEsc --&gt;|no| Dead1{{"Dead-end: no matching type, user bounces to Excel"}}
+    QEsc --&gt;|yes| Form
+    Form --&gt; QClass{"Price-tracked type?"}
+    QClass --&gt;|yes| QSym{"Symbol or ISIN found in feed?"}
+    QSym --&gt;|yes| Auto[/"State: value auto-priced from feed"/]
+    QSym --&gt;|no| Esym[/"State: error, symbol not found"/]
+    Esym --&gt; QFallback{"Enter a manual value instead?"}
+    QFallback --&gt;|no| Pending[/"State: saved with no value yet, shown neutral"/]
+    QFallback --&gt;|yes| Manual[/"State: user enters value manually"/]
+    Pending --&gt; Saved
+    QClass --&gt;|no, manual type| Manual
+    Auto --&gt; QSave{"Required fields complete?"}
+    Manual --&gt; QSave
+    QSave --&gt;|no| Eval[/"State: error, required field missing"/]
+    Eval --&gt; Form
+    QSave --&gt;|yes| Saved[/"State: holding created"/]
+    Saved --&gt; Dash["Consolidated dashboard"]
+    Dash --&gt; Win(["Odd asset recorded without leaving for Excel: RJ2 met"])
+    Imp --&gt; ImpNote(["continues in the RJ4 import flow"])
+    Conn --&gt; ConnNote(["opt-in, P3, off the beachhead path"])</pre></div>
+
+    <h3>Holding detail - shared screen states</h3>
+    <p class="flowdesc">One screen reached from Overview or Calendar; it mirrors the dashboard's trust pattern at the single-holding level, and it is where P&amp;L lives, kept off the dashboard hero.</p>
+    <div class="diagram"><pre class="mermaid">flowchart TD
+    Enter(["Tap a holding, from Overview or Calendar"]) --&gt; HD["Holding detail"]
+    HD --&gt; QVal{"Price-tracked or manually-valued?"}
+    QVal --&gt;|price-tracked| Load[/"State: loading, fetching value + history"/]
+    Load --&gt; QHist{"Value + history returned?"}
+    QHist --&gt;|yes| Full[/"State: populated, value + 30-day change + history + income schedule + P&amp;L"/]
+    QHist --&gt;|fetch failed| Err[/"State: error, last-known value + as-of stale flag"/]
+    QHist --&gt;|no history yet| Neutral[/"State: neutral, no 30-day change fabricated"/]
+    QVal --&gt;|manually-valued| QSnap{"Any user snapshots yet?"}
+    QSnap --&gt;|yes| Full
+    QSnap --&gt;|no| Neutral
+    Full --&gt; Done(["Sees one holding in full"])
+    Err --&gt; Done
+    Neutral --&gt; Done
+    Full --&gt;|make a change| EditNote(["this holding, pre-scoped: continues in the Record changes flow"])
+    Full --&gt;|no income schedule| SchedNote(["prompt to add a schedule, continues in the RJ3 income flow"])</pre></div>
+
+    <h3>Record changes - keep the picture true when automation can't see it</h3>
+    <p class="flowdesc">The persistent safety valve for what automation can't see (bought more, sold, a payout that didn't land), in bulk or per holding, and type-aware so it never asks about fields the asset lacks.</p>
+    <div class="diagram"><pre class="mermaid">flowchart TD
+    Entry(["Something changed we did not auto-detect"]) --&gt; QWhere{"Where from?"}
+    QWhere --&gt;|Overview, persistent Make changes| Hub["Record changes"]
+    QWhere --&gt;|Holding detail, this holding| HubOne["Record changes (one holding, pre-scoped)"]
+    Hub --&gt; QScope{"All holdings, several, or one?"}
+    QScope --&gt;|one| HubOne
+    QScope --&gt;|several / all, in bulk| Bulk[/"State: pick the holdings to change together"/]
+    HubOne --&gt; QType{"What changed? (options depend on asset type)"}
+    Bulk --&gt; QType
+    QType --&gt;|bought more / sold: quantity| EditH["Add manually (edit mode)"]
+    QType --&gt;|value correction| EditH
+    QType --&gt;|a payout did not happen / wrong amount| EditP["Payout edit"]
+    EditH --&gt; Save[/"State: saving the change"/]
+    EditP --&gt; Save
+    Save --&gt; QSaved{"Saved?"}
+    QSaved --&gt;|no| Err[/"State: error, save failed, retry"/]
+    Err --&gt; QType
+    QSaved --&gt;|yes| Done[/"State: holdings + income updated, picture back in sync"/]
+    Done --&gt; Win(["Picture matches reality again: upkeep stays low, EJ3 stays honest"])</pre></div>
+
+    <h3>Analytics &amp; Goals - derived screens (no new data entry)</h3>
+    <p class="flowdesc">Both compute on holdings already entered; neither adds data. Analytics is read-only and its only failure is the empty state before any holding exists. Goals is a scenario tool seeded from the user's own history, and every projected figure is labeled an estimate, never a promise.</p>
+    <div class="diagram"><pre class="mermaid">flowchart TD
+    A(["Open Analytics, from nav"]) --&gt; ALoad[/"State: loading, computing from holdings + snapshots"/]
+    ALoad --&gt; AQ{"Any holdings yet?"}
+    AQ --&gt;|no| AEmpty[/"State: empty, nothing to analyze, prompt to add"/]
+    AEmpty --&gt; AAdd(["go to Add a holding"])
+    AQ --&gt;|yes| AFull[/"State: populated, allocation + income by source + P&amp;L + trends over time"/]
+    AFull --&gt; AWin(["Sees how the portfolio is doing: EJ1 + EJ3"])
+    AFull --&gt;|tap a holding| AHD(["Holding detail"])</pre></div>
+    <div class="diagram"><pre class="mermaid">flowchart TD
+    G(["Open Goals, from nav"]) --&gt; GQ{"Enough history to seed defaults?"}
+    GQ --&gt;|no| GSeed[/"State: ask for a target + a starting contribution, no history to default from"/]
+    GQ --&gt;|yes| GDefault[/"State: defaults from history, average monthly contribution + current payouts"/]
+    GSeed --&gt; GCalc["Goals / Calculator"]
+    GDefault --&gt; GCalc
+    GCalc --&gt; GEdit{"Adjust target or assumptions?"}
+    GEdit --&gt;|yes| GCalc
+    GEdit --&gt;|no| GEst[/"State: projection shown, labeled estimate, never a promise"/]
+    GEst --&gt; GWin(["Sees what it would take to reach the goal: EJ3 (thin, HJ3)"])</pre></div>
+
+    <p>Two screens have no flow drawn yet, on purpose: <strong>Connect an account / broker sync</strong> and <strong>My data &amp; privacy</strong>. Both serve the trust-wary, automation-leaning persona (P3), off the primary Excel-consolidator path; they are deferred rather than omitted so the gap stays explicit.</p>
+  </section>
+
 </div>
 </div>
 
@@ -1086,6 +1507,34 @@
       if (window.scrollY < 8) activate('overview');
     }, { passive: true });
   })();
+</script>
+
+<script type="module">
+  // Architecture flows - render the .mermaid blocks with a dark theme matched to the page.
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: 'strict',
+    theme: 'base',
+    themeVariables: {
+      darkMode: true,
+      fontFamily: '"Inter Variable","SF Pro Display",system-ui,sans-serif',
+      fontSize: '13px',
+      background: '#0f1011',
+      mainBkg: '#17181b',
+      primaryColor: '#17181b',
+      primaryBorderColor: 'rgba(255,255,255,.18)',
+      primaryTextColor: '#f7f8f8',
+      secondaryColor: '#1c1d22',
+      tertiaryColor: '#0f1011',
+      lineColor: '#8a8f98',
+      textColor: '#d0d6e0',
+      nodeBorder: 'rgba(255,255,255,.18)',
+      clusterBkg: '#0f1011',
+      edgeLabelBackground: '#0f1011'
+    },
+    flowchart: { curve: 'basis', useMaxWidth: true, padding: 8 }
+  });
 </script>
 
 </body>

@@ -1,6 +1,6 @@
 # Flows — Beachhead survey, raw responses
 
-The complete response set for the Inzhur-community survey defined in [`beachhead-survey.md`](beachhead-survey.md). **N = 22**, collected 2026-06-22 → 2026-06-23. Convenience sample from the Inzhur investor community; directional, not statistically representative. No PII was collected (the form had no recruitment block — timestamp only). The summary, charts, and conclusions live in [`research.md` §6](research.md) and on the research page.
+The complete response set for the Inzhur-community survey defined in [`beachhead-survey.md`](beachhead-survey.md). **N = 30**, collected 2026-06-22 → 2026-06-24. Convenience sample from the Inzhur investor community; directional, not statistically representative. No PII was collected (the form had no recruitment block — timestamp only). The summary, charts, and conclusions live in [`research.md` §6](research.md) and on the research page.
 
 Closed-question values are translated to consistent English labels; the open Q10 is kept verbatim (Ukrainian) with an English gloss.
 
@@ -32,10 +32,18 @@ Legend for compact cells — Q1 types: **In**=Inzhur REIT/fund certs · **OV**=O
 | R20 | In, OV, St, Cr, RE, Dp | 5+ | 25–50% | Google Sheets | Laptop | Weekly | Realized only | Yes — abandoned over it | Scattered assets |
 | R21 | In, OV, St, Cr, RE, Dp | 5+ | 25–50% | **firekit** (dedicated) | Phone | Weekly | Yes — realized + projected | No — didn't stop me | I'm fine |
 | R22 | In, OV, Cr, RE | 4 | >75% | **Notion** (dedicated) | Phone | Monthly | No | Comfortable w/ bank·broker apps | Manual math |
+| R23 | In, St, Cr, RE, Ot (land, loans) | 5+ | 25–50% | Google Sheets · Google Finance | Laptop | Weekly | Yes — realized + projected | Yes — abandoned over it | Data goes stale |
+| R24 | In, OV | 1 | >75% | Inzhur app | Phone | Weekly | Realized only | Yes — abandoned over it | No forward income |
+| R25 | In, OV, Cr, RE, Dp | 5+ | 50–75% | Excel | Laptop | Monthly | Yes — realized + projected | No — didn't stop me | Scattered assets |
+| R26 | In, OV | 1 | >75% | Inzhur app | Laptop | Weekly | Realized only | Comfortable w/ bank·broker apps | I'm fine |
+| R27 | In, OV, RE | 1 | >75% | Inzhur app · in my head | Phone | Monthly | Realized only | Comfortable w/ bank·broker apps | Data goes stale |
+| R28 | In, OV, St, Cr | 5+ | <25% | Google Sheets · firekit | Varies | Weekly | Yes — realized + projected | Yes — abandoned over it | Scattered assets |
+| R29 | In, OV, St, Cr, Dp | 5+ | 25–50% | Several places separately | Varies | Monthly | Yes — realized + projected | Comfortable w/ bank·broker apps | Manual math |
+| R30 | In, OV, Cr | 3 | 50–75% | Inzhur app · broker app · separately | Phone | Daily | Yes — realized + projected | Comfortable w/ bank·broker apps | Manual math |
 
 ## Q10 — open (wishes / pains), verbatim + gloss
 
-8 of 22 left an open answer.
+10 of 30 left an open answer.
 
 - **R1** — "Автоматичної інтеграції з усіма платформами." → *Automatic integration with all platforms.*
 - **R6** — "Немає уніфікації. Неможливо з різних платформ отримати хоча б однакову вигрузку. Доводиться фільтрувати дані з апі в тому числі. І до питання де я зараз відслідковую — не вистачає свого варіанту. В мене powerbi репорт власний." → *No unification. You can't even get a consistent export from the different platforms — you end up filtering the data, including from APIs. And on "where do you track today" — my option was missing: I have my own PowerBI report.*
@@ -43,7 +51,9 @@ Legend for compact cells — Q1 types: **In**=Inzhur REIT/fund certs · **OV**=O
 - **R8** — "Не вистачає гнучкості і кастомізаціі, і щоб працював інструмент для абсолютно різних типів активів, у різних валютах, деякі з статичними цінами, які треба оновлювати в ручну, деякі з динамічною ціною, яка оновлюється кожного дня, з привязкою до долара, деякі з дивідендами, деякі тільки з капіталізацією і тд." → *Lacks flexibility and customization — a tool that works for completely different asset types, in different currencies: some with static prices you update by hand, some with a dynamic price that updates daily pegged to the dollar, some with dividends, some only with capital appreciation, etc.*
 - **R9** — "Їх треба вести." → *You have to maintain them.*
 - **R17** — "Бракує терпіння відмічати зміни." → *I lack the patience to record changes.*
+- **R23** — "Бракує статистичних даних інтерполяції за минуле та майбутнє." → *Lacks statistical data / interpolation for the past and the future.* (analytics signal)
+- **R26** — "калькулятора, скільки вносити на місяць, щоб досягти бажагого результату" → *A calculator: how much to contribute per month to reach the desired result.* (goal-calculator signal)
 
 ## Tools named by respondents (Q4 / open)
 
-Surfaced as the tools these investors already use to consolidate — a recruited-from-the-beachhead competitor list to scan later: **Strum**, **firekit**, **Account Tracker**, **WiseWallet**, **Notion**, **PowerBI** (self-built). Strum appeared firsthand here and is the closest direct competitor (Ukrainian, multi-asset) — see [`research.md` §6](research.md).
+Surfaced as the tools these investors already use to consolidate — a recruited-from-the-beachhead competitor list to scan later: **Strum**, **firekit**, **Account Tracker**, **WiseWallet**, **Notion**, **Google Finance**, **PowerBI** (self-built). Strum appeared firsthand here and is the closest direct competitor (Ukrainian, multi-asset) — see [`research.md` §6](research.md).
